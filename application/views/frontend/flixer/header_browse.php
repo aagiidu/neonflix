@@ -18,7 +18,7 @@
 <div class="navbar navbar-default navbar-fixed-top <?php echo $nav_type;?>" >
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a href="<?php echo base_url();?>index.php?home" class="navbar-brand">
+			<a href="<?php echo base_url();?>" class="navbar-brand">
 				<img src="<?php echo base_url();?>/assets/global/logo.png" style="height: 32px;" />
 			</a>
 			<button class="navbar-toggle" type="button" id="menu" data-toggle="collapse" data-target="#navbar-main">
