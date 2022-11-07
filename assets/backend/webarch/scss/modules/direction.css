@@ -1,0 +1,42 @@
+/*
+Error: Invalid CSS after "$rtl: ": expected expression (e.g. 1px, bold), was "~`"${direction}..."
+        on line 7 of D:/xampp/htdocs/videoflix/version/1.0/assets/backend/webarch/scss/modules/direction.scss
+
+2: * direction.less v0.1.0
+3: *\/
+4: 
+5: // Local vars
+6: 
+7: $rtl: ~`"${direction}" === 'rtl' ? 'true' : 'false'`;
+8: $left: ~`${rtl} ? 'right' : 'left'`;
+9: $right: ~`${rtl} ? 'left' : 'right'`;
+10: 
+11: 
+12: // "border-color:" rule
+
+Backtrace:
+D:/xampp/htdocs/videoflix/version/1.0/assets/backend/webarch/scss/modules/direction.scss:7
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:1179:in `expected'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/script/lexer.rb:228:in `expected!'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/script/parser.rb:673:in `assert_expr'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/script/parser.rb:63:in `parse'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:1041:in `sass_script'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:621:in `variable'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:674:in `block_child'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:664:in `block_contents'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:126:in `stylesheet'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/scss/parser.rb:42:in `parse'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/engine.rb:403:in `_to_tree'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/engine.rb:278:in `render'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/exec/sass_scss.rb:420:in `run'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/lib/ruby/gems/2.2.0/gems/sass-3.4.20/bin/sass:13:in `<top (required)>'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/bin/sass:23:in `load'
+C:/Program Files/Adobe/Adobe Dreamweaver CC 2017/ruby/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"$rtl: \": expected expression (e.g. 1px, bold), was \"~`\"${direction}...\"\A         on line 7 of D:/xampp/htdocs/videoflix/version/1.0/assets/backend/webarch/scss/modules/direction.scss\A \A 2: * direction.less v0.1.0\A 3: */\A 4: \A 5: // Local vars\A 6: \A 7: $rtl: ~`\"${direction}\" === 'rtl' ? 'true' : 'false'`;\A 8: $left: ~`${rtl} ? 'right' : 'left'`;\A 9: $right: ~`${rtl} ? 'left' : 'right'`;\A 10: \A 11: \A 12: // \"border-color:\" rule"; }

@@ -1,0 +1,64 @@
+.easy-pie-custom {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 110px;
+  text-align: center; }
+  .easy-pie-custom canvas {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.easy-pie-percent {
+  display: inline-block;
+  line-height: 110px;
+  z-index: 2; }
+  .easy-pie-percent :after {
+    content: '%';
+    margin-left: 0.1em;
+    font-size: .8em; }
+
+.mini-chart-wrapper {
+  display: block;
+  width: 100%;
+  padding: 19px 9px 0; }
+  .mini-chart-wrapper .chart-details-wrapper {
+    display: inline-block;
+    margin: 8px; }
+    .mini-chart-wrapper .chart-details-wrapper .chartname {
+      display: block;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      color: #9A9A9A; }
+    .mini-chart-wrapper .chart-details-wrapper .chart-value {
+      display: block;
+      font-size: 14px;
+      color: #000000; }
+  .mini-chart-wrapper .mini-chart {
+    display: inline-block;
+    position: relative;
+    top: -10px; }
+  .mini-chart-wrapper.donut .chart-details-wrapper {
+    float: left;
+    margin-top: 0; }
+  .mini-chart-wrapper.donut .mini-chart {
+    float: left; }
+
+.legendColorBox > div {
+  border: 0px !important; }
+
+.legendLabel {
+  line-height: 20px !important; }
+
+.rickshaw_legend {
+  display: block;
+  border-radius: 0px;
+  background-color: transparent; }
+  .rickshaw_legend .line {
+    margin-bottom: 10px; }
+    .rickshaw_legend .line .swatch {
+      margin: 0 8px; }
+  .rickshaw_legend .label {
+    color: #6F7B8A; }
+  .rickshaw_legend ul {
+    margin: 15px 16px; }

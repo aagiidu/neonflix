@@ -1,0 +1,168 @@
+.land-center{
+    position: absolute;
+    top: Calc(50% - 150px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.land-btn{
+    padding: 20px 30px; 
+    min-width: 200px;
+    margin: 15px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.reg-btn{min-width: 250px; margin-top: 40px;}
+.landing-poster{
+    height:93vh;background-image: url('/assets/global/landingposter2.jpg');background-size: cover;
+}
+
+.land-header{
+    background-image: linear-gradient(to bottom right, #000, transparent);
+    padding-bottom: 100vh;
+}
+
+.img-btn{padding: 0;margin: 3vw;}
+.img-btn img{width: 200px;border: 5px solid #f8ae81;border-radius: 30px;margin: 10px; box-shadow: none;}
+.img-btn:hover img{width: 220px; margin: 0; border: 5px solid #d894e9; box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.75); transition: all .2s ease;}
+.login-form{background-color: #f3f3f3; padding: 30px; width: 420px; margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%);}
+.login-container{height: Calc(100vh - 202px); width: 100%;}
+.grid{display: flex;flex-wrap: wrap; justify-content: 'last baseline'}
+.modal-bg{position: fixed;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.75);z-index: 999;}
+.modal{background: #ddd;padding: 20px;top:50%;left:50%;transform: translate(-50%, -50%);display: block;}
+.modal input{border:none;width: 100%;background: transparent;padding:10px;}
+.modal input:focus-visible{outline-color: #9933ff;}
+.auth-modal{height: 400px;}
+.auth-modal .modal-body{position: relative;top:50%;transform: translateY(-50%);z-index: -1;}
+.auth-modal form button{width: 100%; margin: 20px 0px;}
+.btn-purple{background-color: #9933ff;color: #fff;}
+.text-purple{color: #7a29a3}
+.hidden{display: none !important;}
+.auth-label{margin:10px 0px 5px;}
+#customModal{display: none;}
+#customModal .close{color:#242424;font-size: 30px;}
+.loader{max-width: 50%;margin-left: 25%;}
+.sidecol ~ div {margin-left: 100px !important;}
+.sidebar a{
+    text-decoration: none;
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 21px 15px;
+    transition: all 0.2s ease;
+}
+.sidebar a:hover{
+    color: rgba(255, 255, 255, 1);
+}
+.sidebar .fa{
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+.sidebar a span{display: block; text-align: center;}
+.sidebar .active a{background-color: #7a29a3;}
+.genre_title{margin: 5px 10px 0 !important;
+    text-transform: capitalize;
+    font-size: 18px;}
+.sidecol{
+    position: relative;
+    float: left;
+    height: 100%;
+    background: #990000;
+}
+.sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 70px;
+    height: 100vh;
+    background: #0f1319;
+    width: 100px;
+    overflow: hidden;
+    z-index: 99;
+    transition: all .3s ease;
+}
+.sidebar.show{
+    width: 100px !important;
+    top: 77px;
+}
+.sidebar.hide{
+    width: 0;
+}
+.sidebar ul{padding: 0}
+.sidebar ul li{list-style: none;}
+.grid-row{margin: 5px 10px;}
+
+.sidebar-btn{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    background: #000;
+}
+.login-btn-container{
+	float: right;padding: 8px 25px;
+}
+
+
+@media screen and (max-width: 1199px) {
+	.grid figure{
+		width: Calc(16.6% - 20px);
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.grid figure{
+		width: Calc(25% - 20px);
+	}
+	.sidecol .sidebar{
+		width: 0;
+		overflow-x: hidden;
+	}
+	.sidecol ~ div{
+		margin: 90px 0 0 0 !important;
+	}
+	.genre_title{
+		text-align: right;
+	}
+	/* .genre_title{margin: 5px 20px 0 !important;} */
+}
+
+@media screen and (max-width: 767px) {
+	.grid figure{
+		width: Calc(33.33% - 20px);
+	}
+	.navbar-form.navbar-right{
+		position: relative;
+		width: Calc(100% - 80px);
+		border: none;
+	}
+	.navbar-form.navbar-right button{
+		position: absolute;
+		right: 14px;
+		top: 9px;
+		height: 40px;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+	.login-btn-container{
+		padding: 15px 0;
+	}
+	.login-btn-container button{
+		height: 40px;
+	}
+	/* */
+}
+
+@media screen and (max-width: 600px) {
+	.grid figure{
+		width: Calc(33.33% - 20px);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.grid figure{
+		width: Calc(50% - 20px);
+	}
+}
+
+.navbar-brand{padding: 9px 15px;}
