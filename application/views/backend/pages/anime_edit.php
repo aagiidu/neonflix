@@ -77,13 +77,13 @@
 	<div class="col-md-6 col-sm-12 col-xs-12">
 		<div class="grid simple ">
 			<div class="grid-title">
-				<h4>Seasons & episodes</h4>
+				<h4>Бүлэг ба ангиуд (Seasons & episodes)</h4>
 			</div>
 			<div class="grid-body">
 				<a href="<?php echo base_url();?>index.php?admin/season_create/<?php echo $series_id;?>" 
 					class="btn btn-primary pull-right" style="margin-bottom: 20px;">
 				<i class="fa fa-plus"></i>
-				Create season
+				    Бүлэг үүсгэх
 				</a>
 				<table class="table table-hover no-more-tables">
 					<tbody>
@@ -101,15 +101,15 @@
 									$episodes	=	$this->crud_model->get_episodes_of_season($row['season_id']);
 									echo count($episodes);
 									?>
-								episodes
+								ангитай
 							</td>
 							<td>
 								<a href="<?php echo base_url();?>index.php?admin/season_edit/<?php echo $series_id.'/'.$row['season_id'];?>" 
 									class="btn btn-info btn-xs btn-mini">
-								manage episodes</a>
+								Ангиуд засах</a>
 								<a href="<?php echo base_url();?>index.php?admin/season_delete/<?php echo $series_id.'/'.$row['season_id'];?>" 
-									class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
-								delete</a>
+									class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Устгахдаа итгэлтэй байна уу?')">
+								Устгах</a>
 							</td>
 						</tr>
 						<?php endforeach;?>

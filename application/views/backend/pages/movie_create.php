@@ -8,65 +8,39 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12 col-xs-12">
 							<div class="form-group">
-								<label class="form-label">Movie Title</label>
+								<label class="form-label">Киноны нэр</label>
 								<span class="help"></span>
 								<div class="controls">
 									<input type="text" class="form-control" name="title">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Video Url</label>
-								<span class="help">- youtube or any hosted video</span>
+								<label class="form-label">Файлын холбоос</label>
 								<div class="controls">
 									<input type="text" class="form-control" name="url" id="url" onBlur="load_player()">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Thumbnail</label>
-								<span class="help">- icon image of the movie</span>
+								<label class="form-label">Жижиг зураг</label>
 								<div class="controls">
 									<input type="file" class="form-control" name="thumb">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Poster</label>
-								<span class="help">- large banner image of the movie</span>
+								<label class="form-label">Постер</label>
 								<div class="controls">
 									<input type="file" class="form-control" name="poster">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Short description </label>
-								<span class="help"></span>
-								<div class="controls">
-									<textarea class="form-control" name="description_short"></textarea>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Long description </label>
+								<label class="form-label">Товч агуулга </label>
 								<span class="help"></span>
 								<div class="controls">
 									<textarea class="form-control" name="description_long"></textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Actors </label>
-								<span class="help">- select multiple actors</span>
-								<div class="controls">
-									<select class="select2"  multiple name="actors[]" style="width:100%;">
-										<?php 
-											$actors	=	$this->db->get('actor')->result_array();
-											foreach ($actors as $row2):?>
-										<option value="<?php echo $row2['actor_id'];?>">
-											<?php echo $row2['name'];?>
-										</option>
-										<?php endforeach;?>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="form-label">Genre </label>
-								<span class="help">- genre must be selected</span>
+								<label class="form-label">Жанр </label>
 								<div class="controls">
 									<select class="select2" name="genre_id" style="width:150px;">
 										<?php 
@@ -80,8 +54,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Publishing Year </label>
-								<span class="help">- year of publishing time</span>
+								<label class="form-label">Гарсан он </label>
 								<div class="controls">
 									<select class="select2" name="year" style="width:150px;">
 										<?php for ($i = date("Y"); $i > 2000 ; $i--):?>
@@ -92,7 +65,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label class="form-label">Rating </label>
 								<span class="help">- star rating of the movie</span>
 								<div class="controls">
@@ -104,14 +77,13 @@
 										<?php endfor;?>
 									</select>
 								</div>
-							</div>
+							</div> -->
 							<div class="form-group">
-								<label class="form-label">Featured </label>
-								<span class="help">- featured movie will be shown in home page</span>
+								<label class="form-label">Онцлох кино </label>
 								<div class="controls">
 									<select class="select2" name="featured" style="width:150px;">
-										<option value="0">No</option>
-										<option value="1">Yes</option>
+										<option value="0">Үгүй</option>
+										<option value="1">Тийм</option>
 									</select>
 								</div>
 							</div>
@@ -126,8 +98,8 @@
 					</div>
 					<hr>
 					<div class="form-group">
-						<input type="submit" class="btn btn-success col-md-3 col-sm-12 col-xs-12" value="Create Movie" style="margin:0px 5px 5px 0px;">
-						<a href="<?php echo base_url();?>index.php?admin/movie_list" class="btn btn-default col-md-3 col-sm-12 col-xs-12">Go back</a>
+						<input type="submit" class="btn btn-success col-md-3 col-sm-12 col-xs-12" value="Хадгалах" style="margin:0px 5px 5px 0px;">
+						<a href="<?php echo base_url();?>index.php?admin/movie_list" class="btn btn-default col-md-3 col-sm-12 col-xs-12">Буцах</a>
 					</div>
 				</form>
 			</div>
@@ -143,7 +115,6 @@
 		
 		jwplayer("video_player_div").setup({
 			"file": url,
-	
 			"width": "100%",
 			aspectratio: "16:9",
 			listbar: {

@@ -4,7 +4,7 @@
 		<div class="tiles blue weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Total Movies </div>
+					<div class="pull-left"> Нийт кинонууд </div>
 					<div class="pull-right">
 						<?php echo $this->db->from('movie')->count_all_results();?>
 					</div>
@@ -24,7 +24,26 @@
 		<div class="tiles purple weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Total Tv Series </div>
+					<div class="pull-left"> Цувралууд </div>
+					<div class="pull-right"> 
+						<?php echo $this->db->from('series')->count_all_results();?>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="big-icon">
+					<i class="material-icons" style="font-size: 90px;">ondemand_video</i>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="tile-footer">
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-12 ">
+		<div class="tiles purple weather-widget ">
+			<div class="tiles-body">
+				<div class="heading">
+					<div class="pull-left"> Анимэ </div>
 					<div class="pull-right"> 
 						<?php echo $this->db->from('series')->count_all_results();?>
 					</div>
@@ -44,7 +63,7 @@
 		<div class="tiles green weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Total Episodes </div>
+					<div class="pull-left"> Нийт Episodes </div>
 					<div class="pull-right"> 
 						<?php echo $this->db->from('episode')->count_all_results();?>
 					</div>
@@ -67,7 +86,7 @@
 		<div class="tiles black  weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Total Registered User </div>
+					<div class="pull-left"> Хэрэглэгчдийн тоо </div>
 					<div class="pull-right">
 						<?php echo $this->db->from('user')->count_all_results();?>
 					</div>
@@ -87,7 +106,7 @@
 		<div class="tiles dark-blue weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Total Active Subscription </div>
+					<div class="pull-left"> Идэвхтэй хэрэглэгчид </div>
 					<div class="pull-right">
 						<?php
 							$total_active_subscription	=	0;
@@ -117,7 +136,7 @@
 		<div class="tiles red weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
-					<div class="pull-left"> Sales this month </div>
+					<div class="pull-left"> Энэ сарын борлуулалт </div>
 					<div class="pull-right">
 						<?php
 							$total_sale	=	0;
@@ -140,4 +159,4 @@
 			</div>
 		</div>
 	</div>
-</div>C  O   D   E   L   I  S   T   .  C   C
+</div>
