@@ -101,12 +101,15 @@ class Home extends CI_Controller {
 
 	function signup()
 	{
-		echo 'Home/signup';
-		return;
+
 		$this->login_check();
 		if (isset($_POST) && !empty($_POST))
 		{
+			echo 'POST isset';
+			echo ' -- ';
 			$_POST = json_decode(array_keys($_POST)[0], true);
+			echo 'POST values';
+			var_dump($_POST);
 			$this->crud_model->phone_register($_POST);
 		}
 	}
