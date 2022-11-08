@@ -52,7 +52,8 @@ class Crud_model extends CI_Model {
 		$this->db->where('type' , 0);
 		$this->db->where('verified' , 0);
 		$unverified = $this->db->get('user');
-		// var_dump($unverified->result_array()[0]["name"]);
+		echo 'USERDATA';
+		var_dump($unverified->result_array()[0]["name"]);
 		$otp = rand(1001, 9999);
 		if($unverified->result_array() != null){
 			$this->db->update('user', array('otp' => $otp), array('user_id' => $unverified->result_array()[0]["user_id"]));
@@ -63,8 +64,15 @@ class Crud_model extends CI_Model {
 			$this->db->insert('user' , $data);
 		}
 		$msg = 'NEONTOON%20Код:%20' . $otp;
-		// echo $msg;
-		$smsresult = $this->sendSms($data['phone'], $msg);
+		echo " ---  $msg --- ";
+		try {
+			$smsresult = $this->sendSms($data['phone'], $msg);
+		} catch (\Throwable $th) {
+			echo " --- Trowing --- ";
+			echo $th;
+			return;
+		}
+		
 		if($smsresult == 1) {
 			echo 'success';
 		} else {
