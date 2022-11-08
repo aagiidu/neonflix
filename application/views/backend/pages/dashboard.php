@@ -1,6 +1,6 @@
 <div class="row">
 	<!-- TOTAL VIDEO NUMBER -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles blue weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<!-- TOTAL TV SERIES NUMBER -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles purple weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles purple weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	<!-- TOTAL EPISODE NUMBER -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles green weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -82,7 +82,7 @@
 <div style="margin: 20px;"></div>
 <div class="row">
 	<!-- TOTAL USER NUMBER -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles black  weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -102,7 +102,7 @@
 		</div>
 	</div>
 	<!-- TOTAL ACTIVE SUBSCRIPTION -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles dark-blue weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
@@ -132,7 +132,7 @@
 		</div>
 	</div>
 	<!-- REVENUE THIS MONTH -->
-	<div class="col-md-4 col-sm-12 ">
+	<div class="col-md-3 col-sm-6 ">
 		<div class="tiles red weather-widget ">
 			<div class="tiles-body">
 				<div class="heading">
