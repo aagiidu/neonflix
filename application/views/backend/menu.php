@@ -57,12 +57,6 @@
 	</li>
 	
 	<!--  -->
-	<li class="<?php if ($page_name == 'actor_list' || $page_name == 'actor_edit' || $page_name == 'actor_create')echo 'active';?>"> 
-		<a href="<?php echo base_url();?>index.php?admin/actor_list"><i class="material-icons">star_border</i> 
-		<span class="title">Жүжигчид</span> <span class=""></span> </a>
-	</li>
-	
-	<!--  -->
 	<li class="<?php if ($page_name == 'user_list')echo 'active';?>"> 
 		<a href="<?php echo base_url();?>index.php?admin/user_list"><i class="material-icons">people</i> 
 		<span class="title">Гишүүд</span> <span class=""></span> </a>

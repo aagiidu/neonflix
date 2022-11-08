@@ -35,21 +35,6 @@
 									<textarea class="form-control" name="description_long"></textarea>
 								</div>
 							</div>
-							<div class="form-group">
-								<label class="form-label">Жүжигчид </label>
-								<!-- <span class="help">- select multiple actors</span> -->
-								<div class="controls">
-									<select class="select2"  multiple name="actors[]" style="width:100%;">
-										<?php 
-											$actors	=	$this->db->get('actor')->result_array();
-											foreach ($actors as $row2):?>
-										<option value="<?php echo $row2['actor_id'];?>">
-											<?php echo $row2['name'];?>
-										</option>
-										<?php endforeach;?>
-									</select>
-								</div>
-							</div>
                             <input name='type' value='1' style="display:none" />
 							<div class="form-group">
 								<label class="form-label">Жанр </label>

@@ -2,9 +2,6 @@
 	<!-- BASIC INFORMATION UPDATE -->
 	<div class="col-md-6 col-sm-12 col-xs-12">
 		<div class="grid simple ">
-			<div class="grid-title">
-				<h4>Tv series basic information</h4>
-			</div>
 			<div class="grid-body">
 				<?php
 					$series_detail = $this->db->get_where('series',array('series_id'=>$series_id))->row();
@@ -37,7 +34,7 @@
 							<textarea class="form-control" name="description_long"><?php echo $series_detail->description_long;?></textarea>
 						</div>
 					</div>
-					<input name='type' value='2' style="display:none" />
+					<input name='type' value='1' style="display:none" />
 					<div class="form-group">
 						<label class="form-label">Жанр </label>
 						<div class="controls">
@@ -68,21 +65,6 @@
 							</select>
 						</div>
 					</div>
-					<!-- <div class="form-group">
-						<label class="form-label">Rating </label>
-						<span class="help">- star rating of the movie</span>
-						<div class="controls">
-							<select class="select2" name="rating" style="width:150px;">
-								<?php for ($i = 0; $i <= 5 ; $i++):?>
-								<option 
-									<?php if ( $series_detail->rating == $i) echo 'selected';?>
-									value="<?php echo $i;?>">
-									<?php echo $i;?>
-								</option>
-								<?php endfor;?>
-							</select>
-						</div>
-					</div> -->
 					<div class="form-group">
 						<input type="submit" class="btn btn-success" value="Хадгалах">
 						<a href="<?php echo base_url();?>index.php?admin/series_list" class="btn btn-default">Буцах</a>
