@@ -101,6 +101,8 @@ class Home extends CI_Controller {
 
 	function signup()
 	{
+		echo 'Home/signup';
+		return;
 		$this->login_check();
 		if (isset($_POST) && !empty($_POST))
 		{
