@@ -10,7 +10,7 @@
 		<a href="#" onClick="load_create_form()"
 			class="btn btn-primary pull-right" style="clear:both;margin-bottom: 20px;">
 		<i class="fa fa-plus"></i>
-		Create episode
+		Episode үүсгэх
 		</a>
 	</div>
 </div>
@@ -19,7 +19,7 @@
 	<div class="col-md-6 col-sm-12 col-xs-12">
 		<div class="grid simple ">
 			<div class="grid-title">
-				<h4>Episode list</h4>
+				<h4>Episode жагсаалт</h4>
 			</div>
 			<div class="grid-body">
 				<?php
@@ -29,7 +29,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Title</th>
+							<th>Нэр</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -49,16 +49,16 @@
 							<td>
 								<a href="#" onClick="load_edit_form(<?php echo $series_id.','.$season_id.','.$episode_id;?>)"
 									class="btn btn-info btn-xs btn-mini">
-								edit</a>
+								засах</a>
 								<a href="<?php echo base_url();?>index.php?admin/episode_delete/<?php echo $series_id.'/'.$season_id.'/'.$episode_id;?>" 
 									class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
-								delete</a>
+								устгах</a>
 							</td>
 						</tr>
 						<?php endforeach;?>
 					</tbody>
 				</table>
-				<a href="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $series_id.'/'.$season_id;?>" class="btn btn-default">Go back</a>
+				<a href="<?php echo base_url();?>index.php?admin/series_edit/<?php echo $series_id.'/'.$season_id;?>" class="btn btn-default">Буцах</a>
 			</div>
 		</div>
 	</div>
@@ -87,34 +87,32 @@
 <div id="create_episode_form" style="display: none;">
 	<div class="grid simple ">
 		<div class="grid-title">
-			<h4>Create a new episode</h4>
+			<h4>Шинэ анги нэмэх</h4>
 		</div>
 		<div class="grid-body">
 			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_create/<?php echo $series_id.'/'.$season_id;?>"
 				enctype="multipart/form-data">
 				<div class="form-group">
-					<label class="form-label">Title</label>
+					<label class="form-label">Нэр</label>
 					<span class="help"></span>
 					<div class="controls">
 						<input type="text" class="form-control" name="title" value="">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Video Url</label>
-					<span class="help">- youtube or any hosted video</span>
+					<label class="form-label">Файлын холбоос</label>
 					<div class="controls">
 						<input type="text" class="form-control" name="url" id="url">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Thumbnail</label>
-					<span class="help">- icon image of the movie</span>
+					<label class="form-label">Жижиг зураг</label>
 					<div class="controls">
 						<input type="file" class="form-control" name="thumb">
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-success" value="Create episode">
+					<input type="submit" class="btn btn-success" value="Үүсгэх">
 				</div>
 			</form>
 		</div>
@@ -128,34 +126,32 @@
 <div id="edit_episode_form_<?php echo $row['episode_id'];?>" style="display: none;">
 	<div class="grid simple ">
 		<div class="grid-title">
-			<h4>Edit episode</h4>
+			<h4>Episode засах</h4>
 		</div>
 		<div class="grid-body">
 			<form method="post" action="<?php echo base_url();?>index.php?admin/episode_edit/<?php echo $series_id.'/'.$season_id.'/'.$episode_id;?>"
 				enctype="multipart/form-data">
 				<div class="form-group">
-					<label class="form-label">Title</label>
+					<label class="form-label">Нэр</label>
 					<span class="help"></span>
 					<div class="controls">
 						<input type="text" class="form-control" name="title" value="<?php echo $row['title'];?>">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Video Url</label>
-					<span class="help">- youtube or any hosted video</span>
+					<label class="form-label">Файлын холбоос</label>
 					<div class="controls">
 						<input type="text" class="form-control" name="url" id="url" value="<?php echo $row['url'];?>">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Thumbnail</label>
-					<span class="help">- icon image of the movie</span>
+					<label class="form-label">Жижиг зураг</label>
 					<div class="controls">
 						<input type="file" class="form-control" name="thumb">
 					</div>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-success" value="Update episode">
+					<input type="submit" class="btn btn-success" value="Хадгалах">
 				</div>
 			</form>
 		</div>

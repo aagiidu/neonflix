@@ -11,8 +11,8 @@
 							<th>
 								#
 							</th>
-							<th>User Email</th>
-							<th>Subscribed Package</th>
+							<th>Утас</th>
+							<th>Багц</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -23,7 +23,7 @@
 							  ?>
 						<tr>
 							<td><?php echo $counter++;?></td>
-							<td style="text-transform: uppercase;"><?php echo $row['email'];?></td>
+							<td style="text-transform: uppercase;"><?php echo $row['phone'];?></td>
 							<td>
 								<?php
 									$plan_id	=	$this->crud_model->get_active_plan_of_user($row['user_id']);

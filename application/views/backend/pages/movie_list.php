@@ -6,7 +6,7 @@ Create movie
 	<div class="span12">
 		<div class="grid simple ">
 			<div class="grid-title">
-				<h4>Movie List</h4>
+				<h4>Киноны жагсаалт</h4>
 			</div>
 			<div class="grid-body ">
 				<table class="table table-hover table-condensed" id="example">
@@ -16,9 +16,9 @@ Create movie
 								#
 							</th>
 							<th></th>
-							<th>Movie Title</th>
-							<th>Genre</th>
-							<th>Operation</th>
+							<th>Киноны нэр</th>
+							<th>Жанр</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,11 +37,11 @@ Create movie
 							<td style="vertical-align: middle;">
 								<a href="<?php echo base_url();?>index.php?browse/playmovie/<?php echo $row['movie_id'];?>" 
 									target="_blank" class="btn btn-default btn-xs btn-mini">
-								<i class="fa fa-external-link"></i>visit</a>
+								<i class="fa fa-external-link"></i>үзэх</a>
 								<a href="<?php echo base_url();?>index.php?admin/movie_edit/<?php echo $row['movie_id'];?>" class="btn btn-info btn-xs btn-mini">
-								edit</a>
-								<a href="<?php echo base_url();?>index.php?admin/movie_delete/<?php echo $row['movie_id'];?>" class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
-								delete</a>
+								засах</a>
+								<a href="<?php echo base_url();?>index.php?admin/movie_delete/<?php echo $row['movie_id'];?>" class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Устгахаа итгэлтэй байна уу?')">
+								устгах</a>
 							</td>
 						</tr>
 						<?php endforeach;?>

@@ -15,8 +15,8 @@ Create faq
 							<th>
 								#
 							</th>
-							<th>FAQ Question</th>
-							<th>Operation</th>
+							<th>FAQ асуултууд</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,9 +30,9 @@ Create faq
 							<td style="text-transform: uppercase;"><?php echo $row['question'];?></td>
 							<td>
 								<a href="<?php echo base_url();?>index.php?admin/faq_edit/<?php echo $row['faq_id'];?>" class="btn btn-info btn-xs btn-mini">
-								edit</a>
-								<a href="<?php echo base_url();?>index.php?admin/faq_delete/<?php echo $row['faq_id'];?>" class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Want to delete?')">
-								delete</a>
+								засах</a>
+								<a href="<?php echo base_url();?>index.php?admin/faq_delete/<?php echo $row['faq_id'];?>" class="btn btn-danger btn-xs btn-mini" onclick="return confirm('Устгах уу?')">
+								устгах</a>
 							</td>
 						</tr>
 						<?php endforeach;?>

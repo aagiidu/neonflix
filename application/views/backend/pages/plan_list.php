@@ -2,7 +2,7 @@
 	<div class="span12">
 		<div class="grid simple ">
 			<div class="grid-title">
-				<h4>Package List</h4>
+				<h4>Багцын жагсаалт</h4>
 			</div>
 			<div class="grid-body ">
 				<table class="table table-hover table-condensed" id="example">
@@ -11,11 +11,11 @@
 							<th>
 								#
 							</th>
-							<th>Package Name</th>
-							<th>Available Screen</th>
-							<th>Price</th>
-							<th>Status</th>
-							<th>Operation</th>
+							<th>Багцын нэр</th>
+							<!-- <th>Available Screen</th> -->
+							<th>Үнэ</th>
+							<th>Төлөв</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -27,23 +27,23 @@
 						<tr>
 							<td><?php echo $counter++;?></td>
 							<td style="text-transform: uppercase;"><?php echo $row['name'];?></td>
-							<td style="text-transform: uppercase;"><?php echo $row['screens'];?></td>
-							<td style="text-transform: uppercase;">USD <?php echo $row['price'];?></td>
+							<!-- <td style="text-transform: uppercase;"><?php echo $row['screens'];?></td> -->
+							<td style="text-transform: uppercase;">₮<?php echo $row['price'];?></td>
 							<td style="text-transform: uppercase;">
 								<?php 
 									if ($row['status'] == 1)
 									{
-										echo 'active';
+										echo 'Идэвхтэй';
 									}
 									else 
 									{
-										echo 'inactive';
+										echo 'Идэвхигүй';
 									}
 									?>
 							</td>
 							<td>
 								<a href="<?php echo base_url();?>index.php?admin/plan_edit/<?php echo $row['plan_id'];?>" class="btn btn-info btn-xs btn-mini">
-								edit</a>
+								засах</a>
 							</td>
 						</tr>
 						<?php endforeach;?>

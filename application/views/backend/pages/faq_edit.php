@@ -11,21 +11,20 @@
 					<div class="row">
 						<div class="col-md-8 col-sm-8 col-xs-8">
 							<div class="form-group">
-								<label class="form-label">Movie Name</label>
-								<span class="help">e.g. "Action, Romantic"</span>
+								<label class="form-label">FAQ Асуулт</label>
 								<div class="controls">
 									<input type="text" class="form-control" name="question" value="<?php echo $faq_detail->question;?>">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Faq Answer</label>
+								<label class="form-label">Faq хариулт</label>
 								<div class="controls">
 									<textarea class="form-control" name="answer"><?php echo $faq_detail->answer;?></textarea>
 								</div>
 							</div>
 							<div class="form-group">
-								<input type="submit" class="btn btn-success" value="Update">
-								<a href="<?php echo base_url();?>index.php?admin/faq_list" class="btn btn-default">Go back</a>
+								<input type="submit" class="btn btn-success" value="Хадгалах">
+								<a href="<?php echo base_url();?>index.php?admin/faq_list" class="btn btn-default">Буцах</a>
 							</div>
 						</div>
 					</div>

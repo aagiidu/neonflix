@@ -8,15 +8,15 @@
 					<div class="row">
 						<div class="col-md-8 col-sm-8 col-xs-8">
 							<div class="form-group">
-								<label class="form-label">Genre Name</label>
-								<span class="help">e.g. "Action, Romantic"</span>
+								<label class="form-label">Нэр</label>
+								<span class="help">"Action, Romantic" гэх мэт</span>
 								<div class="controls">
 									<input type="text" class="form-control" name="name">
 								</div>
 							</div>
 							<div class="form-group">
-								<input type="submit" class="btn btn-success" value="Create">
-								<a href="<?php echo base_url();?>index.php?admin/genre_list" class="btn btn-default">Go back</a>
+								<input type="submit" class="btn btn-success" value="Хадгалах">
+								<a href="<?php echo base_url();?>index.php?admin/genre_list" class="btn btn-default">Буцах</a>
 							</div>
 						</div>
 					</div>

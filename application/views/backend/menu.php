@@ -69,10 +69,10 @@
 	</li>
 	
 	<!--  -->
-	<li class="<?php if ($page_name == 'report')echo 'active';?>"> 
-		<a href="<?php echo base_url();?>index.php?admin/report"><i class="material-icons">timeline</i> 
+	<!-- <li class="<?php // if ($page_name == 'report')echo 'active';?>"> 
+		<a href="<?php // echo base_url();?>index.php?admin/report"><i class="material-icons">timeline</i> 
 		<span class="title">Тайлан</span> <span class=""></span> </a>
-	</li>
+	</li> -->
 	
 	<!--  -->
 	<?php 
@@ -86,7 +86,7 @@
 	<li class="<?php if($open_settings == true)echo 'active';?>"> <a href="#"><i class="material-icons">build</i> 
 		<span class="title">Тохиргоо</span> <span class="<?php if($open_settings == true)echo 'open';?> arrow"></span> </a>
 		<ul class="sub-menu">
-			<li class=""><a href="<?php echo base_url();?>index.php?admin/settings">Сайтын тохиргоо</a></li>
+			<!-- <li class=""><a href="<?php // echo base_url();?>index.php?admin/settings">Сайтын тохиргоо</a></li> -->
 			<li class=""><a href="<?php echo base_url();?>index.php?admin/faq_list">Түгээмэл асуулт</a></li>
 		</ul>
 	</li>
