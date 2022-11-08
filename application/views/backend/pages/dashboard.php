@@ -145,7 +145,7 @@
 							$subscriptions	=	$this->crud_model->get_subscription_report($month, $year);
 							foreach ($subscriptions as $row)
 								$total_sale	+=	$row['paid_amount'];
-							echo '$'.$total_sale;
+							echo '₮'.$total_sale;
 							?>
 					</div>
 					<div class="clearfix"></div>
