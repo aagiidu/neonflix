@@ -24,12 +24,6 @@
 	float: left;
 	overflow: hidden;
 	margin: 0px 10px 15px;
-	/*min-width: 320px;*/
-	/* max-width: 220px; */
-	width:Calc(12.5% - 20px);
-	/* max-height: 360px; */
-	/*width: 48%;*/
-	/* background: #3085a3; */
 	text-align: center;
 	cursor: pointer;
 	padding:0px;
@@ -1256,12 +1250,11 @@ figure.effect-chico:hover p {
 		padding: 0 10px;
 		text-align: center;
 	} */
-	.grid figure {
+	/* .grid figure {
 		display: inline-block;
-		/* float: none; */
 		margin: 10px auto;
 		width: 40%;
-	}
+	} */
 	/* .grid figure::after{
 		content: '';
 		display: block;
@@ -1273,7 +1266,6 @@ figure.effect-chico:hover p {
 .float-right{float: right;}
 .text-md{font-size: medium;}
 .navbar-default .navbar-nav > li > a {color: #9933ff !important}
-.sidecol ~ div {margin-left: 100px !important;}
 .pagination{position: relative;left: 50%; 
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);

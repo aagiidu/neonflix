@@ -1,4 +1,4 @@
-<figure class="effect-sadie col-lg-2 col-md-4 col-sm-6">
+<figure class="swiper-slide">
 	<img src="<?php echo $thumb;?>" alt="img02"/>
 	<figcaption>
 		<a href="<?php echo $link;?>">

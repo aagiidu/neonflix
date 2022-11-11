@@ -112,6 +112,7 @@
 <script>
 	let phoneNumber = '';
 	$(function() {
+		console.log("<?php echo $page_name ?>");
 		showForm1();
 		setTimeout(function(){
 			$('#authmodal input').val('');
@@ -413,4 +414,8 @@
 	});
 </script>
 <?php } ?>
-<?php include 'sidebar.php';?>
+<?php 
+	if ($page_name !== 'home' && $page_name !== 'landing2' && $page_name !== 'landing'){
+		include 'sidebar.php';
+	}
+?>
