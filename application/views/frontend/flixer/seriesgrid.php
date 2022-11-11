@@ -15,7 +15,7 @@
 <div class="row grid-row">
 	<h4 class="genre_title"><?php echo $row['name'];?> <span class="float-right"><a href="/index.php?browse/series/<?php echo $row['genre_id'] ?>">Бүгдийг үзэх</a></span></h4>
 	<div class="content">
-		<div class="grid">
+		<div class="grid onerow">
 			<?php 
 				
 				foreach ($movies as $row)
