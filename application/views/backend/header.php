@@ -28,7 +28,7 @@
 				</ul>
 				<ul class="nav quick-section">
 					<li class="quicklinks  m-r-10">
-						<a href="<?php echo base_url();?>index.php?browse/home" class="" ta>	
+						<a href="<?php echo base_url();?>" class="" ta>	
 						Сайт руу очих <i class="fa fa-arrow-right" style="font-size: 15px;"></i>
 						</a>
 					</li>

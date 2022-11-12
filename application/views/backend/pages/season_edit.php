@@ -105,12 +105,12 @@
 						<input type="text" class="form-control" name="url" id="url">
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label class="form-label">Жижиг зураг</label>
 					<div class="controls">
 						<input type="file" class="form-control" name="thumb">
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<input type="submit" class="btn btn-success" value="Үүсгэх">
 				</div>
@@ -144,12 +144,12 @@
 						<input type="text" class="form-control" name="url" id="url" value="<?php echo $row['url'];?>">
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label class="form-label">Жижиг зураг</label>
 					<div class="controls">
 						<input type="file" class="form-control" name="thumb">
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<input type="submit" class="btn btn-success" value="Хадгалах">
 				</div>

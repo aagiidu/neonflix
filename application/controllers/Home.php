@@ -113,7 +113,7 @@ class Home extends CI_Controller {
 	function signinx()
 	{
 		if($this->isLoggedIn()){
-			echo '/index.php?browse/home';
+			echo '/';
 			return;
 		} 
 		if (isset($_POST) && !empty($_POST))

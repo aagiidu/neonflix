@@ -9,7 +9,7 @@
 <div class="sidecol">
 <div class="sidebar">
     <ul>
-        <li class="active">
+        <li>
             <a href="/index.php?home/landing2" >
                 <i class="fa fa-home"></i>
                 <span>Эхлэл</span>

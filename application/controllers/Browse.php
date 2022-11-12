@@ -150,7 +150,7 @@ class Browse extends CI_Controller {
 
         $page_data['series'] = $this->crud_model->get_series($genre_id , $per_page, $this->uri->segment(4));
 		$page_data['total_result']	=	$total_result;
-		
+		$page_data['type'] = 'series';
 		$this->load->view('frontend/index', $page_data);
 	}
 
@@ -169,7 +169,7 @@ class Browse extends CI_Controller {
 
         $page_data['series'] = $this->crud_model->get_animes($genre_id , $per_page, $this->uri->segment(4));
 		$page_data['total_result']	=	$total_result;
-		
+		$page_data['type'] = 'anime';
 		$this->load->view('frontend/index', $page_data);
 	}
 	
@@ -199,7 +199,43 @@ class Browse extends CI_Controller {
 		$page_data['series_id']		=	$series_id;
 		$page_data['page_name']		=	'playseries';
 		$page_data['page_title']	=	'Цуврал үзэх';
+		$page_data['poster']    	= 	$this->crud_model->get_thumb_url('series' , $series_id);
+		// $page_data['series_id']		=	$series_id;
+		$episodes = $this->crud_model->get_episodes_of_season($page_data['season_id']);
+		for ($i=0; $i < count($episodes) - 1; $i++) { 
+			$episodes[$i]['poster'] = $this->crud_model->get_thumb_url('episode' , $episodes['episode_id']);
+		}
+		$page_data['epison']		=	json_encode($episodes);
+		$page_data['type'] = 'series';
+		$this->load->view('frontend/index', $page_data);
+	}
+
+	function playanime($series_id = '', $season_id = '')
+	{
+		if ($season_id == '')
+		{
+        	$seasons	=	$this->db->get_where('season', array('series_id'=>$series_id))->result_array();
+			foreach ($seasons as $row)
+			{
+				$first_season_id	=	$row['season_id'];
+				break;
+			}
+			$page_data['season_id']		=	$first_season_id;
+		}
+		else 
+			$page_data['season_id']		=	$season_id;
+		
 		$page_data['series_id']		=	$series_id;
+		$page_data['page_name']		=	'playseries';
+		$page_data['page_title']	=	'Анимэ үзэх';
+		$page_data['poster']    	= 	$this->crud_model->get_thumb_url('series' , $series_id);
+		// $page_data['series_id']		=	$series_id;
+		$episodes = $this->crud_model->get_episodes_of_season($page_data['season_id']);
+		for ($i=0; $i < count($episodes) - 1; $i++) { 
+			$episodes[$i]['poster'] = $this->crud_model->get_thumb_url('episode' , $episodes['episode_id']);
+		}
+		$page_data['epison']		=	json_encode($episodes);
+		$page_data['type'] = 'anime';
 		$this->load->view('frontend/index', $page_data);
 	}
 	
@@ -231,7 +267,7 @@ class Browse extends CI_Controller {
 		$data[$user_number.'_session']	=	$user_entering_timestamp;
 		$this->db->update('user' , $data , array('user_id' => $user_id));
 
-		redirect(base_url().'index.php?browse/home' , 'refresh');
+		redirect(base_url().'/' , 'refresh');
 	}
 	
 	function manageprofile()

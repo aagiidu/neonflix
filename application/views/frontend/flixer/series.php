@@ -13,7 +13,7 @@
 				foreach ($series as $row)
 				{
 					$title	=	$row['title'];
-					$link	=	base_url().'index.php?browse/playseries/'.$row['series_id'];
+					$link	=	base_url().'index.php?browse/play' . $type . '/'.$row['series_id'];
 					$thumb	=	$this->crud_model->get_thumb_url('series' , $row['series_id']);
 					$intro	=	$row['description_long'];
 					include 'thumb.php';

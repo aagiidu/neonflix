@@ -47,36 +47,19 @@
 				}
 				?>
 			<?php if($userdata != null){ ?>
+
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding:10px;">
-					<img src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" style="height:30px;" />
-					<?php echo $userdata->name;?>
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu" aria-labelledby="themes">
-						<?php 
-							// user list shown only if there is active subscription 
-							if ($subscription_validation != false):
-							  $current_plan_id	=	$this->crud_model->get_current_plan_id();
-							  ?>
-						<li>
-							<a href="<?php echo base_url();?>index.php?browse/doswitch/user1">
-							<img src="<?php echo base_url();?>assets/global/thumb1.png" 
-								style="height:30px; margin: 5px;" />
-							</a>
-						</li>
-						
+				<li class="dropdown" style="padding-top:7px">
+					<p style="text-align:center;">
+						<a href="<?php echo base_url();?>index.php?browse/youraccount" class="pro-btn">
+							<img src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" style="height:30px;margin-right:10px;" />
+							<span><?php echo $userdata->name;?></span>
+						</a>
+						<?php if($this->session->userdata('login_type') == 1): ?>
+							<a href="<?php echo base_url();?>index.php?admin/dashboard" class="pro-btn" style="float:none;display:inline-block;margin-top:3px">Admin</a>
 						<?php endif;?>
-						<li class="divider"></li>
-						<!-- SHOW ADMIN LINK IF ADMIN LOGGED IN -->
-						<?php 
-							if($this->session->userdata('login_type') == 1):
-								?>
-						<li><a href="<?php echo base_url();?>index.php?admin/dashboard">Admin</a></li>
-						<?php endif;?>
-						<li><a href="<?php echo base_url();?>index.php?browse/youraccount">Миний профайл</a></li>
-						<li><a href="<?php echo base_url();?>index.php?home/signout">Гарах</a></li>
-					</ul>
+						<span style="padding:3px;float:right"><a href="<?php echo base_url();?>index.php?home/signout" class="btn btn-danger" style="border-radius:10px;">Гарах</a></span>
+					</p>
 				</li>
 			</ul>
 			<?php } else { ?>
@@ -85,7 +68,7 @@
 				</div>
 			<?php } ?>
 			<!-- SEARCH FORM -->
-			<form class="navbar-form navbar-right" method="post" action="<?php echo base_url();?>index.php?browse/search">
+			<form class="navbar-form navbar-right <?php if($userdata != null){ echo 'w-100'; }?>" method="post" action="<?php echo base_url();?>index.php?browse/search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Гарчиг, жүжигчин, жанр" 
 						style="background-color: #000; border: 1px solid #808080;" name="search_key">
@@ -405,6 +388,10 @@
 			}).catch(err => showMessage(err.res.data));
 	}
 
+</script>
+<?php } ?>
+
+<script>
 	$('#menu').on('click', function() {
 		if($('.sidebar').hasClass('show')){
 			$('.sidebar').removeClass('show');
@@ -413,7 +400,6 @@
 		}
 	});
 </script>
-<?php } ?>
 <?php 
 	if ($page_name !== 'home' && $page_name !== 'landing2' && $page_name !== 'landing'){
 		include 'sidebar.php';
