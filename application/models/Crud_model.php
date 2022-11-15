@@ -417,26 +417,29 @@ class Crud_model extends CI_Model {
 	function update_series($series_id = '')
 	{
 		$data['title']				=	$this->input->post('title');
-		$data['description_short']	=	$this->input->post('description_short');
+		// $data['description_short']	=	$this->input->post('description_short');
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
 		$data['rating']				=	$this->input->post('rating');
 		$data['genre_id']			=	$this->input->post('genre_id');
 		
-		$actors						=	$this->input->post('actors');
-		$actor_entries				=	array();
-		$number_of_entries			=	sizeof($actors);
-		for ($i = 0; $i < $number_of_entries ; $i++)
-		{
-			array_push($actor_entries, $actors[$i]);
-		}
-		$data['actors']				=	json_encode($actor_entries);
+		// $actors						=	$this->input->post('actors');
+		// $actor_entries				=	array();
+		// $number_of_entries			=	sizeof($actors);
+		// for ($i = 0; $i < $number_of_entries ; $i++)
+		// {
+		// 	array_push($actor_entries, $actors[$i]);
+		// }
+		// $data['actors']				=	json_encode($actor_entries);
 		
 		$this->db->update('series', $data, array('series_id'=>$series_id));
-		
-		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
-		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
-		
+		var_dump($_FILES);
+		if(isset($_FILES['thumb'])){
+			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
+		}
+		if(isset($_FILES['poster'])){
+			move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
+		}
 	}
 
 	function get_animes($genre_id, $limit = NULL, $offset = 0) 

@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Файлын холбоос</label>
+					<label class="form-label">Файлын нэр</label>
 					<div class="controls">
 						<input type="text" class="form-control" name="url" id="url">
 					</div>
@@ -139,7 +139,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="form-label">Файлын холбоос</label>
+					<label class="form-label">Файлын нэр</label>
 					<div class="controls">
 						<input type="text" class="form-control" name="url" id="url" value="<?php echo $row['url'];?>">
 					</div>

@@ -133,6 +133,45 @@ footer {
     left: -8px;
     border-bottom-right-radius: 4px;
 }
+
+/* Player styles */
+#neon-player #wrapper{position:relative}
+#neon-player #wrapper video{width: 100%}
+#neon-player #ctrl{position: absolute;left:0;width:100%; bottom:0;padding:10px; background-color:#000;opacity: 0;min-height: 40px; transition: all .3s ease;}
+#neon-player #wrapper:hover #ctrl{opacity: 1;}
+#neon-player #buttons{position:absolute; color:#fff;left: 50%;bottom:6px;transform: translateX(-50%);}
+#neon-player #qlyChooser{position: absolute;right: 60px;bottom:6px;}
+#neon-player #qlyChooser ul{position: absolute;padding: 0;margin: 0;right: 0; bottom:100%;height: 0;overflow-y: hidden;width: 100%;
+	transition: all .3s ease;border-radius: 4px;}
+#neon-player #qlyChooser ul li{background-color: rgba(0,0,0,.95);color: #fff;cursor: pointer;text-align: center;padding: 3px;
+	border-bottom: 1px dotted rgba(255,255,255,.75);}
+#neon-player #qlyChooser ul li:last-of-type{border-bottom: none;}
+#neon-player #qlyChooser:hover ul{height: auto;}
+#neon-player .btn-player{background-color: #430761;opacity: .95;padding-left:15px;padding-right:15px}
+#neon-player .btn-player:focus{outline:none;}
+#neon-player .btn-player:hover{opacity: 1;}
+#neon-player #fullscreen{position:absolute;right:10px;bottom:6px;}
+#neon-player .player-logo{position: absolute;left: 10px;bottom: 10px;height: 20px;}
+#movieTitle{    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    padding: 8px 15px;
+    font-size: 18px;
+    margin: 0;
+    background: rgba(0,0,0,.5);
+}
+#neon-player #progress, #neon-player .progress{position: absolute;
+    top: 4px;
+    left: 25px;
+    width: Calc(100% - 50px);}
+.invisible{opacity: 0 !important;}
+#progress[value] {
+	appearance: none; /* Needed for Safari */
+	border: none; /* Needed for Firefox */
+	color: #9933ff; /* Fallback to a solid color */
+  }
 @media screen and (min-width: 1300px) {
 	.grid figure{
 		width: Calc(12.5% - 20px);
@@ -233,6 +272,7 @@ footer {
 		margin: 15px;
     	width: Calc(100% - 30px);
 	}
+	.movie-list li.active a::after{display: none !important;}
 }
 
 @media screen and (max-width: 600px) {
@@ -242,6 +282,10 @@ footer {
 	.grid.onerow figure:nth-child(7){display: none !important;}
 	.grid.onerow figure:nth-child(8){display: none !important;}
 	/* .grid figure:nth-child(4){display: none;} */
+	#buttons{
+		left: 10px !important;transform: translateY(-50%) !important;
+	}
+	.player-logo{display: none !important;}
 }
 
 @media screen and (max-width: 480px) {
