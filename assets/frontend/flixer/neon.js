@@ -72,7 +72,7 @@ function setMovie(url, poster){
     for (let i = 0; i < q.length; i++) {
         quality.push({
             name: q[i] + 'p',
-            url: `http://localhost:8000/video/movie/${url}/${q[i]}`,
+            url: `https://stream.neontoon.mn/video/movie/${url}/${q[i]}`,
             type: 'auto',
         });
     }
@@ -127,7 +127,7 @@ function setMedia(episode){
     for (let i = 0; i < q.length; i++) {
         quality.push({
             name: q[i] + 'p',
-            url: `http://localhost:8000/video/${type}/${episode.url}/${q[i]}`,
+            url: `https://stream.neontoon.mn/video/${type}/${episode.url}/${q[i]}`,
             type: 'auto',
         });
     }
