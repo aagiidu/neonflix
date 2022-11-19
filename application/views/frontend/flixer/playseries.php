@@ -6,6 +6,8 @@
 	?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/demo.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/set1.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.0/DPlayer.min.js"></script>
+
 <style>
 	.video_cover {
 		position: relative;padding-bottom: 30px;
@@ -31,195 +33,26 @@
 <!-- VIDEO PLAYER -->
 <div class="video_cover">
 	<div class="container-fluid" style="padding-top:100px; text-align: center;">
-		<div class="row">
+		<div class="row" id="mainrow">
 			<div class="col-lg-8">
-				<div id="neon-player">
-					<div id="wrapper">
-						<h4 id="movieTitle"></h4>
-						<video id="videoPlayer" controlsList="nodownload" poster="<?php echo $this->crud_model->get_poster_url('series' , $row['series_id']);?>">
-							
-						</video>
-						<div id="ctrl">
-							<img src="/assets/global/logo.png" class="player-logo">
-							<!-- <label id="timer" for="progress" role="timer"></label> -->
-							<!-- <progress id="progress" max="100" value="0">Progress</progress> -->
-							<!-- <input class="seek progress" id="seek" value="0" min="0" type="range" step="1"> -->
-							<div id="buttons">
-								<button type="button" class="btn btn-player btn-sm" onclick="back()"><i class="fa fa-step-backward"></i> 10сек</button>
-								<button type="button" class="btn btn-player btn-sm play" id="play"><i class="fa fa-play"></i></button>
-								<button type="button" class="btn btn-player btn-sm" onclick="skip()">10сек <i class="fa fa-step-forward"></i></button>
-							</div>
-							<span id="qlyChooser" class="ctrl-btn">
-								<span class="chosen btn btn-player btn-sm">720p</span>
-								<ul>
-									<li onclick="changeQ(1080)">1080p</li>
-									<li onclick="changeQ(720)">720p</li>
-									<li onclick="changeQ(640)">640p</li>
-								</ul>
-							</span>
-							<button type="button" class="btn btn-player btn-sm" id="fullscreen">
-								<i class="fa fa-arrows-alt"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-				<!-- <source id="720" src="https://stream.neontoon.mn/video/anime/demonslayer/720" type="video/mp4" />
-				<source id="1080" src="https://stream.neontoon.mn/video/anime/demonslayer/1080" type="video/mp4" />
-				<source id="640" src="https://stream.neontoon.mn/video/anime/demonslayer/640" type="video/mp4" /> -->
+				<div id="dplayer"></div>
+				<script src="/assets/frontend/flixer/neon.js"></script>
 				<script>
-					const episodes = JSON.parse('<?php echo $epison; ?>');
-					console.log('episodes', episodes);
-					let episode = episodes[0];
-
-					function playEpisode(episodeId){
-						const episode = episodes.find(e => e.episode_id === episodeId.toString());
-						console.log('episode chosen', episode)
-						setMedia(episode);
-					}
-
-					function setMedia(episode){
-						$(`#episodes li`).removeClass('selected');
-						$(`#episodes .${episode.episode_id}`).addClass('selected');
-						$('#movieTitle').text(episode.title)
-						const q = [1080, 720, 640];
-						for (let i = 0; i < q.length; i++) {
-							var src = document.createElement('source');
-							src.setAttribute('id', q[i]);
-							src.setAttribute('src', `https://stream.neontoon.mn/video/anime/${episode.url}/${q[i]}`);
-							$('#videoPlayer').append(src);
-						}
-					}
-					
+					const data = JSON.parse('<?php echo $epison; ?>');
 					$(function() {
-						setMedia(episodes[0]);	
-					});
-
-					// progress
-					/* $('#seek').on('click', function(){
-						console.log($(this).val())
-					})
-					const progress = document.getElementById("seek");
-					// const t = document.getElementById( "timer" );
-
-					function progressLoop() {
-						let video = document.getElementById('videoPlayer');
-						
-						setInterval(function () {
-							if(video.currentTime && video.duration){
-								progress.value = Math.round((video.currentTime / video.duration) * 100);
-								// t.innerHTML = Math.round(video.currentTime) + " sec";
-							}
-						});
-						
-					}
-
-					progressLoop(); */
-
-					// Player functions
-					$('#qly').on('change', function(){
-						let size = $(this).val();
-						console.log(size);
-						let video = document.getElementById('videoPlayer');
-						let curtime = video.currentTime;
-						let source = $(`#${size}`).detach();
-						video.prepend(source.get(0));
-						//video.load();
-						video.currentTime = curtime;
-						video.play();
-					});
-
-					function changeQ(size){
-						$('.chosen').text(size + 'p');
-						let video = document.getElementById('videoPlayer');
-						let curtime = video.currentTime;
-						let source = $(`#${size}`).detach();
-						video.prepend(source.get(0));
-						video.load();
-						video.currentTime = curtime;
-						video.play();
-					}
-
-					function back(){
-						let video = document.getElementById('videoPlayer');
-						let curtime = video.currentTime >= 10 ? video.currentTime - 10 : 0;
-						video.load();
-						video.currentTime = curtime;
-						video.play();
-					}
-
-					function skip(){
-						let video = document.getElementById('videoPlayer');
-						let curtime = video.currentTime + 10;
-						video.load();
-						video.currentTime = curtime;
-						video.play();
-					}
-
-					$('#play, #videoPlayer').on('click', function(){
-						let video = document.getElementById('videoPlayer');
-						let isPlaying = $('#play').hasClass('play');
-						if(isPlaying){
-							video.play();
-							$('#play').removeClass('play').find('.fa').removeClass('fa-play').addClass('fa-pause');
+						let w = $(window).width()
+						console.log('w', w)
+						let h = $('#mainrow').height()
+						console.log('w', w, 'h', h)
+						if(w > 1199){
+							$('#episodeList').css('max-height', '300px')
 						}else{
-							video.pause();
-							$('#play').addClass('play').find('.fa').removeClass('fa-pause').addClass('fa-play');
+							$('#episodeList').css('max-height', '500px')
 						}
-					})
-	
-					$('#fullscreen').on('click', function(){
-						fullScr();
-					})
-					function fullScr() {
-						const fullscreenElement =
-						document.fullscreenElement ||
-						document.mozFullScreenElement ||
-						document.webkitFullscreenElement ||
-						document.msFullscreenElement;
-						if (fullscreenElement) {
-						exitFullscreen();
-						} else {
-						launchIntoFullscreen(document.getElementById('wrapper'));
-						}
-					};
-
-					function launchIntoFullscreen(element) {
-						if (element.requestFullscreen) {
-						element.requestFullscreen();
-						} else if (element.mozRequestFullScreen) {
-						element.mozRequestFullScreen();
-						} else if (element.webkitRequestFullscreen) {
-						element.webkitRequestFullscreen();
-						} else if (element.msRequestFullscreen) {
-						element.msRequestFullscreen();
-						} else {
-						element.classList.toggle('fullscreen');
-						}
-					}
-
-					function exitFullscreen() {
-						if (document.exitFullscreen) {
-						document.exitFullscreen();
-						} else if (document.mozCancelFullScreen) {
-						document.mozCancelFullScreen();
-						} else if (document.webkitExitFullscreen) {
-						document.webkitExitFullscreen();
-						}
-					}
-
-					let timer
-					document.getElementById('wrapper').addEventListener(`mousemove`, () => {
-						if($('#ctrl').hasClass('invisible')){
-							$('#ctrl').removeClass('invisible')
-						}
-						clearTimeout(timer)
-						timer = setTimeout(onMouseStopped, 3000)
-					})
-
-					function onMouseStopped(){
-						console.log('Mouse Stopped');
-						$('#ctrl').addClass('invisible');
-					}
+						let type = '<?php echo $type ?>';
+						let poster = '<?php echo $this->crud_model->get_poster_url('series' , $row['series_id']);?>';
+						initNeonPlayer(data, type, poster);
+					});
 				</script>
 			</div>
 			<div class="col-lg-4 text-left">
@@ -273,10 +106,14 @@
 					</div>
 					<div class="col-sm-6">
 						<h5>Ангиуд (Episodes)</h5>
+						<div style="overflow-X:hidden">
+						<div id="episodeList" style="overflow-Y:scroll;padding: 0 15px; width: Calc(100% + 14px)">
 						<ul id="episodes">
 							<?php
 								$counter	=	1;
 								$episodes	=	$this->crud_model->get_episodes_of_season($season_id);
+								for ($i=0; $i < 50; $i++) { 
+							
 								foreach ($episodes as $row2):
 								?>
 								<li class="<?php echo $row2['episode_id'];?>">
@@ -291,8 +128,10 @@
 										</pre>
 									</div> -->
 								</li>
-							<?php endforeach;?>
+							<?php endforeach; }?>
 						</ul>
+						</div>
+						</div>
 					</div>
 				</div>
 			</div>

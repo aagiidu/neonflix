@@ -5,6 +5,7 @@
 	?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/demo.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/frontend/' . $selected_theme;?>/hovercss/set1.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.27.0/DPlayer.min.js"></script>
 <style>
 	.movie_thumb{}
 	.btn_opaque{font-size:20px; border: 1px solid #939393;text-decoration: none;margin: 10px;background-color: rgba(0, 0, 0, 0.74); color: #fff;}
@@ -34,35 +35,15 @@
 	<div class="container-fluid" style="padding-top:100px; text-align: center;">
 		<div class="row">
 			<div class="col-lg-8">
-				<script src="https://content.jwplatform.com/libraries/O7BMTay5.js"></script>
-				<div id="video_player_div"><?php echo $row['title'];?></div>
-				<!-- <button type="button" class="btn btn-success" id="forward" >Forward-></button> -->
+				<div id="dplayer"></div>
+				<script src="/assets/frontend/flixer/neon.js"></script>
 				<script>
-					const player = jwplayer("video_player_div").setup({
-						file: "<?php echo $row['url'];?>",
-						image: "<?php echo $this->crud_model->get_poster_url('movie' , $row['movie_id']);?>",
-						width: "100%",
-						aspectratio: "16:9",
-						listbar: {
-						  position: 'right',
-						  size: 260
-						},
-						sources: [{
-							file: "<?php echo $row['url'];?>",
-							label: "720p HD",
-							default: true
-						},{
-							file: "http://localhost/assets/videos/lovestickgirl.mp4",
-							label: "480p SD"
-						},{
-							file: "<?php echo $row['url'];?>",
-							label: "360p SD"
-						}],
-						
+					$(function() {
+						let url = '<?php echo $row['url'] ?>'
+						let poster = '<?php echo $this->crud_model->get_poster_url('movie' , $row['movie_id']);?>';
+						console.log('poster', poster)
+						setMovie(url, poster);
 					});
-					/* $(document).on('click','#forward',() => {
-						player.seek((player.getPosition() + 10));
-					}); */
 				</script>
 			</div>
 			<div class="col-lg-4 text-left">
