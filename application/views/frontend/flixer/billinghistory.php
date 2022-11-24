@@ -5,7 +5,7 @@
 		background-color: rgb(243, 243, 243);
 	}
 </style>
-
+<div>
 <div class="container" style="margin-top: 90px;">
 	<div class="row" style="min-height: 55vh">
 		<div class="col-lg-12">
@@ -54,6 +54,7 @@
 	</div>
 	<hr>
 	<?php include 'footer.php';?>
+</div>
 </div>
 
 

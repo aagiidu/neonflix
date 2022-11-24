@@ -1,12 +1,12 @@
 <a href="<?php echo base_url();?>index.php?admin/faq_create/" class="btn btn-primary" style="margin-bottom: 20px;">
 <i class="fa fa-plus"></i>
-Create faq
+Асуулт үүсгэх
 </a>
 <div class="row-fluid">
 	<div class="span12">
 		<div class="grid simple ">
 			<div class="grid-title">
-				<h4>Movie List</h4>
+				<h4>Асуулт хариултын жагсаалт</h4>
 			</div>
 			<div class="grid-body ">
 				<table class="table table-hover table-condensed" id="example">

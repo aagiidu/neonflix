@@ -1,7 +1,7 @@
 
  
- <?php include 'header_browse.php';?>
-
+<?php include 'header_browse.php';?>
+<div style="padding-top: 90px">
 <div class="container faq">
 	<div class="row">
 		<div class="col-lg-12">
@@ -17,9 +17,9 @@
 					<img src="<?php echo base_url().'assets/frontend/'.$selected_theme;?>/images/faq_icon.png" style="margin-top: 18px; width:40px;" />
 				</div>
 				<div class="col-lg-11">
-					<h3 class="black_text">
+					<h4>
 						<?php echo $row['question'];?>
-					</h3>
+					</h4>
 					<?php echo $row['answer'];?> 
 					<hr>
 				</div>
@@ -29,5 +29,8 @@
 	</div>
 	<?php include 'footer.php';?>
 </div>
+</div>
+
+
 
 

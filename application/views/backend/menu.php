@@ -88,6 +88,7 @@
 		<ul class="sub-menu">
 			<!-- <li class=""><a href="<?php // echo base_url();?>index.php?admin/settings">Сайтын тохиргоо</a></li> -->
 			<li class=""><a href="<?php echo base_url();?>index.php?admin/faq_list">Түгээмэл асуулт</a></li>
+			<li class=""><a href="<?php echo base_url();?>index.php?admin/terms">Үйлчилгээний нөхцөл</a></li>
 		</ul>
 	</li>
 	

@@ -108,9 +108,11 @@
 }
 
 footer {
-    margin: 5em 0 5em 115px;
-    width: Calc(100% - 130px);
+	text-align: center;
+    /* margin: 5em 0 5em 115px;
+    width: Calc(100% - 130px); */
 }
+footer ul{display: inline-block;margin: 0;}
 
 .pro-btn {
     padding: 3px 15px !important;
@@ -154,6 +156,13 @@ footer {
 #neon-player #fullscreen{position:absolute;right:10px;bottom:6px;}
 #neon-player .player-logo{position: absolute;left: 10px;bottom: 10px;height: 20px;}
 #neon-player .player-poster{position: absolute;left: 0;top: 0;width: 100%;height: 100%;object-fit: cover;}
+#centerctrl{position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);}
+#centerctrl button{background: transparent;border:none;opacity: 0.8;}
+#centerctrl button img{width: 40px;height: 40px;}
+/* #centerctrl button.playbtn img{display:none;} */
+/* #centerctrl button.playbtn{display:none;} */
+/* #centerctrl button.dplayer-prev-icon{margin-right: 60px} */
+.dplayer-hide-controller #centerctrl{display: none !important;}
 #movieTitle{    
 	position: absolute;
     top: 0;
@@ -313,7 +322,7 @@ progress[value]::-moz-progress-bar {
 	}
 	footer {
 		margin: 15px;
-    	width: Calc(100% - 30px);
+    	/* width: Calc(100% - 30px); */
 	}
 	.movie-list li.active a::after{display: none !important;}
 }
@@ -329,6 +338,9 @@ progress[value]::-moz-progress-bar {
 		left: 10px !important;transform: unset !important;
 	}
 	.player-logo{display: none !important;}
+	.dplayer-controller .dplayer-icons .dplayer-icon{padding: 0;}
+	.dplayer-controller .dplayer-icons .dplayer-setting{display: none !important;}
+	.dplayer-full-in-icon{display: none !important;}
 }
 
 @media screen and (max-width: 480px) {

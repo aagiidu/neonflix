@@ -439,6 +439,10 @@ class Admin extends CI_Controller {
 			// Updating refund policy
 			$data['description']		=	$this->input->post('refund_policy');
 			$this->db->update('settings', $data,  array('type' => 'refund_policy'));
+
+			// Updating refund policy
+			$data['description']		=	$this->input->post('terms');
+			$this->db->update('settings', $data,  array('type' => 'terms'));
 			
 			move_uploaded_file($_FILES['logo']['tmp_name'], 'assets/global/logo.png');
 						
@@ -452,9 +456,33 @@ class Admin extends CI_Controller {
 		$page_data['purchase_code']			=	$this->db->get_where('settings',array('type'=>'purchase_code'))->row()->description;
 		$page_data['privacy_policy']		=	$this->db->get_where('settings',array('type'=>'privacy_policy'))->row()->description;
 		$page_data['refund_policy']			=	$this->db->get_where('settings',array('type'=>'refund_policy'))->row()->description;
+		$page_data['terms']			=	$this->db->get_where('settings',array('type'=>'terms'))->row()->description;
 		
 		$page_data['page_name']				=	'settings';
 		$page_data['page_title']			=	'Вэбийн тохиргоо';
+		$this->load->view('backend/index', $page_data);
+	}
+
+	function terms()
+	{
+		if (isset($_POST) && !empty($_POST))
+		{
+			
+			// Updating privacy policy
+			$data['description']		=	$this->input->post('privacy_policy');
+			$this->db->update('settings', $data,  array('type' => 'privacy_policy'));
+			
+			$data['description']		=	$this->input->post('terms');
+			$this->db->update('settings', $data,  array('type' => 'terms'));
+						
+			redirect(base_url().'index.php?admin/terms' , 'refresh');
+		}
+		
+		$page_data['privacy_policy']		=	$this->db->get_where('settings',array('type'=>'privacy_policy'))->row()->description;
+		$page_data['terms']			=	$this->db->get_where('settings',array('type'=>'terms'))->row()->description;
+		
+		$page_data['page_name']				=	'terms';
+		$page_data['page_title']			=	'Үйлчилгээний нөхцөл';
 		$this->load->view('backend/index', $page_data);
 	}
 	
@@ -503,7 +531,18 @@ class Admin extends CI_Controller {
 		}
 	}
 	
-	
+	function makeadmin($user_id){
+		$this->db->update('user', array('type' => 1), array('user_id'=>$user_id));
+		$page_data['page_name']		=	'user_list';
+		$page_data['page_title']	=	'Хэрэглэгчдийн жагсаалт';
+		$this->load->view('backend/index', $page_data);
+	}
 
+	function noadmin($user_id){
+		$this->db->update('user', array('type' => 0), array('user_id'=>$user_id));
+		$page_data['page_name']		=	'user_list';
+		$page_data['page_title']	=	'Хэрэглэгчдийн жагсаалт';
+		$this->load->view('backend/index', $page_data);
+	}
 
 }

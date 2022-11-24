@@ -40,5 +40,12 @@ class General extends CI_Controller {
 		
 	}
 
+	function terms()
+	{
+		$page_data['page_name']		=	'terms';
+		$page_data['page_title']	=	'Үйлчилгээний нөхцөл';
+		$this->load->view('frontend/index', $page_data);
+		
+	}
 
 }

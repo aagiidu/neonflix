@@ -19,7 +19,8 @@
 			  Нууц үг буруу байна. Та мэдээллээ шалгаад дахиад оруулна уу.
 			</div>
 		<?php endif;?>
-        
+        <div class="container">
+		<div class="row">
 		<div class="col-lg-12">
 			<h3 class="black_text">Утасны дугаараа солих</h3>
 			<hr>
@@ -49,6 +50,8 @@
 					<button class="btn btn-primary" type="submit"> Хадгалах </button>
 					<a href="<?php echo base_url();?>index.php?browse/youraccount" class="btn btn-default">Болих</a>
 			</form>
+		</div>
+		</div>
 		</div>
 	</div>
 	<hr>

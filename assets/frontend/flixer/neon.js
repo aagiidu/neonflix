@@ -1,5 +1,5 @@
 const q = [1080, 720, 640];
-let dp, episode, c, m, episodes, type, poster;
+let dp, episode, c, m, episodes, type, poster, timer;
 let currentEpisodeIndex = 0;
 
 c = '<div id="centerctrl" class="dplayer-icons max-player-icons-center" >';
@@ -15,7 +15,7 @@ c += '        </span>';
 c += '    </button>';
 c += '    <button class="dplayer-icon dplayer-play-icon playbtn">';
 c += '        <span class="dplayer-icon-content">';
-c += '            <img src="/assets/global/controls/play.svg" />';
+c += '            <img src="/assets/global/controls/play.svg" id="playbtn" />';
 c += '        </span>';
 c += '    </button>';
 c += '    <button class="dplayer-icon dplayer-next-icon" onclick="nnext()">';
@@ -38,7 +38,7 @@ m += '        </span>';
 m += '    </button>';
 m += '    <button class="dplayer-icon dplayer-play-icon playbtn">';
 m += '        <span class="dplayer-icon-content">';
-m += '            <img src="/assets/global/controls/play.svg" />';
+m += '            <img src="/assets/global/controls/play.svg" id="playbtn" />';
 m += '        </span>';
 m += '    </button>';
 m += '    <button class="dplayer-icon dplayer-forward-icon" onclick="nskip()">';
@@ -97,13 +97,19 @@ function setMovie(url, poster){
             // thumbnails: 'thumbnails.jpg',
         },
     });
-
-    $('.dplayer-icons-left').after(m)
+    $('.dplayer-video-wrap video').after(m)
+    // $('.dplayer-icons-left').after(m)
     $('.dplayer-icons-left button.dplayer-play-icon').hide()
 
-    $('.playbtn').on('click', function(){
+    /* $(document).on('.playbtn img', 'click', function(){
+        console.log('toggling')
         dp.toggle();
-    })
+    }) */
+
+    /* document.getElementById('playbtn').addEventListener(`click`, () => {
+        console.log('toggling')
+        dp.toggle();
+    }); */
 
     dp.on('play', function(){
         $('.playbtn').find('img').attr('src', '/assets/global/controls/pause.svg');
@@ -114,6 +120,16 @@ function setMovie(url, poster){
     })	
 }
 
+document.onclick = function(e) {
+    
+      var el = e.target.getAttribute('id');
+      if(el == 'playbtn'){
+        console.log('toggling')
+        dp.toggle();
+      }
+      console.log(el);
+    
+}
 function setMedia(episode){
     if(dp) {
         dp.destroy();
@@ -136,6 +152,7 @@ function setMedia(episode){
         autoplay: false,
         theme: '#FADFA3',
         loop: false,
+        airplay: true,
         lang: 'MN-mn',
         //screenshot: true,
         hotkey: true,
@@ -153,7 +170,8 @@ function setMedia(episode){
         },
     });
 
-    $('.dplayer-icons-left').after(c)
+    $('.dplayer-video-wrap video').after(c)
+    //$('.dplayer-icons-left').after(c)
     $('.dplayer-icons-left button.dplayer-play-icon').hide()
 
     $('.playbtn').on('click', function(){
@@ -193,4 +211,17 @@ function nnext(){
     currentEpisodeIndex = currentEpisodeIndex < episodes.length - 1 ? currentEpisodeIndex + 1 : currentEpisodeIndex
     episode = episodes[currentEpisodeIndex];
     setMedia(episode);
+}
+
+document.getElementById('dplayer').addEventListener(`mousemove`, () => {
+    if($('#dplayer').hasClass('dplayer-hide-controller')){
+        $('#dplayer').removeClass('dplayer-hide-controller')
+    }
+    clearTimeout(timer)
+    timer = setTimeout(onMouseStopped, 4000)
+})
+
+function onMouseStopped(){
+    console.log('Mouse Stopped');
+    $('#dplayer').addClass('dplayer-hide-controller');
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="mn">
 <head>
 	<title><?php echo $page_title;?> | NeonToon</title>
 	<meta charset="utf-8">
@@ -19,7 +19,6 @@
 	</style>
 </head>
 <?php
-// $bg_color = "#1d1b24";
 $bg_color = "#1d1b24";
 if (/* $page_name == 'signup' || $page_name == 'signin' || $page_name == 'faq' || 
 		$page_name == 'termsofuse' || $page_name == 'privacypolicy' || $page_name == 'refundpolicy' ||*/
@@ -29,6 +28,7 @@ if (/* $page_name == 'signup' || $page_name == 'signin' || $page_name == 'faq' |
     $bg_color = "#f3f3f3";
 ?>
 <body style="background-color:<?php echo $bg_color;?>;">
+
 	<?php include ($page_name . '.php');?>
 </body>
 </html>

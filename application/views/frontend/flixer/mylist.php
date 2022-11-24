@@ -8,7 +8,7 @@
 	?>
 <div class="row grid-row" style="margin-top: 90px">
 	<h4 class="genre_title">
-		My List (<?php echo count($movies) + count($series);?>)
+		Миний хадгалсан кинонууд (<?php echo count($movies) + count($series);?>)
 	</h4>
 	<div class="content">
 		<div class="grid">

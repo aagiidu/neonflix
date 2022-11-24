@@ -30,22 +30,24 @@
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<!-- PROFILE, enenii urd menu bsn ACCOUNT SECTION -->
 			<?php
-				$userdata	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row();
-				$subscription_validation = false;
-				if($userdata != null){
-					// by deault, email & general thumb shown at top
-					$bar_text	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row()->email;
-					$bar_thumb	=	'thumb1.png';
-					// check if there is active subscription
-					$subscription_validation	=	$this->crud_model->validate_subscription();
-					if ($subscription_validation != false)
-					{
-						$active_user	=	$this->session->userdata('active_user');
-						$bar_text 	=	$this->crud_model->get_username_of_user('user1');
+				if($this->session != null){
+					$userdata	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row();
+					$subscription_validation = false;
+					if($userdata != null){
+						// by deault, email & general thumb shown at top
+						$bar_text	=	$this->db->get_where('user', array('user_id'=>$this->session->userdata('user_id')))->row()->email;
 						$bar_thumb	=	'thumb1.png';
+						// check if there is active subscription
+						$subscription_validation	=	$this->crud_model->validate_subscription();
+						if ($subscription_validation != false)
+						{
+							$active_user	=	$this->session->userdata('active_user');
+							$bar_text 	=	$this->crud_model->get_username_of_user('user1');
+							$bar_thumb	=	'thumb1.png';
+						}
 					}
 				}
-				?>
+			?>
 			<?php if($userdata != null){ ?>
 
 			<ul class="nav navbar-nav navbar-right">
