@@ -45,6 +45,10 @@ class Crud_model extends CI_Model {
 		
 	} */
 
+	function sms_request($data){
+		$this->db->insert('sms' , $data);
+	}
+
 	function phone_register($data) 
 	{
 		// Verify hiigeegui bgaag shalgah

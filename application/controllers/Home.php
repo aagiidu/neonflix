@@ -103,20 +103,11 @@ class Home extends CI_Controller {
 	{
 
 		$this->login_check();
-		/* if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-			$ip = $_SERVER['HTTP_CLIENT_IP'];
-		} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-		} else {
-			$ip = $_SERVER['REMOTE_ADDR'];
-		} */
-		
-		echo $_SERVER['HTTP_CLIENT_IP'];
-		echo '######';
-		echo $_SERVER['HTTP_X_FORWARDED_FOR'];
-		echo '######';
-		echo $_SERVER['REMOTE_ADDR'];
-		echo '######';
+
+		$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
+		$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
+		$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
+		$this->crud_model->sms_request($sms);
 
 		if (isset($_POST) && !empty($_POST))
 		{
