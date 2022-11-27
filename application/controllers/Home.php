@@ -104,15 +104,19 @@ class Home extends CI_Controller {
 
 		$this->login_check();
 
-		$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
-		$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
-		$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
-		$this->crud_model->sms_request($sms);
-
 		if (isset($_POST) && !empty($_POST))
 		{
 			$_POST = json_decode(array_keys($_POST)[0], true);
-			$this->crud_model->phone_register($_POST);
+			$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
+			$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
+			$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
+			$sms['phone'] 		= $_POST["phone"];
+			$cnt = $this->crud_model->sms_request($sms);
+			if($cnt < 5){
+				$this->crud_model->phone_register($_POST);
+			}else{
+				echo 'Та 10-с олон удаа оролдлого хийсэн тул 24 цагийн дараа дахин оролдоно уу.';
+			}
 		}
 	}
 	

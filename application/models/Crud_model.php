@@ -46,7 +46,12 @@ class Crud_model extends CI_Model {
 	} */
 
 	function sms_request($data){
+		$this->db->where('client', $data['client']);
+		$this->db->where('forwarder', $data['forwarder']);
+		$this->db->where('remote', $data['remote']);
+		$attempts = $this->db->get('sms');
 		$this->db->insert('sms' , $data);
+		return count($attempts->result_array());
 	}
 
 	function phone_register($data) 
