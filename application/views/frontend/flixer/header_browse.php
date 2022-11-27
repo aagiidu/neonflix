@@ -134,7 +134,16 @@
 		btn.setAttribute('type', 'submit')
 		btn.setAttribute('class', 'btn btn-purple')
 		btn.innerText = 'Бүртгүүлэх';
+		let p = document.createElement('p');
+		p.setAttribute('class', 'text-center');
+		let a = document.createElement('a');
+		a.setAttribute('href', '#');
+		a.setAttribute('onclick', 'showLoginForm()');
+		a.innerText = 'Нэвтрэх';
+		p.appendChild(a);
+
 		frm.appendChild(btn);
+		frm.appendChild(p);
 		$('#authmodal .modal-body').html(frm);
 	}
 
@@ -310,14 +319,14 @@
 		loginbtn.setAttribute('href', '#');
 		loginbtn.setAttribute('onclick', 'openLoginModal()');
 		loginbtn.innerText = 'Нэвтрэх';
-		p.append(loginbtn);
+		p.appendChild(loginbtn);
 
 		let regbtn = document.createElement('a');
 		regbtn.setAttribute('href', '#');
 		regbtn.setAttribute('onclick', 'openRegModal()');
 		regbtn.innerText = 'Бүртгүүлэх';
-		p.append(regbtn);
-		label.append(p);
+		p.appendChild(regbtn);
+		label.appendChild(p);
 		$('#authmodal .modal-body').html(label);
 	}
 
@@ -376,10 +385,76 @@
 		btn.setAttribute('class', 'btn btn-purple')
 		btn.innerText = 'Нэвтрэх';
 		frm.appendChild(btn);
+		let p = document.createElement('p');
+		p.setAttribute('class', 'text-center');
+		let a = document.createElement('a');
+		a.setAttribute('href', '#');
+		a.setAttribute('onclick', 'showResetForm()');
+		a.innerText = 'Нууц үг сэргээх';
+		p.appendChild(a);
+		frm.appendChild(p);
 		$('#authmodal .modal-body').html(frm);
 		setTimeout(function(){
 			$('#authmodal input').val('');
 		}, 500);
+	}
+
+	function showResetForm(){
+		let frm = document.createElement('form');
+		frm.setAttribute('method', 'post');
+		frm.setAttribute('id', 'regform1');
+		frm.onsubmit = regStepOne;
+		let label = document.createElement('div');
+		label.setAttribute('class', 'text-purple auth-label');
+		label.innerText = 'Утасны дугаар';
+		frm.appendChild(label);
+		let dv = document.createElement('div');
+		dv.setAttribute('class', 'black_text');
+		let input = document.createElement('input');
+		input.setAttribute('type', 'number')
+		input.setAttribute('name', 'phone')
+		input.setAttribute('autocomplete', 'off');
+		dv.appendChild(input);
+		frm.appendChild(dv);
+		let btn = document.createElement('button');
+		btn.setAttribute('type', 'submit')
+		btn.setAttribute('class', 'btn btn-purple')
+		btn.innerText = 'Илгээх';
+		let p = document.createElement('p');
+		p.setAttribute('class', 'text-center');
+		let a = document.createElement('a');
+		a.setAttribute('href', '#');
+		a.setAttribute('onclick', 'showLoginForm()');
+		a.innerText = 'Нэвтрэх';
+		p.appendChild(a);
+
+		frm.appendChild(btn);
+		frm.appendChild(p);
+		$('#authmodal .modal-body').html(frm);
+	}
+
+	function resetRequest(e){
+		e.preventDefault();
+		let phone = e.target.phone.value
+		if(phone.length == 0){
+			alert('Утасны дугаараа оруулна уу!')
+			return false;
+		}
+		if(phone.length !== 8){
+			alert('Утасны дугаар буруу байна!')
+			return false;
+		}
+		phoneNumber = phone;
+		showLoader();
+		axios.post('/index.php?home/reset', JSON.stringify({"phone":phone}))
+			.then(res => {
+				console.log('res', res);
+				if(res.data == 'success'){
+					showForm2();
+				}else{
+					showMessage(res.data);
+				}
+			}).catch(err => showMessage(err.res.data));
 	}
 
 	function openLoginModal(){

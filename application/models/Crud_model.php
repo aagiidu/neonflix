@@ -126,16 +126,16 @@ class Crud_model extends CI_Model {
 		$temp = $this->db->get('user');
 		$user = $temp->result_array()[0];
 		if($user != null){
-			if ($user["verified"] == 1) {
+			//if ($user["verified"] == 1) {
 				$data["password"] = sha1($data["password"]);
 				$data["verified"] = 2;
 				$this->db->update('user', $data, array('phone' => $data['phone']));
 				echo 'success';
-			} elseif ($user["verified"] == 2){
+			/* } elseif ($user["verified"] == 2){
 				echo 'Таны бүртгэл өмнө нь баталгаажсан байна. Та утасны дугаар болон нууц үгээ ашиглан нэвтэрч орж болно.';
 			} else {
 				echo 'Алдаа гарлаа. Та дахиад бүртгүүлнэ үү.';
-			}
+			} */
 		}else{
 			echo 'Бүртгэл олдсонгүй. Та дахиад бүртгүүлнэ үү.';
 		}
