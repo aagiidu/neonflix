@@ -13,9 +13,9 @@
                 <img src="/assets/global/btn-movie.png" />
             </a>
             <?php if($userdata == null){ ?>
-            <p class="text-center">
-                <a href="<?php echo base_url();?>index.php?home/signup" class="btn btn-danger btn-lg reg-btn" >БҮРТГҮҮЛЭХ</a>
-            </p>
+                <p class="text-center">
+                    <button type="buton" onclick="openRegModal()" class="btn btn-danger btn-lg reg-btn" >БҮРТГҮҮЛЭХ</button>
+                </p>
             <?php } ?>
 	    </div>
     </div>

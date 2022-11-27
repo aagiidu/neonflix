@@ -103,6 +103,21 @@ class Home extends CI_Controller {
 	{
 
 		$this->login_check();
+		/* if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+		} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		} else {
+			$ip = $_SERVER['REMOTE_ADDR'];
+		} */
+		
+		echo $_SERVER['HTTP_CLIENT_IP'];
+		echo '######';
+		echo $_SERVER['HTTP_X_FORWARDED_FOR'];
+		echo '######';
+		echo $_SERVER['REMOTE_ADDR'];
+		echo '######';
+
 		if (isset($_POST) && !empty($_POST))
 		{
 			$_POST = json_decode(array_keys($_POST)[0], true);

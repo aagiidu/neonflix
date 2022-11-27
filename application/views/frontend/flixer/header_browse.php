@@ -98,13 +98,13 @@
 	let phoneNumber = '';
 	$(function() {
 		console.log("<?php echo $page_name ?>");
-		showForm1();
 		setTimeout(function(){
 			$('#authmodal input').val('');
 		}, 500);
 	})
 
 	function openRegModal(){
+		showForm1();
 		$('#customModal').addClass('show');
 	}
 
@@ -304,6 +304,20 @@
 		let label = document.createElement('div');
 		label.setAttribute('class', 'text-purple auth-label text-center');
 		label.innerText = msg;
+		let p = document.createElement('p');
+		p.setAttribute('class', 'text-center');
+		let loginbtn = document.createElement('a');
+		loginbtn.setAttribute('href', '#');
+		loginbtn.setAttribute('onclick', 'openLoginModal()');
+		loginbtn.innerText = 'Нэвтрэх';
+		p.append(loginbtn);
+
+		let regbtn = document.createElement('a');
+		regbtn.setAttribute('href', '#');
+		regbtn.setAttribute('onclick', 'openRegModal()');
+		regbtn.innerText = 'Бүртгүүлэх';
+		p.append(regbtn);
+		label.append(p);
 		$('#authmodal .modal-body').html(label);
 	}
 
