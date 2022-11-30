@@ -1,7 +1,7 @@
 <figure class="swiper-slide">
 	<img src="<?php echo $thumb;?>" alt="img02"/>
 	<figcaption>
-		<a href="<?php echo $link;?>">
+		<a href="<?php echo $userdata != null ? $link : '#';?>" <?php echo $userdata == null ? 'onclick="openLoginModal()"' : "" ?>>
 			<div>
 				<h6><?php echo $title ?></h6>
 				<p class="intro"><?php echo $intro; ?></p>

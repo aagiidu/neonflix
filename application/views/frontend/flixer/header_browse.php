@@ -97,7 +97,10 @@
 <script>
 	let phoneNumber = '';
 	$(function() {
-		console.log("<?php echo $page_name ?>");
+		console.log(window.location.hash);
+		if(window.location.hash == '#login'){
+			openLoginModal();
+		}
 		setTimeout(function(){
 			$('#authmodal input').val('');
 		}, 500);
@@ -473,9 +476,12 @@
 				if(res.data == 'error'){
 					showMessage('Нэвтрэх мэдээлэл таарахгүй байна.');
 				}else{
-					window.location.href = res.data;
+					if(res.data == 'success'){
+						window.location.reload();	
+					}else{
+						window.location.href = res.data;
+					}
 				}
-				
 			}).catch(err => showMessage(err.res.data));
 	}
 

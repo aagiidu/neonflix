@@ -129,6 +129,7 @@ class Crud_model extends CI_Model {
 			//if ($user["verified"] == 1) {
 				$data["password"] = sha1($data["password"]);
 				$data["verified"] = 2;
+				$data["name"] = $data["name"] != null && $data["name"] != "" ? $data["name"] : "User";
 				$this->db->update('user', $data, array('phone' => $data['phone']));
 				echo 'success';
 			/* } elseif ($user["verified"] == 2){
@@ -161,10 +162,11 @@ class Crud_model extends CI_Model {
 		return $r->status;
 	}
 
-	function signup_user() 
+	// eniig ashiglahgui
+	/* function signup_user() 
 	{
 		$data['phone'] 		= $this->input->post('phone');
-		// $data['password'] 	= sha1($this->input->post('password'));
+		$data['password'] 	= sha1($this->input->post('password'));
 		$data['type'] 		= 0; // user type = customer
 		
 		$this->db->where('phone' , $data['phone']);
@@ -182,7 +184,7 @@ class Crud_model extends CI_Model {
 			return false;
 		}
 		
-	}
+	} */
 	
 	function signin($phone, $password) 
 	{

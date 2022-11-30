@@ -138,7 +138,15 @@ class Home extends CI_Controller {
 					echo base_url() . '/index.php?admin/dashboard';
 					return;
 				} else if ($this->session->userdata('login_type') == 0) {
-					echo base_url() . '/index.php?browse/doswitch/user1';
+					// echo base_url() . '/index.php?browse/doswitch/user1';
+					$this->session->set_userdata('active_user', 'user1');
+					// SET USER SESSION HERE WITH TIMESTAMP FOR MULTI DEVICE ACCESS PROHIBITION
+					$user_entering_timestamp		=	strtotime(date("Y-m-d H:i:s"));
+					$this->session->set_userdata('user_entering_timestamp' , $user_entering_timestamp);
+					$user_id						=	$this->session->userdata('user_id');
+					$data['user1_session']	=	$user_entering_timestamp;
+					$this->db->update('user' , $data , array('user_id' => $user_id));
+					echo 'success';
 					return;
 				}
 			} else if ($signin_result == false){

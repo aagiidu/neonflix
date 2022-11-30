@@ -18,7 +18,7 @@ class Browse extends CI_Controller {
 		// CHECK IF USER HAS ACTIVE SUBSCRIPTION, THEN IS THERE ANY ACTIVE USER
 		if(/* $called_function == 'search' || */ $called_function == 'process_list' || /* $called_function == 'home' || */ 
 		  		/* $called_function == 'movie' || */ $called_function == 'mylist' || /* $called_function == 'series' ||  */
-		  		$called_function == 'playmovie' || $called_function == 'playseries') {
+		  		$called_function == 'playmovie' || $called_function == 'playseries' || $called_function == 'playanime') {
 			$this->login_check();
 			$this->subscription_check();
 			$this->multi_device_access_check();
@@ -28,7 +28,7 @@ class Browse extends CI_Controller {
 		// CHECK IF SAME USER HAS LOGGEDIN FROM DIFFERENT DEVICE/SESSION
 		if($called_function == 'search' || $called_function == 'process_list' || $called_function == 'home' || 
 		  		$called_function == 'movie' || $called_function == 'mylist' || $called_function == 'series' || 
-		  		$called_function == 'playmovie' || $called_function == 'playseries') {
+		  		$called_function == 'playmovie' || $called_function == 'playseries' || $called_function == 'playanime') {
 			
 		}
 	}
@@ -482,7 +482,9 @@ class Browse extends CI_Controller {
 	function login_check()
 	{
 		if ($this->session->userdata('user_login_status') != 1)
-			redirect(base_url().'index.php?home/signin' , 'refresh');
+			$path = str_replace('play', '', $_SERVER['REQUEST_URI']);
+			redirect(base_url().$path.'#login', 'refresh');
+			// redirect(base_url().'index.php?home/signin' , 'refresh');
 	}
 
 	function multi_device_access_check()

@@ -26,9 +26,9 @@
 			<button class="btn btn-danger" style=" width: 100%; margin: 20px 0px;"> Нэвтрэх </button>
 		</form>
 		<hr>
-		<a href="<?php echo base_url();?>index.php?home/forget">Нууц үгээ мартсан?</a>
+		<a href="#">Нууц үгээ мартсан?</a>
 		|
-		<a href="<?php echo base_url();?>index.php?home/signup">Бүртгүүлэх</a>
+		<a href="#" <?php echo $userdata == null ? 'onclick="openRegModal()"' : "" ?>>Бүртгүүлэх</a>
 	</div>
 </div>
 <!-- MIDDLE TAB SECTION -->
