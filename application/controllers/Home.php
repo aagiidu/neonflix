@@ -145,6 +145,8 @@ class Home extends CI_Controller {
 					$this->session->set_userdata('user_entering_timestamp' , $user_entering_timestamp);
 					$user_id						=	$this->session->userdata('user_id');
 					$data['user1_session']	=	$user_entering_timestamp;
+					unset($data['password']);
+					echo $data;
 					$this->db->update('user' , $data , array('user_id' => $user_id));
 					echo 'success';
 					return;
