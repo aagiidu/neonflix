@@ -102,8 +102,8 @@ class Crud_model extends CI_Model {
 
 	function verify_otp($data){
 		$this->db->where('phone' , $data['phone']);
-		$this->db->where('type' , 0);
-		$this->db->where('verified' , 0);
+		//$this->db->where('type' , 0);
+		//$this->db->where('verified' , 0);
 		$unverified = $this->db->get('user');
 		$user = $unverified->result_array()[0];
 		//var_dump($user);
