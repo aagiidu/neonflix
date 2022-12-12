@@ -395,7 +395,15 @@
 		a.setAttribute('onclick', 'showResetForm()');
 		a.innerText = 'Нууц үг сэргээх';
 		p.appendChild(a);
+		
+		let a2 = document.createElement('a');
+		a2.setAttribute('href', '#');
+		a2.setAttribute('onclick', 'showRegForm()');
+		a2.innerText = 'Бүртгүүлэх';
+		p.appendChild(a2);
+		
 		frm.appendChild(p);
+		
 		$('#authmodal .modal-body').html(frm);
 		setTimeout(function(){
 			$('#authmodal input').val('');

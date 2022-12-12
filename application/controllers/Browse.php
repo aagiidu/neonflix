@@ -481,9 +481,11 @@ class Browse extends CI_Controller {
 	
 	function login_check()
 	{
-		if ($this->session->userdata('user_login_status') != 1)
+		//echo $this->session->userdata('user_login_status');die;
+		if ($this->session->userdata('user_login_status') != 1){
 			$path = str_replace('play', '', $_SERVER['REQUEST_URI']);
 			redirect(base_url().$path.'#login', 'refresh');
+		}
 			// redirect(base_url().'index.php?home/signin' , 'refresh');
 	}
 

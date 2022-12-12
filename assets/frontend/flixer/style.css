@@ -44,7 +44,7 @@
 .auth-label{margin:10px 0px 5px;}
 #customModal{display: none;}
 #customModal .close{color:#242424;font-size: 30px;}
-#customModal p a{color: #555; display: inline-block;padding: 15px;font-size: 16px;text-decoration: none;}
+#customModal p a{color: #555; display: inline-block;padding: 15px;font-size: 15px;text-decoration: none;}
 .loader{max-width: 50%;margin-left: 25%;}
 .sidecol ~ div {margin-left: 100px !important; width: Calc(100% - 100px);}
 .sidebar a{
