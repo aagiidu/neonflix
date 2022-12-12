@@ -49,9 +49,13 @@ class Crud_model extends CI_Model {
 		$this->db->where('client', $data['client']);
 		$this->db->where('forwarder', $data['forwarder']);
 		$this->db->where('remote', $data['remote']);
+		$this->db->where('date BETWEEN DATE_SUB(NOW(), INTERVAL 1 DAY) AND NOW()');
 		$attempts = $this->db->get('sms');
-		$this->db->insert('sms' , $data);
-		return count($attempts->result_array());
+		$cnt = count($attempts->result_array());
+		if($cnt < 5){
+			$this->db->insert('sms' , $data);
+		}
+		return $cnt;
 	}
 
 	function phone_register($data) 

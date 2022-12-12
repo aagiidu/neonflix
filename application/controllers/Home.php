@@ -112,6 +112,7 @@ class Home extends CI_Controller {
 			$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
 			$sms['phone'] 		= $_POST["phone"];
 			$cnt = $this->crud_model->sms_request($sms);
+			// echo strtotime('-1 day') . ' < ' . strtotime(date("Y-m-d H:i:s"));
 			if($cnt < 5){
 				$this->crud_model->phone_register($_POST);
 			}else{
