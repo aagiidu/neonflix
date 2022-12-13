@@ -400,8 +400,6 @@ class Crud_model extends CI_Model {
 	
 	function create_series()
 	{
-		echo 'title: ' . $this->input->post('title');
-		echo '<hr />';
 		$data['title']				=	$this->input->post('title');
 		// $data['description_short']	=	$this->input->post('description_short');
 		$data['description_long']	=	$this->input->post('description_long');
@@ -418,12 +416,11 @@ class Crud_model extends CI_Model {
 		}
 		$data['actors']				=	json_encode($actor_entries);
 		$data["type"]				=	$this->input->post('type');
-		var_dump($data);
+		// var_dump($data);
 		//die;
 		$res = $this->db->insert('series', $data);
-		echo 'res: ' . $res;
 		$series_id = $this->db->insert_id();
-		echo $series_id;
+		// echo $series_id;
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
 		die;
@@ -448,7 +445,7 @@ class Crud_model extends CI_Model {
 		// $data['actors']				=	json_encode($actor_entries);
 		
 		$this->db->update('series', $data, array('series_id'=>$series_id));
-		var_dump($_FILES);
+		//var_dump($_FILES);
 		if(isset($_FILES['thumb'])){
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		}
