@@ -12,7 +12,7 @@
 		</div>
 		<div class="col-lg-8">
 			<h4 class="black_text">Гишүүнчлэлийн хугацаагаа сонгоно уу.</h4>
-			<!-- <form method="post" action="#"> -->
+			<form method="post" action="<?php echo base_url();?>index.php?payment/pay/post">
 				<table class="table table-striped table-hover" style="color: #000;">
 					<tbody>
 						<tr>
@@ -54,7 +54,7 @@
 					<a href="<?php echo base_url();?>index.php?browse/youraccount" class="btn btn-default">Буцах</a>
 					<button id="payment" class="btn btn-primary" type="submit"> Сонгох </button>
 				</div>
-			<!-- </form> -->
+			</form>
 			<!-- <div class="pull-right">
 				<a href="<?php echo base_url();?>index.php?browse/youraccount" class="btn btn-default">Буцах</a>
 				<button id="payment" class="btn btn-primary" type="button"> Шилжүүлсэн </button>

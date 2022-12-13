@@ -437,7 +437,6 @@ class Browse extends CI_Controller {
 	{
 		if (isset($_POST) && !empty($_POST))
 		{
-			
 			redirect(base_url().'index.php?browse/youraccount' , 'refresh');
 		}
 		$page_data['page_name']			=	'purchaseplan';
