@@ -23,7 +23,7 @@ class Payment extends CI_Controller {
 
 	public function token($uid)
 	{
-		$token = hash('sha256', $uid . 'oghrmnde');
+		$token = hash('sha256', $uid . time());
 		$data['hash'] = $token;
 		$this->db->update('user', $data, array('user_id' => $uid));
 		echo $token;
@@ -58,7 +58,7 @@ class Payment extends CI_Controller {
 		}
 
 		$data['plan_id']			=	$plan->plan_id;
-		$data['user_id']			=	$plan->name;
+		$data['user_id']			=	$user_id;
 		$data['paid_amount']		=	$amount;
 		$data['payment_timestamp']	=	strtotime(date("Y-m-d H:i:s"));
 		$data['timestamp_from']		=	strtotime(date("Y-m-d H:i:s"));
