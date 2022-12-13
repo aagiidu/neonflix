@@ -407,14 +407,14 @@ class Crud_model extends CI_Model {
 		$data['rating']				=	$this->input->post('rating');
 		$data['genre_id']			=	$this->input->post('genre_id');
 		
-		$actors						=	$this->input->post('actors');
+		/* $actors						=	$this->input->post('actors');
 		$actor_entries				=	array();
 		$number_of_entries			=	sizeof($actors);
 		for ($i = 0; $i < $number_of_entries ; $i++)
 		{
 			array_push($actor_entries, $actors[$i]);
 		}
-		$data['actors']				=	json_encode($actor_entries);
+		$data['actors']				=	json_encode($actor_entries); */
 		$data["type"]				=	$this->input->post('type');
 		// var_dump($data);
 		//die;
@@ -423,7 +423,6 @@ class Crud_model extends CI_Model {
 		// echo $series_id;
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
-		die;
 	}
 	
 	function update_series($series_id = '')
