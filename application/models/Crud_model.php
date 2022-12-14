@@ -364,11 +364,14 @@ class Crud_model extends CI_Model {
 		}
 		$data['actors']				=	json_encode($actor_entries); */
 		$data['actors']	= '[]';
+		var_dump($data);
+		echo '<hr />';
 		$this->db->insert('movie', $data);
 		$movie_id = $this->db->insert_id();
+		echo $movie_id;
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
-		
+		die;
 	}
 	
 	function update_movie($movie_id = '')
