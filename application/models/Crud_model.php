@@ -403,7 +403,7 @@ class Crud_model extends CI_Model {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
 				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
 			}
-			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
+			if(isset($_FILES['poster']) && strlen($_FILES['poster']['tmp_name']) > 0){
 				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');	
 			}
 		} catch (\Throwable $th) {
@@ -472,7 +472,7 @@ class Crud_model extends CI_Model {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
 				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 			}
-			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
+			if(isset($_FILES['poster']) && strlen($_FILES['poster']['tmp_name']) > 0){
 				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
 			}
 		} catch (\Throwable $th) {
