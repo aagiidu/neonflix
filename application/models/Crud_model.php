@@ -408,9 +408,11 @@ class Crud_model extends CI_Model {
 		try {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
 				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
+				echo 'thumb should be ok ';
 			}
 			if(isset($_FILES['poster']) && strlen($_FILES['poster']['tmp_name']) > 0){
 				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');	
+				echo 'poster should be ok ';
 			}
 		} catch (\Throwable $th) {
 			// do nothing
