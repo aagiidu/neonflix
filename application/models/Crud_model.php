@@ -395,7 +395,7 @@ class Crud_model extends CI_Model {
 		$data['actors']				=	json_encode($actor_entries); */
 		$data['actors']	= '[]';
 		$this->db->update('movie', $data, array('movie_id'=>$movie_id));
-		
+		echo $movie_id;
 		// move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
 		// move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
 
@@ -409,7 +409,7 @@ class Crud_model extends CI_Model {
 		} catch (\Throwable $th) {
 			// do nothing
 		}
-		
+		die;
 	}
 	
 	function create_series()
