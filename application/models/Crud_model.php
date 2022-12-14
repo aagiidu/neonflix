@@ -354,7 +354,7 @@ class Crud_model extends CI_Model {
 		$data['genre_id']			=	$this->input->post('genre_id');
 		$data['featured']			=	$this->input->post('featured');
 		$data['url']				=	$this->input->post('url');
-		
+		$data['qlt']				=	json_encode($this->input->post('qlt'));
 		/* $actors						=	$this->input->post('actors');
 		$actor_entries				=	array();
 		$number_of_entries			=	sizeof($actors);
@@ -380,7 +380,7 @@ class Crud_model extends CI_Model {
 		$data['genre_id']			=	$this->input->post('genre_id');
 		$data['featured']			=	$this->input->post('featured');
 		$data['url']				=	$this->input->post('url');
-		
+		$data['qlt']				=	json_encode($this->input->post('qlt'));
 		/* $actors						=	$this->input->post('actors');
 		$actor_entries				=	array();
 		$number_of_entries			=	sizeof($actors);

@@ -1,3 +1,7 @@
+<style>
+	.checkbox{width: 40px}
+	.qlt label{float:left}
+</style>
 <div class="row-fluid">
 	<div class="span12">
 		<div class="grid simple ">
@@ -98,6 +102,24 @@
 										<option value="1" <?php if ( $movie_detail->featured == 1) echo 'selected';?>>Тийм</option>
 									</select>
 								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Нягтшил </label>
+								<div class="controls qlt">
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="1080" <?php if ( strpos($movie_detail->qlt, '1080') > -1 ) echo 'checked';?>/> 1080p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="720" <?php if ( strpos($movie_detail->qlt, '720') > -1 ) echo 'checked';?>/> 720p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="480" <?php if ( strpos($movie_detail->qlt, '480') > -1 ) echo 'checked';?>/> 480p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="360" <?php if ( strpos($movie_detail->qlt, '360') > -1 ) echo 'checked';?>/> 360p
+									</label>
+								</div>
+							</div>
 							</div>
 						</div>
 						<!-- PREVIEW OF THE VIDEO FILE -->

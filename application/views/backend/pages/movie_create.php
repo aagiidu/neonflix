@@ -1,3 +1,7 @@
+<style>
+	.checkbox{width: 40px}
+	.qlt label{float:left}
+</style>
 <div class="row-fluid">
 	<div class="span12">
 		<div class="grid simple ">
@@ -85,6 +89,23 @@
 										<option value="0">Үгүй</option>
 										<option value="1">Тийм</option>
 									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Нягтшил </label>
+								<div class="controls qlt">
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="1080"/> 1080p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="720"/> 720p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="480"/> 480p
+									</label>
+									<label>
+										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="360"/> 360p
+									</label>
 								</div>
 							</div>
 						</div>

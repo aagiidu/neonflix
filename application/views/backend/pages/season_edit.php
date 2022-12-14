@@ -111,6 +111,7 @@
 						<input type="file" class="form-control" name="thumb">
 					</div>
 				</div> -->
+				<?php include('qlt.php') ?>
 				<div class="form-group">
 					<input type="submit" class="btn btn-success" value="Үүсгэх">
 				</div>
@@ -150,6 +151,7 @@
 						<input type="file" class="form-control" name="thumb">
 					</div>
 				</div> -->
+				<?php include('qlt.php') ?>
 				<div class="form-group">
 					<input type="submit" class="btn btn-success" value="Хадгалах">
 				</div>

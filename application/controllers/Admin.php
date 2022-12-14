@@ -257,6 +257,7 @@ class Admin extends CI_Controller {
 		{
 			$data['title']			=	$this->input->post('title');
 			$data['url']			=	$this->input->post('url');
+			$data['qlt']			=	json_encode($this->input->post('qlt'));
 			$data['season_id']		=	$season_id;
 			$this->db->update('episode', $data, array('episode_id'=>$episode_id));
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/episode_thumb/' . $episode_id . '.jpg');
