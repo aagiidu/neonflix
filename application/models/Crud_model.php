@@ -424,8 +424,8 @@ class Crud_model extends CI_Model {
 		echo '<hr />';
 		var_dump($_FILES);
 		try {
-			$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], __DIR__.'../../assets/global/series_thumb/' . $series_id . '.jpg');
-			$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], __DIR__.'../../assets/global/series_poster/' . $series_id . '.jpg');
+			$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $_FILES['thumb']['tmp_name']);
+			$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $_FILES['poster']['tmp_name']);
 			echo 'RES:: '.$res1 .'/'.$res2;
 		} catch (\Throwable $th) {
 			echo 'Error: ' . $th;
@@ -458,11 +458,11 @@ class Crud_model extends CI_Model {
 		echo '<hr />';
 		try {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], __DIR__.'../../assets/global/series_thumb/' . $series_id . '.jpg');
+				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 				echo 'RES1: '.$res1;
 			}
 			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], __DIR__.'../../assets/global/series_poster/' . $series_id . '.jpg');	
+				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
 				echo 'RES2: '.$res2;
 			}
 		} catch (\Throwable $th) {
