@@ -111,9 +111,7 @@
 						<ul id="episodes">
 							<?php
 								$counter	=	1;
-								$episodes	=	$this->crud_model->get_episodes_of_season($season_id);
-								for ($i=0; $i < 50; $i++) { 
-							
+								$episodes	=	$this->crud_model->get_episodes_of_season($season_id);							
 								foreach ($episodes as $row2):
 								?>
 								<li class="<?php echo $row2['episode_id'];?>">
@@ -122,13 +120,8 @@
 										<?php echo $row2['title'];?>
 									</a>
 									<span class="counter"><?php echo $counter++ ?></span>
-									<!-- <div>
-										<pre>
-											<?php var_dump($row2) ?>
-										</pre>
-									</div> -->
 								</li>
-							<?php endforeach; }?>
+							<?php endforeach; ?>
 						</ul>
 						</div>
 						</div>
