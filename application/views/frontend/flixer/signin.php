@@ -9,7 +9,7 @@
 			Амжилтгүй! Мэдээллээ шалгаад дахиад оролдоод үзнэ үү.
 		</div>
 		<?php endif;?>
-		<form method="post" action="<?php echo base_url();?>index.php?home/signin">
+		<!-- <form method="post" action="<?php echo base_url();?>index.php?home/signin">
 			<h3 class="black_text">Нэвтрэх</h3>
 			<div class="black_text">
 				Утасны дугаар
@@ -24,7 +24,7 @@
 				<input type="password" name="password" style="padding: 10px; width:100%;" />
 			</div>
 			<button class="btn btn-danger" style=" width: 100%; margin: 20px 0px;"> Нэвтрэх </button>
-		</form>
+		</form> -->
 		<hr>
 		<a href="#">Нууц үгээ мартсан?</a>
 		|

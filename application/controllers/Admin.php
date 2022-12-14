@@ -527,7 +527,8 @@ class Admin extends CI_Controller {
 		$logged_in_user_type			=	$this->session->userdata('login_type');
 		if ($logged_in_user_type == 0)
 		{
-			redirect(base_url().'index.php?home/signin' , 'refresh');
+			// redirect(base_url().'index.php?home/signin' , 'refresh');
+			redirect(base_url().'#login', 'refresh');
 		}
 	}
 	

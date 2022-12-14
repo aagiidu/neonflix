@@ -174,7 +174,8 @@ class Home extends CI_Controller {
 					//redirect(base_url().'index.php?browse/switchprofile' , 'refresh');
 			}
 			else if ($signin_result == false)
-				redirect(base_url().'index.php?home/signin' , 'refresh');
+				// redirect(base_url().'index.php?home/signin' , 'refresh');
+				redirect(base_url().'#login', 'refresh');
 		}
 		$page_data['page_name']		=	'signin';
 		$page_data['page_title']	=	'Нэвтрэх';
