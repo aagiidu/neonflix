@@ -347,7 +347,7 @@ class Crud_model extends CI_Model {
 	function create_movie()
 	{
 		$data['title']				=	$this->input->post('title');
-		$data['description_short']	=	$this->input->post('description_short');
+		$data['description_short']	=	'';
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
 		$data['rating']				=	$this->input->post('rating');
@@ -374,7 +374,7 @@ class Crud_model extends CI_Model {
 	function update_movie($movie_id = '')
 	{
 		$data['title']				=	$this->input->post('title');
-		$data['description_short']	=	$this->input->post('description_short');
+		$data['description_short']	=	'';
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
 		$data['rating']				=	$this->input->post('rating');
@@ -393,15 +393,26 @@ class Crud_model extends CI_Model {
 		$data['actors']	= '[]';
 		$this->db->update('movie', $data, array('movie_id'=>$movie_id));
 		
-		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
-		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
+		// move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
+		// move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
+
+		try {
+			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
+				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
+			}
+			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
+				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');	
+			}
+		} catch (\Throwable $th) {
+			// do nothing
+		}
 		
 	}
 	
 	function create_series()
 	{
 		$data['title']				=	$this->input->post('title');
-		// $data['description_short']	=	$this->input->post('description_short');
+		$data['description_short']	=	'';
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
 		$data['rating']				=	$this->input->post('rating');
@@ -434,7 +445,7 @@ class Crud_model extends CI_Model {
 	function update_series($series_id = '')
 	{
 		$data['title']				=	$this->input->post('title');
-		// $data['description_short']	=	$this->input->post('description_short');
+		$data['description_short']	=	'';
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
 		$data['rating']				=	$this->input->post('rating');
