@@ -452,17 +452,17 @@ class Crud_model extends CI_Model {
 		// $data['actors']				=	json_encode($actor_entries);
 		
 		$this->db->update('series', $data, array('series_id'=>$series_id));
-		echo __DIR__;
+		echo $series_id;
 		echo '<hr />';
 		var_dump($_FILES);
 		echo '<hr />';
 		try {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
+				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], $series_id . '.jpg');
 				echo 'RES1: '.$res1;
 			}
 			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
+				$res2 = move_uploaded_file($_FILES['poster']['tmp_name'], $series_id . '.jpg');	
 				echo 'RES2: '.$res2;
 			}
 		} catch (\Throwable $th) {
