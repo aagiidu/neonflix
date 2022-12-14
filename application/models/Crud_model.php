@@ -424,8 +424,8 @@ class Crud_model extends CI_Model {
 		echo '<hr />';
 		var_dump($_FILES);
 		try {
-			copy($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
-			copy($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
+			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
+			move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
 		} catch (\Throwable $th) {
 			echo 'Error: ' . $th;
 		}
@@ -451,16 +451,16 @@ class Crud_model extends CI_Model {
 		// $data['actors']				=	json_encode($actor_entries);
 		
 		$this->db->update('series', $data, array('series_id'=>$series_id));
-		echo $series_id;
+		echo __DIR__;
 		echo '<hr />';
 		var_dump($_FILES);
 		echo '<hr />';
 		try {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				copy($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
+				move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 			}
 			if(isset($_FILES['poster']) && strlen($_FILES['thumb']['tmp_name']) > 0){
-				copy($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
+				move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
 			}
 		} catch (\Throwable $th) {
 			echo 'Error: ' . $th;
