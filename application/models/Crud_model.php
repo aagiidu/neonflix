@@ -423,9 +423,9 @@ class Crud_model extends CI_Model {
 		echo $series_id;
 		echo '<hr />';
 		var_dump($_FILES);
-		die;
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
+		die;
 	}
 	
 	function update_series($series_id = '')
@@ -450,13 +450,15 @@ class Crud_model extends CI_Model {
 		echo $series_id;
 		echo '<hr />';
 		var_dump($_FILES);
-		die;
+		echo '<hr />';
 		if(isset($_FILES['thumb'])){
+			echo strlen($_FILES['thumb']['tmp_name']);
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		}
 		if(isset($_FILES['poster'])){
 			move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');	
 		}
+		die;
 	}
 
 	function get_animes($genre_id, $limit = NULL, $offset = 0) 
