@@ -355,14 +355,14 @@ class Crud_model extends CI_Model {
 		$data['featured']			=	$this->input->post('featured');
 		$data['url']				=	$this->input->post('url');
 		
-		$actors						=	$this->input->post('actors');
+		/* $actors						=	$this->input->post('actors');
 		$actor_entries				=	array();
 		$number_of_entries			=	sizeof($actors);
 		for ($i = 0; $i < $number_of_entries ; $i++)
 		{
 			array_push($actor_entries, $actors[$i]);
 		}
-		$data['actors']				=	json_encode($actor_entries);
+		$data['actors']				=	json_encode($actor_entries); */
 		
 		$this->db->insert('movie', $data);
 		$movie_id = $this->db->insert_id();
@@ -382,14 +382,14 @@ class Crud_model extends CI_Model {
 		$data['featured']			=	$this->input->post('featured');
 		$data['url']				=	$this->input->post('url');
 		
-		$actors						=	$this->input->post('actors');
+		/* $actors						=	$this->input->post('actors');
 		$actor_entries				=	array();
 		$number_of_entries			=	sizeof($actors);
 		for ($i = 0; $i < $number_of_entries ; $i++)
 		{
 			array_push($actor_entries, $actors[$i]);
 		}
-		$data['actors']				=	json_encode($actor_entries);
+		$data['actors']				=	json_encode($actor_entries); */
 		
 		$this->db->update('movie', $data, array('movie_id'=>$movie_id));
 		
@@ -420,7 +420,10 @@ class Crud_model extends CI_Model {
 		//die;
 		$res = $this->db->insert('series', $data);
 		$series_id = $this->db->insert_id();
-		// echo $series_id;
+		echo $series_id;
+		echo '<hr />';
+		var_dump($_FILES);
+		die;
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/series_poster/' . $series_id . '.jpg');
 	}
@@ -444,7 +447,10 @@ class Crud_model extends CI_Model {
 		// $data['actors']				=	json_encode($actor_entries);
 		
 		$this->db->update('series', $data, array('series_id'=>$series_id));
-		//var_dump($_FILES);
+		echo $series_id;
+		echo '<hr />';
+		var_dump($_FILES);
+		die;
 		if(isset($_FILES['thumb'])){
 			move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/series_thumb/' . $series_id . '.jpg');
 		}
