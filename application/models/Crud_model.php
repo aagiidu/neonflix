@@ -350,7 +350,7 @@ class Crud_model extends CI_Model {
 		$data['description_short']	=	'';
 		$data['description_long']	=	$this->input->post('description_long');
 		$data['year']				=	$this->input->post('year');
-		$data['rating']				=	$this->input->post('rating');
+		$data['rating']				=	5; // $this->input->post('rating');
 		$data['genre_id']			=	$this->input->post('genre_id');
 		$data['featured']			=	$this->input->post('featured');
 		$data['url']				=	$this->input->post('url');
