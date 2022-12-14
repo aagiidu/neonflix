@@ -369,6 +369,9 @@ class Crud_model extends CI_Model {
 		$this->db->insert('movie', $data);
 		$movie_id = $this->db->insert_id();
 		echo $movie_id;
+		echo '<hr />';
+		echo strlen($_FILES['thumb']['tmp_name']);
+		echo '<hr />';
 		move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
 		move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
 		die;
@@ -395,10 +398,13 @@ class Crud_model extends CI_Model {
 		$data['actors']				=	json_encode($actor_entries); */
 		$data['actors']	= '[]';
 		$this->db->update('movie', $data, array('movie_id'=>$movie_id));
+		echo '<hr />';
 		echo $movie_id;
+		echo '<hr />';
 		// move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
 		// move_uploaded_file($_FILES['poster']['tmp_name'], 'assets/global/movie_poster/' . $movie_id . '.jpg');
-
+		echo strlen($_FILES['thumb']['tmp_name']);
+		echo '<hr />';
 		try {
 			if(isset($_FILES['thumb']) && strlen($_FILES['thumb']['tmp_name']) > 0){
 				$res1 = move_uploaded_file($_FILES['thumb']['tmp_name'], 'assets/global/movie_thumb/' . $movie_id . '.jpg');
