@@ -38,7 +38,8 @@
 				<div id="dplayer"></div>
 				<script src="/assets/frontend/flixer/neon.js"></script>
 				<script>
-					
+					const data = JSON.parse('<?php echo $epison; ?>');
+					console.log(data);
 					$(function() {
 						let w = $(window).width()
 						console.log('w', w)
@@ -51,9 +52,8 @@
 						}
 						let type = '<?php echo $type ?>';
 						let poster = '<?php echo $this->crud_model->get_poster_url('series' , $row['series_id']);?>';
-						const data = JSON.parse('<?php echo $epison; ?>');
-						console.log(data);
-						initNeonPlayer(data, type, poster, ['1080', '720']);
+						
+						initNeonPlayer(data, type, poster);
 					});
 				</script>
 			</div>

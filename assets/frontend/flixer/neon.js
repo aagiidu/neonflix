@@ -48,22 +48,22 @@ m += '        </span>';
 m += '    </button>';
 m += '</div>';
 
-function initNeonPlayer(data, t, p, q){
+function initNeonPlayer(data, t, p){
     type = t;
     episodes = data;
     episode = episodes[0];
     poster = p;
     //c = $('#centerctrl').detach();
-    setMedia(episode, q);
+    setMedia(episode);
 }
 
-function playEpisode(episodeId, q){
+function playEpisode(episodeId){
     episode = episodes.find((e, i) => {
         currentEpisodeIndex = i;
         return e.episode_id === episodeId.toString()
     });
     console.log('episode chosen', episode)
-    setMedia(episode, q);
+    setMedia(episode);
 }
 
 function setMovie(url, poster, q){
@@ -130,10 +130,11 @@ document.onclick = function(e) {
       console.log(el);
     
 }
-function setMedia(episode, q){
+function setMedia(episode){
     if(dp) {
         dp.destroy();
     }
+    let q = episode.qlt || ['720'];
     $(`#episodes li`).removeClass('selected');
     $(`#episodes .${episode.episode_id}`).addClass('selected');
     //$('#movieTitle').text(episode.title)

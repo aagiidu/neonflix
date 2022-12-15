@@ -40,9 +40,11 @@
 				<script>
 					$(function() {
 						let url = '<?php echo $row['url'] ?>'
+						let qlt = JSON.parse('<?php echo $row['qlt'] ?>')
+						console.log('qlt', qlt)
 						let poster = '<?php echo $this->crud_model->get_poster_url('movie' , $row['movie_id']);?>';
 						console.log('poster', poster)
-						setMovie(url, poster, JSON.parse($row['qlt']));
+						setMovie(url, poster, qlt);
 					});
 				</script>
 			</div>

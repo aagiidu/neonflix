@@ -204,6 +204,7 @@ class Browse extends CI_Controller {
 		$episodes = $this->crud_model->get_episodes_of_season($page_data['season_id']);
 		for ($i=0; $i < count($episodes) - 1; $i++) { 
 			$episodes[$i]['poster'] = $this->crud_model->get_thumb_url('episode' , $episodes['episode_id']);
+			$episodes[$i]['qlt'] 	= json_decode($episodes[$i]['qlt']);
 		}
 		$page_data['epison']		=	json_encode($episodes);
 		$page_data['type'] = 'series';
