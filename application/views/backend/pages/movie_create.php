@@ -92,30 +92,16 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="form-label">Нягтшил </label>
-								<div class="controls qlt">
-									<label>
-										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="1080"/> 1080p
-									</label>
-									<label>
-										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="720"/> 720p
-									</label>
-									<label>
-										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="480"/> 480p
-									</label>
-									<label>
-										<input type="checkbox" class="form-control checkbox" name="qlt[]" value="360"/> 360p
-									</label>
-								</div>
+								<?php include('qlt.php'); ?>
 							</div>
 						</div>
 						<!-- PREVIEW OF THE VIDEO FILE -->
-						<div class="col-md-6 col-sm-12 col-xs-12">
+						<!-- <div class="col-md-6 col-sm-12 col-xs-12">
 							<div class="form-group">
 								<label class="form-label">Preview:</label>
-								<div id="video_player_div"></div>
+								<div id="player"></div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<hr>
 					<div class="form-group">
@@ -133,9 +119,16 @@
 	function load_player()
 	{
 		url	=	document.getElementById("url").value;
-		
+		var q = document.querySelectorAll('input[name="qlt[]"]:checked');
+		console.log('******', q)
+		if(!q || q.length == 0) return false;
+		$('#video_player_div').remove();
+		let d = document.createElement('div');
+		d.setAttribute('id', 'video_player_div');
+		let c = document.getElementById('player');
+		c.appendChild(d);
 		jwplayer("video_player_div").setup({
-			"file": url,
+			"file": `https://stream.neontoon.mn/video/movie/${url}/${q[0].value}`,
 			"width": "100%",
 			aspectratio: "16:9",
 			listbar: {

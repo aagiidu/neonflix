@@ -262,9 +262,9 @@ progress[value]::-moz-progress-bar {
 		width: Calc(25% - 20px);
 	} */
 	
-	/* .sidecol ~ div{
-		width: Calc(100% - 100px);
-	} */
+	.sidecol ~ div{
+		margin-top: 150px !important;
+	}
 	/* .genre_title{margin: 5px 20px 0 !important;} */
 	.img-btn img {
 		width: 150px;
@@ -342,6 +342,10 @@ progress[value]::-moz-progress-bar {
 	.dplayer-controller .dplayer-icons .dplayer-icon{padding: 0;}
 	.dplayer-controller .dplayer-icons .dplayer-setting{display: none !important;}
 	.dplayer-full-in-icon{display: none !important;}
+	.sidecol ~ div{
+		padding-top: 0 !important;
+		margin-top: 30px !important;
+	}
 }
 
 @media screen and (max-width: 480px) {

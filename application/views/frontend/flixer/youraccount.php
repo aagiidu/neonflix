@@ -1,29 +1,12 @@
 <?php include 'header_browse.php';?>
 <div class="container" style="margin-top: 90px;">
 	<div class="row" style="min-height: 55vh">
-		<!-- NOTIFICATION MESSAGES HERE -->
 		<?php
-			if ($this->session->flashdata('payment_status') == 'cancelled'):
-			?>
-		<div class="alert alert-dismissible alert-danger">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Payment cancelled.
-		</div>
-		<?php endif;?>
-		<?php
-			if ($this->session->flashdata('payment_status') == 'success'):
+			if ($this->session->flashdata('status') == 'phone_changed'):
 			?>
 		<div class="alert alert-dismissible alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Payment completed successfully.
-		</div>
-		<?php endif;?>
-		<?php
-			if ($this->session->flashdata('status') == 'email_changed'):
-			?>
-		<div class="alert alert-dismissible alert-success">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Email changed successfully.
+			Утасны дугаар амжилттай солигдлоо.
 		</div>
 		<?php endif;?>
 		<?php
@@ -31,18 +14,10 @@
 			?>
 		<div class="alert alert-dismissible alert-success">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Password changed successfully.
+			Нууц үг амжилттай солигдлоо.
 		</div>
 		<?php endif;?>
-		<?php
-			if ($this->session->flashdata('status') == 'subscription_cancelled'):
-			?>
-		<!-- ERROR MESSAGE --> 
-		<div class="alert alert-dismissible alert-success">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Membership cancelled successfully. You can purchase or renew it anytime.
-		</div>
-		<?php endif;?>
+		
 		<!-- NOTIFICATION MESSAGES ENDS -->
 		<div class="container">
 		<div class="row">

@@ -1,5 +1,5 @@
 
-<link rel="shortcut icon" href="<?php echo base_url();?>assets/global/item_thumb.png">
+<!-- <link rel="shortcut icon" href="<?php echo base_url();?>assets/global/item_thumb.png"> -->
 
 <link href="<?php echo site_url('assets/backend/plugins/bootstrap-select2/select2.css');?>" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?php echo site_url('assets/backend/plugins/jquery-datatable/css/jquery.dataTables.css');?>" rel="stylesheet" type="text/css" />
