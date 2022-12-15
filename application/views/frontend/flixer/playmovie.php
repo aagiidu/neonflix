@@ -42,7 +42,7 @@
 						let url = '<?php echo $row['url'] ?>'
 						let poster = '<?php echo $this->crud_model->get_poster_url('movie' , $row['movie_id']);?>';
 						console.log('poster', poster)
-						setMovie(url, poster);
+						setMovie(url, poster, JSON.parse($row['qlt']));
 					});
 				</script>
 			</div>

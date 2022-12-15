@@ -1,8 +1,10 @@
 <?php include 'header_browse.php';?>
 <style>
-	table{
-	background-color: rgb(243, 243, 243);
-	}
+	.plans{max-width:800px;margin:auto}
+	.plans>div{display: flex; flex-direction: row;align-items: stretch;}
+	.item{background:#eee}
+	.plans .item h4, .plans .item h2{text-align:center}
+	.plans button{width:100%}
 </style>
 <div class="container" style="margin-top: 90px;">
 	<div class="row">
@@ -10,51 +12,31 @@
 			<h3 class="black_text">Эрх нээх</h3>
 			<hr>
 		</div>
-		<div class="col-lg-8">
-			<h4 class="black_text">Гишүүнчлэлийн хугацаагаа сонгоно уу.</h4>
-			<form method="post" action="<?php echo base_url();?>index.php?payment/pay/post">
-				<table class="table table-striped table-hover" style="color: #000;">
-					<tbody>
-						<tr>
-							<td>
-								<h6>Багц</h6>
-							</td>
-							<?php
-								$plans = $this->crud_model->get_active_plans();
-								foreach ($plans as $row):
-								?>
-							<td align="center">
-								<h5 style="text-transform: uppercase;"><?php echo $row['name'];?></h5>
-							</td>
-							<?php endforeach;?>
-						</tr>
-						<tr>
-							<td>Сарын төлбөр</td>
-							<?php
-								$plans = $this->crud_model->get_active_plans();
-								foreach ($plans as $row):
-								?>
-							<td align="center">₮<?php echo number_format($row['price']);?></td>
-							<?php endforeach;?>
-						</tr>
-						<tr>
-							<td></td>
-							<?php
-								$plans = $this->crud_model->get_active_plans();
-								foreach ($plans as $row):
-								?>
-							<td align="center">
-								<input type="radio" name="plan_id" value="<?php echo $row['plan_id'];?>" onChange="enable_payment()" />
-							</td>
-							<?php endforeach;?>
-						</tr>
-					</tbody>
-				</table>
-				<div class="pull-right">
-					<a href="<?php echo base_url();?>index.php?browse/youraccount" class="btn btn-default">Буцах</a>
-					<button id="payment" class="btn btn-primary" type="submit"> Сонгох </button>
+		<div class="col-lg-12">
+			<div class="plans">
+				<h4 class="black_text">Гишүүнчлэлийн багцаа сонгоно уу</h4>
+				<div>
+					<?php $plans = $this->crud_model->get_active_plans(); 
+						foreach ($plans as $row): ?>
+						<div style="width: <?php echo 100 / count($plans) ?>%;padding:10px">
+							<div class="item">
+								<h4><?php echo $row["name"] ?></h4>
+								<h2><?php echo $row["price"] ?></h2>
+								<button type="button" class="btn btn-success w-100">СОНГОХ</button>
+							</div>
+						</div>
+					<?php endforeach;?>
 				</div>
-			</form>
+					
+					<!-- <pre>
+						<?php
+							// var_dump($userdata);
+						?>
+					</pre> -->
+					
+				
+			</div>
+			
 			<!-- <div class="pull-right">
 				<a href="<?php echo base_url();?>index.php?browse/youraccount" class="btn btn-default">Буцах</a>
 				<button id="payment" class="btn btn-primary" type="button"> Шилжүүлсэн </button>

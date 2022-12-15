@@ -1,4 +1,4 @@
-const q = [1080, 720, 640];
+// const q = [1080, 720, 640];
 let dp, episode, c, m, episodes, type, poster, timer;
 let currentEpisodeIndex = 0;
 
@@ -48,25 +48,25 @@ m += '        </span>';
 m += '    </button>';
 m += '</div>';
 
-function initNeonPlayer(data, t, p){
+function initNeonPlayer(data, t, p, q){
     type = t;
     episodes = data;
     episode = episodes[0];
     poster = p;
     //c = $('#centerctrl').detach();
-    setMedia(episode);
+    setMedia(episode, q);
 }
 
-function playEpisode(episodeId){
+function playEpisode(episodeId, q){
     episode = episodes.find((e, i) => {
         currentEpisodeIndex = i;
         return e.episode_id === episodeId.toString()
     });
     console.log('episode chosen', episode)
-    setMedia(episode);
+    setMedia(episode, q);
 }
 
-function setMovie(url, poster){
+function setMovie(url, poster, q){
    
     let quality = [];
     for (let i = 0; i < q.length; i++) {
@@ -130,7 +130,7 @@ document.onclick = function(e) {
       console.log(el);
     
 }
-function setMedia(episode){
+function setMedia(episode, q){
     if(dp) {
         dp.destroy();
     }
