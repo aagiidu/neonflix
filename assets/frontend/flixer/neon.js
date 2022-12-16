@@ -196,14 +196,14 @@ function nback(){
     console.log('backbtn')
     let current = dp.video.currentTime
     dp.seek(current >= 10 ? current - 10 : 0);
-    dp.play();
+    dp.toggle();
 }
 
 function nskip(){
     console.log('skipbtn')
     let current = dp.video.currentTime
     dp.seek(current + 10);
-    dp.play();
+    dp.toggle();
 }
 
 function nprev(){
