@@ -82,10 +82,10 @@ function setMovie(url, poster, q){
         theme: '#FADFA3',
         loop: false,
         lang: 'MN-mn',
-        //screenshot: true,
+        // screenshot: true,
         hotkey: true,
         preload: 'auto',
-        logo: '/assets/global/logo_h50.png',
+        // logo: '/assets/global/logo_h50.png',
         danmaku: false,
         volume: 0.7,
         mutex: true,
@@ -120,7 +120,7 @@ function setMovie(url, poster, q){
     })	
 }
 
-document.onclick = function(e) {
+/* document.onclick = function(e) {
     
       var el = e.target.getAttribute('id');
       if(el == 'playbtn'){
@@ -129,7 +129,8 @@ document.onclick = function(e) {
       }
       console.log(el);
     
-}
+} */
+
 function setMedia(episode){
 
     if(dp) {
@@ -158,10 +159,10 @@ function setMedia(episode){
         loop: false,
         airplay: true,
         lang: 'MN-mn',
-        //screenshot: true,
+        // screenshot: true,
         hotkey: true,
         preload: 'auto',
-        logo: '/assets/global/logo_h50.png',
+        // logo: '/assets/global/logo_h50.png',
         danmaku: false,
         volume: 0.7,
         mutex: true,
