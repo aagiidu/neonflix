@@ -202,7 +202,7 @@ class Browse extends CI_Controller {
 		$page_data['poster']    	= 	$this->crud_model->get_thumb_url('series' , $series_id);
 		// $page_data['series_id']		=	$series_id;
 		$episodes = $this->crud_model->get_episodes_of_season($page_data['season_id']);
-		for ($i=0; $i < count($episodes) - 1; $i++) { 
+		for ($i=0; $i < count($episodes); $i++) { 
 			$episodes[$i]['poster'] = $this->crud_model->get_thumb_url('episode' , $episodes['episode_id']);
 			$episodes[$i]['qlt'] 	= json_decode($episodes[$i]['qlt']);
 		}
@@ -232,8 +232,9 @@ class Browse extends CI_Controller {
 		$page_data['poster']    	= 	$this->crud_model->get_thumb_url('series' , $series_id);
 		// $page_data['series_id']		=	$series_id;
 		$episodes = $this->crud_model->get_episodes_of_season($page_data['season_id']);
-		for ($i=0; $i < count($episodes) - 1; $i++) { 
+		for ($i=0; $i < count($episodes); $i++) { 
 			$episodes[$i]['poster'] = $this->crud_model->get_thumb_url('episode' , $episodes['episode_id']);
+			$episodes[$i]['qlt'] 	= json_decode($episodes[$i]['qlt']);
 		}
 		$page_data['epison']		=	json_encode($episodes);
 		$page_data['type'] = 'anime';
