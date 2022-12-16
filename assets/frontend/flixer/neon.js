@@ -142,6 +142,7 @@ function setMedia(episode){
     $('.chosen').text(q[0] + 'p');
     let quality = [];
     for (let i = 0; i < q.length; i++) {
+        console.log(`https://stream.neontoon.mn/video/${type}/${episode.url}/${q[i]}`)
         quality.push({
             name: q[i] + 'p',
             url: `https://stream.neontoon.mn/video/${type}/${episode.url}/${q[i]}`,
