@@ -113,6 +113,10 @@ function setMovie(url, poster, q){
 
     dp.on('play', function(){
         $('.playbtn').find('img').attr('src', '/assets/global/controls/pause.svg');
+        setTimeout(() => {
+            console.log('hiding')
+            $('#dplayer').addClass('dplayer-hide-controller')
+        }, 3000)
     })
 
     dp.on('pause', function(){
@@ -120,6 +124,14 @@ function setMovie(url, poster, q){
     })	
 }
 
+$(document).on('click', 'video.dplayer-video', function(){
+    setTimeout(() => {
+        if($('#dplayer').hasClass('dplayer-hide-controller')){
+            console.log('removing')
+            $('#dplayer').removeClass('dplayer-hide-controller')
+        } 
+    }, 200)
+})
 /* document.onclick = function(e) {
     
       var el = e.target.getAttribute('id');
@@ -185,6 +197,10 @@ function setMedia(episode){
 
     dp.on('play', function(){
         $('.playbtn').find('img').attr('src', '/assets/global/controls/pause.svg');
+        setTimeout(() => {
+            console.log('hiding')
+            $('#dplayer').addClass('dplayer-hide-controller')
+        }, 3000)
     })
 
     dp.on('pause', function(){
@@ -196,14 +212,12 @@ function nback(){
     console.log('backbtn')
     let current = dp.video.currentTime
     dp.seek(current >= 10 ? current - 10 : 0);
-    dp.toggle();
 }
 
 function nskip(){
     console.log('skipbtn')
     let current = dp.video.currentTime
     dp.seek(current + 10);
-    dp.toggle();
 }
 
 function nprev(){
@@ -221,11 +235,14 @@ function nnext(){
 }
 
 document.getElementById('dplayer').addEventListener(`mousemove`, () => {
-    if($('#dplayer').hasClass('dplayer-hide-controller')){
-        $('#dplayer').removeClass('dplayer-hide-controller')
+    console.log('mousemove', $(window).width())
+    if($(window).width() > 768) {
+        if($('#dplayer').hasClass('dplayer-hide-controller')){
+            $('#dplayer').removeClass('dplayer-hide-controller')
+        }
+        clearTimeout(timer)
+        timer = setTimeout(onMouseStopped, 4000)
     }
-    clearTimeout(timer)
-    timer = setTimeout(onMouseStopped, 4000)
 })
 
 function onMouseStopped(){

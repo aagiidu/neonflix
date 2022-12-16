@@ -320,6 +320,7 @@ progress[value]::-moz-progress-bar {
 	/* */
 	.sidecol ~ div{
 		margin-left: 0 !important;
+		margin-top: 15px !important;
 		width: 100%;
 	}
 	footer {
