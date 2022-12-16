@@ -131,6 +131,7 @@ document.onclick = function(e) {
     
 }
 function setMedia(episode){
+
     if(dp) {
         dp.destroy();
     }
@@ -149,6 +150,7 @@ function setMedia(episode){
             type: 'auto',
         });
     }
+    console.log('quality', quality)
     dp = new DPlayer({
         container: document.getElementById('dplayer'),
         autoplay: false,
