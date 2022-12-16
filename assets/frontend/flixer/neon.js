@@ -92,7 +92,7 @@ function setMovie(url, poster, q){
         contextmenu: [],
         video: {
             quality,
-            defaultQuality: 1,
+            defaultQuality: 0,
             pic: poster,
             // thumbnails: 'thumbnails.jpg',
         },
@@ -168,7 +168,7 @@ function setMedia(episode){
         contextmenu: [],
         video: {
             quality,
-            defaultQuality: 1,
+            defaultQuality: 0,
             pic: poster,
             // thumbnails: 'thumbnails.jpg',
         },
