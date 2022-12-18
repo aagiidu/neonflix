@@ -9,12 +9,24 @@
     white-space: nowrap; */
 }
 .land-btn{
-    padding: 20px 30px; 
-    min-width: 200px;
+    padding: 20px 15px; 
+    min-width: 220px;
     margin: 15px;
     font-size: 20px;
     border-radius: 20px;
+	position: relative;
 }
+
+.land-btn span{
+	position: absolute;
+	display: block;
+	width: 100%;
+	left: 0;
+	font-size: 12px;
+	text-align: center;
+	color:#f0b0b0
+}
+
 .reg-btn{min-width: 250px; margin-top: 40px;}
 .landing-poster{
     height:93vh;background-image: url('/assets/global/landingposter2.jpg');background-size: cover;
@@ -31,8 +43,8 @@
 .login-form{background-color: #f3f3f3; padding: 30px; width: 420px; margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%);}
 .login-container{height: Calc(100vh - 202px); width: 100%;}
 .grid{display: flex;flex-wrap: wrap; justify-content: 'last baseline'}
-.modal-bg{position: fixed;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.75);z-index: 999;}
-.modal{background: #ddd;padding: 20px;top:50%;left:50%;transform: translate(-50%, -50%);display: block;}
+.modal-bg{position: fixed;top:0; width: 100%;height: 100%;background: rgba(0, 0, 0, 0.75);z-index: 999;}
+.modal{background: #ddd;padding: 20px;min-width: 250px; top:50%;left:50%;transform: translate(-50%, -50%);display: block;}
 .modal input{border:none;width: 100%;background: transparent;padding:10px;}
 .modal input:focus-visible{outline-color: #9933ff;}
 .auth-modal{height: 400px;}
@@ -320,16 +332,17 @@ progress[value]::-moz-progress-bar {
 	/* */
 	.sidecol ~ div{
 		margin-left: 0 !important;
-		margin-top: 15px !important;
+		/* margin-top: 15px !important; */
 		width: 100%;
 	}
+	
 	footer {
 		margin: 15px;
     	/* width: Calc(100% - 30px); */
 	}
 	.movie-list li.active a::after{display: none !important;}
 }
-
+.mt-md-container{margin-top: 90px !important;}
 @media screen and (max-width: 600px) {
 	.grid figure{
 		width: Calc(33.33% - 20px);

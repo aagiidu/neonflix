@@ -26,7 +26,6 @@
 		.item .price{margin:10px 0 20px;}
 		.main-title{width: Calc(100% - 50px); margin: auto;font-size:22px}
 	}
-
 </style>
 <div class="container" style="margin-top: 90px;">
 	<div class="row">
