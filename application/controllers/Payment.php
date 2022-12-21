@@ -23,6 +23,7 @@ class Payment extends CI_Controller {
 
 	public function token($uid)
 	{
+		
 		$token = hash('sha256', $uid . time());
 		$data['hash'] = $token;
 		$this->db->update('user', $data, array('user_id' => $uid));
