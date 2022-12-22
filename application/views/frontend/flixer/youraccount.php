@@ -162,7 +162,7 @@
 				<ul>
 					<li><span>Банк:</span><span>Хаан банк</span></li>
 					<li><span>Дансны дугаар:</span><span>5000799719</span></li>
-					<li><span>Хүлээн авагч:</span><span>В.Ач-Эрдэнэ</span></li>
+					<li><span>Хүлээн авагч:</span><span>Б.Ач-Эрдэнэ</span></li>
 					<li><span>Гүйлгээний дүн:</span><span id="price"></span></li>
 					<li><span>Гүйлгээний утга:</span><span><?php echo $userdata->user_id ?></span></li>
 				</ul>
