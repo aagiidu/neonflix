@@ -339,8 +339,8 @@ CREATE TABLE `subscription` (
   `paid_amount` float NOT NULL,
   `timestamp_from` int NOT NULL,
   `timestamp_to` int NOT NULL,
-  `payment_method` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'bank',
-  `payment_details` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '--',
+  `payment_method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'bank',
+  `payment_details` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '--',
   `payment_timestamp` int NOT NULL,
   `status` int NOT NULL DEFAULT '1' COMMENT '1 active, 0 cancelled',
   PRIMARY KEY (`subscription_id`)
