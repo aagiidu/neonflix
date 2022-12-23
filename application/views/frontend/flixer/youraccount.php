@@ -100,15 +100,16 @@
 									$current_plan_id			=	$this->crud_model->get_current_plan_id();
 									$current_plan_name			=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->name;
 									// $current_plan_screens		=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->screens;
+									$subscriptionId = $this->crud_model->validate_subscription();
 									$current_subscription_upto_timestamp
-																=	$this->db->get_where('subscription', array('plan_id'=> $current_plan_id))->row()->timestamp_to;
+																=	$this->db->get_where('subscription', array('subscription_id'=> $subscriptionId))->row()->timestamp_to;
 								?>
 								
 								<p class="text-center">Багцын нэр: <b class="black_text" style="text-transform: capitalize;"><?php echo $current_plan_name; ?></b></p>
 								<br>
 								Хугацаа: <b><?php echo date('Y-m-d', $current_subscription_upto_timestamp);?></b> хүртэл хүчинтэй
 								<br>
-								<?php echo $current_subscription_upto_timestamp ?>
+								<?php echo $subscriptionId . '--' . $current_subscription_upto_timestamp ?>
 								<?php endif;?>
 								<!-- IF ANY ACTIVE SUBSCRIPTION IS NOT FOUND -->
 								<?php
@@ -125,6 +126,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="plans">
+					<?php if ( $this->crud_model->validate_subscription() == false): ?>
 					<h4 class="black_text main-title" style="text-align:center">Гишүүнчлэлийн багцаа сонгоно уу</h4>
 					<div>
 						<?php $plans = $this->crud_model->get_active_plans(); 
@@ -139,6 +141,7 @@
 						<?php endforeach;?>
 					</div>		
 					<button type="button" class="btn btn-success" onclick="checkPayment()">Төлбөрөө шилжүүлсэн бол энд дарж шалгана уу</button>
+					<?php endif;?>
 				</div>
 			</div>
 		</div>
