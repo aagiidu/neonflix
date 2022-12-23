@@ -103,12 +103,12 @@
 									$current_subscription_upto_timestamp
 																=	$this->db->get_where('subscription', array('plan_id'=> $current_plan_id))->row()->timestamp_to;
 								?>
-								<b class="black_text" style="text-transform: capitalize;">
-								<?php echo $current_plan_name; ?>
-								</b>
+								
+								<p class="text-center">Багцын нэр: <b class="black_text" style="text-transform: capitalize;"><?php echo $current_plan_name; ?></b></p>
 								<br>
 								Хугацаа: <b><?php echo date('Y-m-d', $current_subscription_upto_timestamp);?></b> хүртэл хүчинтэй
 								<br>
+								<?php echo $current_subscription_upto_timestamp ?>
 								<?php endif;?>
 								<!-- IF ANY ACTIVE SUBSCRIPTION IS NOT FOUND -->
 								<?php
