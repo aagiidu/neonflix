@@ -96,28 +96,25 @@
 								<a href="#" class="btn btn-default" style="margin:10px 0px;background: #5cd65c"> Гишүүнчлэл идэвхитэй </a>
 							<?php endif;?>
 							<?php
-									if ( $this->crud_model->validate_subscription() != false):
-										$current_plan_id			=	$this->crud_model->get_current_plan_id();
-										$current_plan_name			=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->name;
-										// $current_plan_screens		=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->screens;
-										$current_subscription_upto_timestamp
-																	=	$this->db->get_where('subscription', array('plan_id'=> $current_plan_id))->row()->timestamp_to;
+								if ( $this->crud_model->validate_subscription() != false):
+									$current_plan_id			=	$this->crud_model->get_current_plan_id();
+									$current_plan_name			=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->name;
+									// $current_plan_screens		=	$this->db->get_where('plan', array('plan_id'=> $current_plan_id))->row()->screens;
+									$current_subscription_upto_timestamp
+																=	$this->db->get_where('subscription', array('plan_id'=> $current_plan_id))->row()->timestamp_to;
+								?>
+								<b class="black_text" style="text-transform: capitalize;">
+								<?php echo $current_plan_name; ?>
+								</b>
+								<br>
+								Хугацаа: <b><?php echo date('Y-m-d', $current_subscription_upto_timestamp);?></b> хүртэл хүчинтэй
+								<br>
+								<?php endif;?>
+								<!-- IF ANY ACTIVE SUBSCRIPTION IS NOT FOUND -->
+								<?php
+									if ( $this->crud_model->validate_subscription() == false):
 									?>
-									<b class="black_text" style="text-transform: capitalize;">
-									<?php echo $current_plan_name; ?>
-									</b>
-									<br>
-									Хугацаа: <b><?php echo date('Y-m-d', $current_subscription_upto_timestamp);?></b> хүртэл хүчинтэй
-									<br>
-									<?php endif;?>
-									<!-- IF ANY ACTIVE SUBSCRIPTION IS NOT FOUND -->
-									<?php
-										if ( $this->crud_model->validate_subscription() == false):
-										?>
-										Танд одоогоор идэвхитэй гишүүнчлэлийн багц байхгүй байна. <br /> Доорх багцуудаас сонгож идэвхижүүлнэ үү.
-
-									<!-- <a href="<?php echo base_url();?>index.php?browse/purchaseplan" 
-										class="btn btn-primary" style="margin:10px 0px;"> Гишүүнчлэлийн эрх авах </a> -->
+									Танд одоогоор идэвхитэй гишүүнчлэлийн багц байхгүй байна. <br /> Доорх багцуудаас сонгож идэвхижүүлнэ үү.
 								<?php endif;?>
 							</div>
 						</div>
@@ -141,7 +138,7 @@
 							</div>
 						<?php endforeach;?>
 					</div>		
-					
+					<button type="button" class="btn btn-success" onclick="checkPayment()">Төлбөрөө шилжүүлсэн бол энд дарж шалгана уу</button>
 				</div>
 			</div>
 		</div>
@@ -174,15 +171,16 @@
 </div>
 <script>
 	function openPaymentModal(price){
-		console.log(price)
 		$('#price').text('₮' + price)
 		$('#customModal').addClass('show');
 	}
 
 	function closePaymentModal(){
-		console.log('sldkjslkjl')
-		// showLoginForm();
 		$('#customModal').removeClass('show');
+	}
+
+	function checkPayment(){
+		window.location.reload()
 	}
 </script>
 </div>
