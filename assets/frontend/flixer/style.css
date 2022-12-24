@@ -309,6 +309,9 @@ progress[value]::-moz-progress-bar {
 		position: relative;
 		width: Calc(100% + 30px);
 		border: none;
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 	.navbar-form.navbar-right button{
 		position: absolute;
@@ -361,6 +364,7 @@ progress[value]::-moz-progress-bar {
 		padding-top: 0 !important;
 		margin-top: 45px !important;
 	}
+	.sidebar.show{top:110px}
 }
 
 @media screen and (max-width: 480px) {
