@@ -198,11 +198,14 @@ class Home extends CI_Controller {
 	
 	function signout()
 	{
+		$user_id = $this->session->userdata('user_id');
 		$this->session->set_userdata('user_login_status', '');
         $this->session->set_userdata('user_id', '');
         $this->session->set_userdata('login_type', '');
         $this->session->sess_destroy();
         $this->session->set_flashdata('logout_notification', 'logged_out');
+		$data['user1_session']	=	'';
+		$updateRes = $this->db->update('user' , $data , array('user_id' => $user_id));
         redirect(base_url().'index.php?home', 'refresh');
 	}
 	

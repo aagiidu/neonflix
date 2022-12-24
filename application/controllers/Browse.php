@@ -501,6 +501,9 @@ class Browse extends CI_Controller {
 		$active_user_session 		=	$this->session->userdata('active_user').'_session';
 		$user_entering_db_timestamp	=	$this->db->get_where('user', array('user_id' => $logged_in_user_id))->row()->$active_user_session;
 
+		if($user_entering_db_timestamp == '') 
+			return;
+
 		$user_entering_timestamp	=	$this->session->userdata('user_entering_timestamp');
 
 		if ($user_entering_timestamp != $user_entering_db_timestamp)
