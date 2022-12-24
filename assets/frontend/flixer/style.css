@@ -359,7 +359,7 @@ progress[value]::-moz-progress-bar {
 	.dplayer-full-in-icon{display: none !important;}
 	.sidecol ~ div{
 		padding-top: 0 !important;
-		margin-top: 30px !important;
+		margin-top: 45px !important;
 	}
 }
 
