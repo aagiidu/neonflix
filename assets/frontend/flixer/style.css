@@ -365,6 +365,7 @@ progress[value]::-moz-progress-bar {
 		margin-top: 45px !important;
 	}
 	.sidebar.show{top:110px}
+	#payModal{width: 90%;height: 60%;}
 }
 
 @media screen and (max-width: 480px) {

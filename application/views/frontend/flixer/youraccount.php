@@ -34,7 +34,7 @@
 	#payModal{text-align:center;color: #242424; background: #9933ff;}
 	#payModal p{color:#fff} 
 	#payModal .close{color:#fff;opacity: 1;position: absolute;top: 15px;right: 15px;}
-	#payModal ul li span{display:inline-block;font-size:17px;width: 150px;}
+	#payModal ul li span{display:inline-block;font-size:17px;width: 150px;max-width:50%}
 	#payModal ul li span:nth-child(1){text-align:right}
 	#payModal ul li span:nth-child(2){text-align:left; padding-left:20px}
 	#payModal ul{margin:0;padding:0}
