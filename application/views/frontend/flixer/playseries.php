@@ -99,7 +99,7 @@
 								$seasons	=	$this->db->get_where('season', array('series_id'=>$series_id))->result_array();
 								foreach ($seasons as $row2):
 								?>
-							<li class="<?php echo $season_id == $row2['season_id'] ? 'active' : '' ?>"><a href="<?php echo base_url();?>index.php?browse/playseries/<?php echo $series_id.'/'.$row2['season_id'];?>">
+							<li class="<?php echo $season_id == $row2['season_id'] ? 'active' : '' ?>"><a href="<?php echo base_url();?>index.php?browse/play<?php echo $type ?>/<?php echo $series_id.'/'.$row2['season_id'];?>">
 								<?php echo $row2['name'];?></a>
 							</li>
 							<?php
