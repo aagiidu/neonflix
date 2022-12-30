@@ -166,29 +166,33 @@ class Crud_model extends CI_Model {
 		return $r->status;
 	}
 
-	// eniig ashiglahgui
-	/* function signup_user() 
+	// emaileer burtguuleh
+	function signup_user($data) 
 	{
-		$data['phone'] 		= $this->input->post('phone');
-		$data['password'] 	= sha1($this->input->post('password'));
-		$data['type'] 		= 0; // user type = customer
-		
-		$this->db->where('phone' , $data['phone']);
+
+		$this->db->where('email' , $data['email']);
 		$this->db->from('user');
         $total_number_of_matching_user = $this->db->count_all_results();
 		// validate if duplicate email exists
         if ($total_number_of_matching_user == 0) {
+			$data['password'] 	= sha1($data['password']);
+			$data['type'] 		= 0; // user type = customer
+			$data['name'] 		= 'User';
+			$data['verified'] 	= 1;
+			$data['phone'] 		= 0;
 			$this->db->insert('user' , $data);
+			echo 'Бүртгэл амжилттай. Та одоо имэйл хаяг болон нууц үгээрээ нэвтэрч болно.';
             // $this->signin($this->input->post('phone') , $this->input->post('password'));
-			$this->session->set_flashdata('signup_result', 'success');
-			return true;
+			// $this->session->set_flashdata('signup_result', 'success');
+			// return true;
         }
 		else {
-			$this->session->set_flashdata('signup_result', 'failed');
-			return false;
+			echo 'Имэйл хаяг бүртгэлтэй байна. Өөр имэйл хаяг ашиглах, эсвэл нууц үгээ сэргээнэ үү.';
+			// $this->session->set_flashdata('signup_result', 'failed');
+			// return false;
 		}
 		
-	} */
+	} 
 	
 	function signin($phone, $password) 
 	{
@@ -203,8 +207,18 @@ class Crud_model extends CI_Model {
             return true;
         }
 		else {
-			$this->session->set_flashdata('signin_result', 'failed');
-			return false;
+			$credential = array('email' => $phone, 'password' => sha1($password));
+			$query = $this->db->get_where('user', $credential);
+			if ($query->num_rows() > 0) {
+				$row = $query->row();
+				$this->session->set_userdata('user_login_status', '1');
+				$this->session->set_userdata('user_id', $row->user_id);
+				$this->session->set_userdata('login_type', $row->type); // 1=admin, 0=customer
+				return true;
+			} else {
+				$this->session->set_flashdata('signin_result', 'failed');
+				return false;
+			}
 		}
 	}
 	

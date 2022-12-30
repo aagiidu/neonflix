@@ -96,6 +96,7 @@
 </div>
 <script>
 	let phoneNumber = '';
+	let regType = 'phone';
 	$(function() {
 		console.log(window.location.hash);
 		if(window.location.hash == '#login'){
@@ -116,23 +117,78 @@
 		$('#customModal').removeClass('show');
 	}
 
+	function phoneOrEmail(id){
+		console.log('phoneOrEmail', id)
+		$('.option-btn').removeClass('btn-success');
+		$(id).addClass('btn-success');
+		if(id == '#byphone'){
+			regType = 'phone';
+			$('#smsform').show();
+			$('#mailform').hide();
+		}else{
+			regType = 'email';
+			$('#smsform').hide();
+			$('#mailform').show();
+		}
+	}
+
 	function showForm1(){
 		let frm = document.createElement('form');
 		frm.setAttribute('method', 'post');
 		frm.setAttribute('id', 'regform1');
 		frm.onsubmit = regStepOne;
-		let label = document.createElement('div');
-		label.setAttribute('class', 'text-purple auth-label');
-		label.innerText = 'Утасны дугаар';
-		frm.appendChild(label);
+
+		let signupOptions = document.createElement('div');
+		// label.setAttribute('class', 'text-purple auth-label');
+		// label.innerText = 'Утасны дугаар, эсвэл Имэйл';
+		let phoneBtn = document.createElement('button');
+		phoneBtn.setAttribute('class', 'btn btn-success btn-sm option-btn');
+		phoneBtn.setAttribute('type', 'button');
+		phoneBtn.setAttribute('id', 'byphone');
+		phoneBtn.innerText = 'Утасны дугаараар';
+		phoneBtn.onclick = () => phoneOrEmail('#byphone');
+
+		let emailBtn = document.createElement('button');
+		emailBtn.setAttribute('class', 'btn btn-sm option-btn');
+		emailBtn.setAttribute('type', 'button');
+		emailBtn.setAttribute('id', 'bymail');
+		emailBtn.innerText = 'Имэйлээр';
+		emailBtn.onclick = () => phoneOrEmail('#bymail');
+
+		signupOptions.appendChild(phoneBtn);
+		signupOptions.appendChild(emailBtn);
+
+		frm.appendChild(signupOptions);
+		//frm.appendChild(label);
 		let dv = document.createElement('div');
-		dv.setAttribute('class', 'black_text');
+		dv.setAttribute('id', 'smsform');
 		let input = document.createElement('input');
 		input.setAttribute('type', 'number')
 		input.setAttribute('name', 'phone')
+		input.setAttribute('placeholder', 'Утасны дугаар...')
 		input.setAttribute('autocomplete', 'off');
 		dv.appendChild(input);
 		frm.appendChild(dv);
+
+		let dv2 = document.createElement('div');
+		dv2.setAttribute('id', 'mailform');
+		dv2.setAttribute('style', 'display:none');
+		let email = document.createElement('input');
+		email.setAttribute('name', 'email')
+		email.setAttribute('type', 'email')
+		email.setAttribute('placeholder', 'Имэйл хаяг...')
+		email.setAttribute('autocomplete', 'off');
+		dv2.appendChild(email);
+
+		let pass = document.createElement('input');
+		pass.setAttribute('name', 'password')
+		pass.setAttribute('placeholder', 'Нууц үг...')
+		pass.setAttribute('autocomplete', 'off');
+		pass.setAttribute('id', 'pass');
+		pass.setAttribute('type', 'password')
+		dv2.appendChild(pass);
+
+		frm.appendChild(dv2);
 		let btn = document.createElement('button');
 		btn.setAttribute('type', 'submit')
 		btn.setAttribute('class', 'btn btn-purple')
@@ -152,18 +208,26 @@
 
 	function regStepOne(e){
 		e.preventDefault();
-		let phone = e.target.phone.value
-		if(phone.length == 0){
-			alert('Утасны дугаараа оруулна уу!')
+		let phone = e.target.phone ? e.target.phone.value : ''
+		let email = e.target.email ? e.target.email.value : ''
+		let password = e.target.password ? e.target.password.value : ''
+		if(regType == 'phone' && phone.length != 8){
+			alert('Утасны дугаараа зөв оруулна уу!')
 			return false;
 		}
-		if(phone.length !== 8){
-			alert('Утасны дугаар буруу байна!')
+		if(regType == 'email' && !validateEmail(email)){
+			alert('Имэйл хаяг буруу байна!')
 			return false;
 		}
 		phoneNumber = phone;
+		let query = {
+			"phone":phone,
+			"email":email,
+			"password":password
+		}
 		showLoader();
-		axios.post('/index.php?home/signup', JSON.stringify({"phone":phone}))
+		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/signup'
+		axios.post(url, JSON.stringify(query))
 			.then(res => {
 				console.log('res', res);
 				if(res.data == 'success'){
@@ -353,13 +417,13 @@
 		// Name
 		let labelName = document.createElement('div');
 		labelName.setAttribute('class', 'text-purple auth-label');
-		labelName.innerText = 'Утасны дугаар';
+		labelName.innerText = 'Утасны дугаар, эсвэл имэйл хаяг';
 		frm.appendChild(labelName);
 
 		let dv = document.createElement('div');
-		dv.setAttribute('class', 'black_text');
+		//dv.setAttribute('class', 'black_text');
 		let input = document.createElement('input');
-		input.setAttribute('type', 'number');
+		// input.setAttribute('type', 'number');
 		input.setAttribute('name', 'phone');
 		input.setAttribute('required', 'true');
 		input.setAttribute('autocomplete', 'off');
@@ -373,7 +437,7 @@
 		frm.appendChild(labelPass);
 
 		let dv2 = document.createElement('div');
-		dv2.setAttribute('class', 'black_text');
+		// dv2.setAttribute('class', 'black_text');
 		let input2 = document.createElement('input');
 		input2.setAttribute('type', 'password');
 		input2.setAttribute('name', 'password');
@@ -492,6 +556,14 @@
 				}
 			}).catch(err => showMessage(err.res.data));
 	}
+
+	const validateEmail = (email) => {
+		return String(email)
+			.toLowerCase()
+			.match(
+			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			);
+	};
 
 </script>
 <?php } ?>

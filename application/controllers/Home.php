@@ -61,22 +61,26 @@ class Home extends CI_Controller {
 		$this->load->view('frontend/index', $page_data);
 	}
 	
-	/* function signup()
+	function signup()
 	{
 		$this->login_check();
 		if (isset($_POST) && !empty($_POST))
 		{
-			$signup_result = $this->crud_model->signup_user();
-			if ($signup_result == true)
-				redirect(base_url().'index.php?browse/purchaseplan' , 'refresh');
+			$_POST = json_decode(array_keys($_POST)[0], true);
+			$temp = explode('@', $_POST['email']);
+			$domain = str_replace('_', '.', $temp[1]);
+			$_POST['email'] = $temp[0] . '@' . $domain;
+			$this->crud_model->signup_user($_POST);
+			/* if ($signup_result == true)
+				redirect(base_url().'index.php?browse/youraccount' , 'refresh');
 			else if ($signup_result == false)
-				redirect(base_url().'index.php?home/signup' , 'refresh');
+				redirect(base_url().'index.php?home/signup' , 'refresh'); */
 		}
-		$page_data['page_name']		=	'signup';
-		$page_data['page_title']	=	'Бүртгүүлэх';
-		$this->load->view('frontend/index', $page_data);
+		// $page_data['page_name']		=	'signup';
+		// $page_data['page_title']	=	'Бүртгүүлэх';
+		// $this->load->view('frontend/index', $page_data);
 		
-	} */
+	}
 
 	// axios
 	function checkotp()
@@ -99,7 +103,7 @@ class Home extends CI_Controller {
 		}
 	}
 
-	function signup()
+	function signupx()
 	{
 
 		$this->login_check();
@@ -110,9 +114,8 @@ class Home extends CI_Controller {
 			$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
 			$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
 			$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
-			$sms['phone'] 		= $_POST["phone"];
+			$sms['phone'] 		= $username;
 			$cnt = $this->crud_model->sms_request($sms);
-			// echo strtotime('-1 day') . ' < ' . strtotime(date("Y-m-d H:i:s"));
 			if($cnt < 5){
 				$this->crud_model->phone_register($_POST);
 			}else{
@@ -120,6 +123,41 @@ class Home extends CI_Controller {
 			}
 		}
 	}
+
+	/* function signupx()
+	{
+
+		$this->login_check();
+
+		if (isset($_POST) && !empty($_POST))
+		{
+			$_POST = json_decode(array_keys($_POST)[0], true);
+			$email 		= $_POST["phone"];
+			if
+			// check if number
+			$pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+			if(preg_match($pattern, $sms['phone'])){
+				$_POST["email"] = $username;
+				$signup_result = $this->crud_model->signup_user();
+				if ($signup_result == true)
+					redirect(base_url().'index.php?browse/youraccount' , 'refresh');
+				else if ($signup_result == false)
+					echo 'Энэ имэйл хаяг бүртгэгдсэн байна.';
+			} else {
+				$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
+				$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
+				$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
+				$sms['phone'] 		= $username;
+				$cnt = $this->crud_model->sms_request($sms);
+				// echo strtotime('-1 day') . ' < ' . strtotime(date("Y-m-d H:i:s"));
+				if($cnt < 5){
+					$this->crud_model->phone_register($_POST);
+				}else{
+					echo 'Та 10-с олон удаа оролдлого хийсэн тул 24 цагийн дараа дахин оролдоно уу.';
+				}
+			}
+		}
+	} */
 	
 	function signinx()
 	{
@@ -208,9 +246,6 @@ class Home extends CI_Controller {
 		$updateRes = $this->db->update('user' , $data , array('user_id' => $user_id));
         redirect(base_url().'index.php?home', 'refresh');
 	}
-	
-	
-	
 	
 	function login_check()
 	{
