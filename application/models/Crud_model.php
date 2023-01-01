@@ -169,7 +169,7 @@ class Crud_model extends CI_Model {
 	// emaileer burtguuleh
 	function signup_user($data) 
 	{
-
+		echo 'email:: >>' . $data['email'] . '<<<';
 		$this->db->where('email' , $data['email']);
 		$this->db->from('user');
         $total_number_of_matching_user = $this->db->count_all_results();
