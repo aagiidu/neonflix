@@ -213,7 +213,7 @@
 			alert('Утасны дугаараа зөв оруулна уу!')
 			return false;
 		}
-		if(regType == 'email' && !validateEmail(email)){
+		if(regType == 'email' && !validateEmail(phone)){
 			alert('Имэйл хаяг буруу байна!')
 			return false;
 		}
