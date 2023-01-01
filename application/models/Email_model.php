@@ -57,12 +57,12 @@ class Email_model extends CI_Model {
 		if($from == NULL){
 			$from		=	'altanguerel@yahoo.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
 		}
-		$headers = 'From: webmaster@example.com' . "\r\n" .
+		/* $headers = 'From: webmaster@example.com' . "\r\n" .
 		'Reply-To: webmaster@example.com' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
-		$res = mail($to, $sub, $msg, $headers);
-		echo 'res: ' . $res;
-		/* $this->email->from($from, $site_name);
+		'X-Mailer: PHP/' . phpversion(); */
+		/* $res = mail($to, $sub, $msg, $headers);
+		echo 'res: ' . $res; */
+		$this->email->from($from, $site_name);
 		$this->email->to($to);
 		$this->email->subject($sub);
 		
@@ -71,6 +71,6 @@ class Email_model extends CI_Model {
 		
 		$this->email->send();
 		
-		echo $this->email->print_debugger(); */
+		echo $this->email->print_debugger();
 	}
 }
