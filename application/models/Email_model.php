@@ -71,7 +71,7 @@ class Email_model extends CI_Model {
 		$this->email->message($msg);
 		
 		$this->email->send();
-		
+		echo 'email sent';
 		echo $this->email->print_debugger();
 	}
 }
