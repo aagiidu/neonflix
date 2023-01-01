@@ -10,7 +10,7 @@
     <div style="float: right;margin: 18px 40px; height: 50px;">
         <a href="#" class="" style="color: #e50914;font-weight: 700;font-size: 20px;" onclick="openLoginModal()">Нэвтрэх</a>
     </div>
-	<!-- <form action="<?php echo base_url();?>index.php?home/forget" method="post">
+	<form action="<?php echo base_url();?>index.php?home/forget" method="post">
 		<div class="row">
 			<div class="col-lg-4 col-lg-offset-4" style="clear: both;">
 				<div style="background-color: #f3f3f3; padding: 30px;">
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-	</form> -->
+	</form>
 </div>
 
 <!-- MIDDLE TAB SECTION -->

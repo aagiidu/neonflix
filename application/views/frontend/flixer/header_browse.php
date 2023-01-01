@@ -206,6 +206,34 @@
 		$('#authmodal .modal-body').html(frm);
 	}
 
+	function reset(e){
+		e.preventDefault();
+		let phone = e.target.phone ? e.target.phone.value : ''
+		if(regType == 'phone' && phone.length != 8){
+			alert('Утасны дугаараа зөв оруулна уу!')
+			return false;
+		}
+		if(regType == 'email' && !validateEmail(email)){
+			alert('Имэйл хаяг буруу байна!')
+			return false;
+		}
+		let query = {
+			"phone":phone,
+			"email":phone
+		}
+		showLoader();
+		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/forget'
+		axios.post(url, JSON.stringify(query))
+			.then(res => {
+				console.log('res', res);
+				if(res.data == 'success'){
+					showForm2();
+				}else{
+					showMessage(res.data);
+				}
+			}).catch(err => showMessage(err.res.data));
+	}
+
 	function regStepOne(e){
 		e.preventDefault();
 		let phone = e.target.phone ? e.target.phone.value : ''
@@ -462,7 +490,7 @@
 		
 		let a2 = document.createElement('a');
 		a2.setAttribute('href', '#');
-		a2.setAttribute('onclick', 'showRegForm()');
+		a2.setAttribute('onclick', 'openRegModal()');
 		a2.innerText = 'Бүртгүүлэх';
 		p.appendChild(a2);
 		
@@ -478,15 +506,38 @@
 		let frm = document.createElement('form');
 		frm.setAttribute('method', 'post');
 		frm.setAttribute('id', 'regform1');
-		frm.onsubmit = regStepOne;
+		frm.onsubmit = reset;
 		let label = document.createElement('div');
 		label.setAttribute('class', 'text-purple auth-label');
 		label.innerText = 'Утасны дугаар';
 		frm.appendChild(label);
+
+		let signupOptions = document.createElement('div');
+		// label.setAttribute('class', 'text-purple auth-label');
+		// label.innerText = 'Утасны дугаар, эсвэл Имэйл';
+		let phoneBtn = document.createElement('button');
+		phoneBtn.setAttribute('class', 'btn btn-success btn-sm option-btn');
+		phoneBtn.setAttribute('type', 'button');
+		phoneBtn.setAttribute('id', 'byphone');
+		phoneBtn.innerText = 'Утасны дугаараар';
+		phoneBtn.onclick = () => phoneOrEmail('#byphone');
+
+		let emailBtn = document.createElement('button');
+		emailBtn.setAttribute('class', 'btn btn-sm option-btn');
+		emailBtn.setAttribute('type', 'button');
+		emailBtn.setAttribute('id', 'bymail');
+		emailBtn.innerText = 'Имэйлээр';
+		emailBtn.onclick = () => phoneOrEmail('#bymail');
+
+		signupOptions.appendChild(phoneBtn);
+		signupOptions.appendChild(emailBtn);
+
+		frm.appendChild(signupOptions);
+
 		let dv = document.createElement('div');
-		dv.setAttribute('class', 'black_text');
+		// dv.setAttribute('class', 'black_text');
 		let input = document.createElement('input');
-		input.setAttribute('type', 'number')
+		// input.setAttribute('type', 'number')
 		input.setAttribute('name', 'phone')
 		input.setAttribute('autocomplete', 'off');
 		dv.appendChild(input);

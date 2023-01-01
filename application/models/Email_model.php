@@ -25,8 +25,8 @@ class Email_model extends CI_Model {
 			$this->session->set_flashdata('password_reset', 'success');
 			
 			// Sending user the notification email with new password
-			$email_msg	=	"Your new password is : ".$new_password;
-			$email_sub	=	"Password reset request";
+			$email_msg	=	"Таны шинэ нууц үг : ".$new_password;
+			$email_sub	=	"Нууц үг шинэчлэх";
 			$email_to	=	$email;
 			$this->do_email($email_msg , $email_sub , $email_to);
         }
@@ -53,9 +53,9 @@ class Email_model extends CI_Model {
 
         $this->email->initialize($config);
 
-		$site_name	=	$this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
+		$site_name	=	'Neontoon'; // $this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
 		if($from == NULL)
-			$from		=	$this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
+			$from		=	'aagiidu@gmail.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
 		
 		$this->email->from($from, $site_name);
 		$this->email->to($to);
@@ -66,6 +66,6 @@ class Email_model extends CI_Model {
 		
 		$this->email->send();
 		
-		//echo $this->email->print_debugger();
+		echo $this->email->print_debugger();
 	}
 }

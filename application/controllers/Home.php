@@ -226,11 +226,11 @@ class Home extends CI_Controller {
 		if (isset($_POST) && !empty($_POST))
 		{
 			$signup_result = $this->email_model->reset_password();
-			redirect(base_url().'index.php?home/forget' , 'refresh');
+			//redirect(base_url().'index.php?home/forget' , 'refresh');
 		}
-		$page_data['page_name']		=	'forget';
-		$page_data['page_title']	=	'Нууц үг сэргээх';
-		$this->load->view('frontend/index', $page_data);
+		// $page_data['page_name']		=	'forget';
+		// $page_data['page_title']	=	'Нууц үг сэргээх';
+		// $this->load->view('frontend/index', $page_data);
 		
 	}
 	
