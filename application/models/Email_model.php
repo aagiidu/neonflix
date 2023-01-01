@@ -14,6 +14,7 @@ class Email_model extends CI_Model {
 	function reset_password() {
 		// Checking email existence
 		$email		=	$this->input->post('email');
+		echo 'EMAILADDR: >>' . $email . '<<';
         $query 		=	$this->db->get_where('user', array('email' => $email));
 			
         if ($query->num_rows() > 0) {
