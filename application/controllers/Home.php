@@ -225,7 +225,8 @@ class Home extends CI_Controller {
 		$this->login_check();
 		if (isset($_POST) && !empty($_POST))
 		{
-			$signup_result = $this->email_model->reset_password();
+			$data = json_decode(array_keys($_POST)[0], true);
+			$signup_result = $this->email_model->reset_password($data);
 			//redirect(base_url().'index.php?home/forget' , 'refresh');
 		}
 		// $page_data['page_name']		=	'forget';
