@@ -46,14 +46,15 @@ class Email_model extends CI_Model {
         $config['smtp_port']	= "25";
         $config['mailtype']		= 'html';
         $config['charset']		= 'utf-8';
-        $config['newline']		= "\r\n";
+        // $config['newline']		= "\r\n";
         $config['wordwrap']		= TRUE;
 
         $this->load->library('email');
 
         $this->email->initialize($config);
+		$this->email->set_newline("\r\n");
 
-		$site_name	=	'Neontoon'; // $this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
+		$site_name	=	'Neontoon.mn'; // $this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
 		if($from == NULL){
 			$from		=	'altanguerel@yahoo.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
 		}
