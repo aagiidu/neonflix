@@ -180,6 +180,10 @@ class Crud_model extends CI_Model {
 			$data['name'] 		= 'User';
 			$data['verified'] 	= 1;
 			$data['phone'] 		= 0;
+			$data['user1_session'] = '';
+			$data['user1_movielist'] = ''; 
+			$data['user1_serieslist'] = ''; 
+			$data['plan_id'] = 0;
 			$res = $this->db->insert('user' , $data);
 			echo '>>>' . $res . '<<<';
 			//echo 'Бүртгэл амжилттай. Та одоо имэйл хаяг болон нууц үгээрээ нэвтэрч болно.';
