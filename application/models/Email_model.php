@@ -15,7 +15,7 @@ class Email_model extends CI_Model {
 		// Checking email existence
 		echo 'EMAILADDR: >>' . $email . '<<';
         $query 		=	$this->db->get_where('user', array('email' => $email));
-			
+		echo '>>>>'.$query->num_rows().'<<<<<'; 
         if ($query->num_rows() > 0) {
 			
 			// Saving the new password's hashed value into database
