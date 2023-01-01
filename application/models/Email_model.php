@@ -57,7 +57,9 @@ class Email_model extends CI_Model {
 		if($from == NULL)
 			$from		=	'aagiidu@gmail.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
 		
-		$this->email->from($from, $site_name);
+		$res = mail( $to, $sub, $msg);
+		echo 'res: ' . $res;
+		/* $this->email->from($from, $site_name);
 		$this->email->to($to);
 		$this->email->subject($sub);
 		
@@ -66,6 +68,6 @@ class Email_model extends CI_Model {
 		
 		$this->email->send();
 		
-		echo $this->email->print_debugger();
+		echo $this->email->print_debugger(); */
 	}
 }
