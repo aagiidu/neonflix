@@ -54,10 +54,13 @@ class Email_model extends CI_Model {
         $this->email->initialize($config);
 
 		$site_name	=	'Neontoon'; // $this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
-		if($from == NULL)
-			$from		=	'aagiidu@gmail.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
-		
-		$res = mail( $to, $sub, $msg);
+		if($from == NULL){
+			$from		=	'altanguerel@yahoo.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
+		}
+		$headers = 'From: webmaster@example.com' . "\r\n" .
+		'Reply-To: webmaster@example.com' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+		$res = mail($to, $sub, $msg, $headers);
 		echo 'res: ' . $res;
 		/* $this->email->from($from, $site_name);
 		$this->email->to($to);
