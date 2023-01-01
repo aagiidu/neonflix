@@ -13,9 +13,7 @@ class Email_model extends CI_Model {
 	
 	function reset_password($email) {
 		// Checking email existence
-		echo 'EMAILADDR: >>' . $email . '<<';
         $query 		=	$this->db->get_where('user', array('email' => $email));
-		echo '>>>>'.$query->num_rows().'<<<<<'; 
         if ($query->num_rows() > 0) {
 			
 			// Saving the new password's hashed value into database
@@ -49,21 +47,21 @@ class Email_model extends CI_Model {
         // $config['newline']		= "\r\n";
         $config['wordwrap']		= TRUE;
 
-        // $this->load->library('email');
+        $this->load->library('email');
 
-        // $this->email->initialize($config);
-		// $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+		$this->email->set_newline("\r\n");
 
 		$site_name	=	'Neontoon.mn'; // $this->db->get_where('settings' , array('type' => 'site_name'))->row()->description;
 		if($from == NULL){
 			$from		=	'altanguerel@yahoo.com'; // $this->db->get_where('settings' , array('type' => 'site_email'))->row()->description;
 		}
-		$headers = 'From: webmaster@example.com' . "\r\n" .
+		/* $headers = 'From: webmaster@example.com' . "\r\n" .
 		'Reply-To: webmaster@example.com' . "\r\n" .
 		'X-Mailer: PHP/' . phpversion();
 		$res = mail($to, $sub, $msg, $headers);
-		echo 'res: ' . $res;
-		/* $this->email->from($from, $site_name);
+		echo 'res: ' . $res; */
+		$this->email->from($from, $site_name);
 		$this->email->to($to);
 		$this->email->subject($sub);
 		
@@ -71,7 +69,7 @@ class Email_model extends CI_Model {
 		$this->email->message($msg);
 		
 		$this->email->send();
-		echo 'email sent';
-		echo $this->email->print_debugger(); */
+		// echo 'email sent';
+		// echo $this->email->print_debugger(); 
 	}
 }
