@@ -36,6 +36,19 @@ if (/* $page_name == 'signup' || $page_name == 'signin' || $page_name == 'faq' |
 <body style="background-color:<?php echo $bg_color;?>;">
 
 	<?php include ($page_name . '.php');?>
+	<script type="module">
+		/* import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+		const firebaseConfig = {
+			apiKey: "AIzaSyDKvBFG5m8rZ_mfyAl4UCprMK14Ac1fKmI",
+			authDomain: "neontoon-abc37.firebaseapp.com",
+			projectId: "neontoon-abc37",
+			storageBucket: "neontoon-abc37.appspot.com",
+			messagingSenderId: "99933512768",
+			appId: "1:99933512768:web:236e186a496fa61413aba5"
+		};
+		const app = initializeApp(firebaseConfig); */
+		
+	</script>
 </body>
 </html>
 
