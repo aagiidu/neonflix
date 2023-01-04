@@ -611,7 +611,7 @@
 					if(res.data == 'success'){
 						window.location.reload();	
 					}else{
-						// window.location.href = res.data;
+						window.location.href = res.data;
 					}
 				}
 			}).catch(err => showMessage(err.res.data));

@@ -202,10 +202,9 @@ class Crud_model extends CI_Model {
 	function signin($phone, $password) 
 	{
 		$credential = array('phone' => $phone, 'password' => sha1($password));
-		echo $password . '==' . sha1($password) . ';';
+		// echo $password . '==' . sha1($password) . ';';
 		$query = $this->db->get_where('user', $credential);
         if ($query->num_rows() > 0) {
-			echo 'Phone login';
             $row = $query->row();
             $this->session->set_userdata('user_login_status', '1');
             $this->session->set_userdata('user_id', $row->user_id);
@@ -213,7 +212,6 @@ class Crud_model extends CI_Model {
             return true;
         }
 		else {
-			echo 'email login';
 			$credential = array('email' => $phone, 'password' => sha1($password));
 			$query = $this->db->get_where('user', $credential);
 			if ($query->num_rows() > 0) {
