@@ -1450,7 +1450,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			$this->where($where);
 		}
 
-		if ( ! empty($limit))
+		if (!empty($limit))
 		{
 			$this->limit($limit, $offset);
 		}

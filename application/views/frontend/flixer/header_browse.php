@@ -249,11 +249,18 @@
 			alert('Имэйл хаяг буруу байна!')
 			return false;
 		}
-		phoneNumber = phone;
-		let query = {
-			"phone":phone,
-			"email":email,
-			"password":password
+		let query = {}
+		if(regType == 'phone'){
+			phoneNumber = phone;
+			query = {
+				"phone":phone,
+				"password":password
+			}
+		}else{
+			query = {
+				"email":email,
+				"password":password
+			}
 		}
 		showLoader();
 		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/signup'
