@@ -222,6 +222,7 @@
 			"phone":phone,
 			"email":phone
 		}
+		phoneNumber = phone;
 		showLoader();
 		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/forget'
 		axios.post(url, JSON.stringify(query))
