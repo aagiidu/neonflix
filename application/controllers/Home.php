@@ -111,6 +111,7 @@ class Home extends CI_Controller {
 		if (isset($_POST) && !empty($_POST))
 		{
 			$_POST = json_decode(array_keys($_POST)[0], true);
+			var_dump($_POST);
 			$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
 			$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
 			$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];

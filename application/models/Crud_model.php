@@ -63,7 +63,7 @@ class Crud_model extends CI_Model {
 		// Verify hiigeegui bgaag shalgah
 		$this->db->where('phone' , $data['phone']);
 		$this->db->where('type' , 0);
-		$this->db->where('verified' , 0);
+		// $this->db->where('verified' , 0);
 		$unverified = $this->db->get('user');
 		$otp = rand(1001, 9999);
 		if($unverified->result_array() != null){
