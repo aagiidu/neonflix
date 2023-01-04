@@ -111,7 +111,6 @@ class Home extends CI_Controller {
 		if (isset($_POST) && !empty($_POST))
 		{
 			$_POST = json_decode(array_keys($_POST)[0], true);
-			var_dump($_POST);
 			$sms['client'] 		= $_SERVER['HTTP_CLIENT_IP'];
 			$sms['forwarder'] 	= $_SERVER['HTTP_X_FORWARDED_FOR'];
 			$sms['remote'] 		= $_SERVER['REMOTE_ADDR'];
@@ -171,6 +170,7 @@ class Home extends CI_Controller {
 			$data = json_decode(array_keys($_POST)[0], true);
 			$phone 			= $data['phone'];
 			$password 		= $data['password'];
+			echo '(' . $phone . '==' . $password . ')';
 			$signin_result 	= $this->crud_model->signin($phone, $password);
 			if ($signin_result == true)
 			{
