@@ -203,7 +203,9 @@ class Crud_model extends CI_Model {
 	{
 		//$credential = array('email' => $email, 'password' => sha1($password));
 		$credential = array('phone' => $phone, 'password' => sha1($password));
+		echo 'pass: ' . sha1($password) . ';';
 		$query = $this->db->get_where('user', $credential);
+		echo $query->num_rows() . ';';
         if ($query->num_rows() > 0) {
             $row = $query->row();
             $this->session->set_userdata('user_login_status', '1');

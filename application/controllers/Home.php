@@ -172,7 +172,7 @@ class Home extends CI_Controller {
 			$password 		= $data['password'];
 			// echo '(' . $phone . '==' . $password . ')';
 			$signin_result 	= $this->crud_model->signin($phone, $password);
-			echo '(' . $signin_result . ')';
+			// echo '(' . $signin_result . ')';
 			if ($signin_result == true)
 			{
 				if ($this->session->userdata('login_type') == 1){
