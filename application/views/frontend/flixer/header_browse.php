@@ -67,7 +67,7 @@
 			<?php } else { ?>
 				<div class="login-btn-container">
 					<!-- <button class="btn btn-danger" type="button" onclick="fbLogin()">Нэвтрэх</button> -->
-					<button class="btn btn-danger" type="button" onclick="openLoginModal()">Нэвтрэх</button>
+					<button class="btn btn-danger" type="button" data-toggle="modal" data-target="#auth">Нэвтрэх</button>
 				</div>
 			<?php } ?>
 			<!-- SEARCH FORM -->
@@ -91,21 +91,41 @@
 <?php if($userdata == null){ ?>
 <div id="customModal"  class="modal-bg">
 	<div id="authmodal" class="modal modal-sm auth-modal">
-		<button class="close" onclick="closeRegModal()">&times;</button>
-		<div class="modal-body"></div>
+		<button class="close" onclick="closeModal()">&times;</button>
+		<div class="modal-body">
+
+		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div id="auth" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
-	let phoneNumber = '';
-	let regType = 'phone';
+
 	$(function() {
 		console.log(window.location.hash);
 		if(window.location.hash == '#login'){
 			openLoginModal();
 		}
-		setTimeout(function(){
-			$('#authmodal input').val('');
-		}, 500);
 	})
 
 	function openRegModal(){
@@ -113,304 +133,9 @@
 		$('#customModal').addClass('show');
 	}
 
-	function closeRegModal(){
+	function closeModal(){
 		console.log('closing');
 		$('#customModal').removeClass('show');
-	}
-
-	function phoneOrEmail(id){
-		console.log('phoneOrEmail', id)
-		$('.option-btn').removeClass('btn-success');
-		$(id).addClass('btn-success');
-		if(id == '#byphone'){
-			regType = 'phone';
-			$('#smsform').show();
-			$('#mailform').hide();
-		}else{
-			regType = 'email';
-			$('#smsform').hide();
-			$('#mailform').show();
-		}
-	}
-
-	function showForm1(){
-		let frm = document.createElement('form');
-		frm.setAttribute('method', 'post');
-		frm.setAttribute('id', 'regform1');
-		frm.onsubmit = regStepOne;
-
-		let signupOptions = document.createElement('div');
-		// label.setAttribute('class', 'text-purple auth-label');
-		// label.innerText = 'Утасны дугаар, эсвэл Имэйл';
-		let phoneBtn = document.createElement('button');
-		phoneBtn.setAttribute('class', 'btn btn-success btn-sm option-btn');
-		phoneBtn.setAttribute('type', 'button');
-		phoneBtn.setAttribute('id', 'byphone');
-		phoneBtn.innerText = 'Утасны дугаараар';
-		phoneBtn.onclick = () => phoneOrEmail('#byphone');
-
-		let emailBtn = document.createElement('button');
-		emailBtn.setAttribute('class', 'btn btn-sm option-btn');
-		emailBtn.setAttribute('type', 'button');
-		emailBtn.setAttribute('id', 'bymail');
-		emailBtn.innerText = 'Имэйлээр';
-		emailBtn.onclick = () => phoneOrEmail('#bymail');
-
-		signupOptions.appendChild(phoneBtn);
-		signupOptions.appendChild(emailBtn);
-
-		frm.appendChild(signupOptions);
-		//frm.appendChild(label);
-		let dv = document.createElement('div');
-		dv.setAttribute('id', 'smsform');
-		let input = document.createElement('input');
-		input.setAttribute('type', 'number')
-		input.setAttribute('name', 'phone')
-		input.setAttribute('placeholder', 'Утасны дугаар...')
-		input.setAttribute('autocomplete', 'off');
-		dv.appendChild(input);
-		frm.appendChild(dv);
-
-		let dv2 = document.createElement('div');
-		dv2.setAttribute('id', 'mailform');
-		dv2.setAttribute('style', 'display:none');
-		let email = document.createElement('input');
-		email.setAttribute('name', 'email')
-		email.setAttribute('type', 'email')
-		email.setAttribute('placeholder', 'Имэйл хаяг...')
-		email.setAttribute('autocomplete', 'off');
-		dv2.appendChild(email);
-
-		let pass = document.createElement('input');
-		pass.setAttribute('name', 'password')
-		pass.setAttribute('placeholder', 'Нууц үг...')
-		pass.setAttribute('autocomplete', 'off');
-		pass.setAttribute('id', 'pass');
-		pass.setAttribute('type', 'password')
-		dv2.appendChild(pass);
-
-		frm.appendChild(dv2);
-		let btn = document.createElement('button');
-		btn.setAttribute('type', 'submit')
-		btn.setAttribute('class', 'btn btn-purple')
-		btn.innerText = 'Бүртгүүлэх';
-		let p = document.createElement('p');
-		p.setAttribute('class', 'text-center');
-		let a = document.createElement('a');
-		a.setAttribute('href', '#');
-		a.setAttribute('onclick', 'showLoginForm()');
-		a.innerText = 'Нэвтрэх';
-		p.appendChild(a);
-
-		frm.appendChild(btn);
-		frm.appendChild(p);
-		$('#authmodal .modal-body').html(frm);
-	}
-
-	function reset(e){
-		e.preventDefault();
-		let phone = e.target.phone ? e.target.phone.value : ''
-		if(regType == 'phone' && phone.length != 8){
-			alert('Утасны дугаараа зөв оруулна уу!')
-			return false;
-		}
-		if(regType == 'email' && !validateEmail(phone)){
-			alert('Имэйл хаяг буруу байна!')
-			return false;
-		}
-		let query = {
-			"phone":phone,
-			"email":phone
-		}
-		phoneNumber = phone;
-		showLoader();
-		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/forget'
-		axios.post(url, JSON.stringify(query))
-			.then(res => {
-				console.log('res', res);
-				if(res.data == 'success'){
-					showForm2();
-				}else{
-					showMessage(res.data);
-				}
-			}).catch(err => showMessage(err.res.data));
-	}
-
-	function regStepOne(e){
-		e.preventDefault();
-		let phone = e.target.phone ? e.target.phone.value : ''
-		let email = e.target.email ? e.target.email.value : ''
-		let password = e.target.password ? e.target.password.value : ''
-		if(regType == 'phone' && phone.length != 8){
-			alert('Утасны дугаараа зөв оруулна уу!')
-			return false;
-		}
-		if(regType == 'email' && !validateEmail(email)){
-			alert('Имэйл хаяг буруу байна!')
-			return false;
-		}
-		let query = {}
-		if(regType == 'phone'){
-			phoneNumber = phone;
-			query = {
-				"phone":phone,
-				"password":password
-			}
-		}else{
-			query = {
-				"email":email,
-				"password":password
-			}
-		}
-		showLoader();
-		let url = regType == 'phone' ? '/index.php?home/signupx' : '/index.php?home/signup'
-		axios.post(url, JSON.stringify(query))
-			.then(res => {
-				console.log('res', res);
-				if(res.data == 'success'){
-					showForm2();
-				}else{
-					showMessage(res.data);
-				}
-			}).catch(err => showMessage(err.res.data));
-	}
-
-	function showForm2(){
-		let frm = document.createElement('form');
-		frm.setAttribute('method', 'post');
-		frm.setAttribute('id', 'regform2');
-		frm.onsubmit = regStepTwo;
-		let label = document.createElement('div');
-		label.setAttribute('class', 'text-purple auth-label');
-		label.innerText = 'Мессежээр илгээсэн кодыг оруулна уу!';
-		frm.appendChild(label);
-		let dv = document.createElement('div');
-		dv.setAttribute('class', 'black_text');
-		let input = document.createElement('input');
-		input.setAttribute('type', 'number')
-		input.setAttribute('name', 'otp')
-		input.setAttribute('autocomplete', 'off');
-		dv.appendChild(input);
-		frm.appendChild(dv);
-		let btn = document.createElement('button');
-		btn.setAttribute('type', 'submit')
-		btn.setAttribute('class', 'btn btn-purple')
-		btn.innerText = 'Илгээх';
-		frm.appendChild(btn);
-		$('#authmodal .modal-body').html(frm);
-	}
-
-	function regStepTwo(e){
-		e.preventDefault();
-		showLoader();
-		let otp = e.target.otp.value
-		if(otp.length !== 4){
-			alert('Баталгаажуулах код буруу байна!')
-			return false;
-		}
-		axios.post('/index.php?home/checkotp', JSON.stringify({"otp":otp, "phone": phoneNumber}))
-			.then(res => {
-				if(res.data == 'success'){
-					showForm3();
-				}else{
-					showMessage(res.data);
-					// $('#regform2 .auth-label').addClass('text-danger').text(res.data);
-				}
-			}).catch(err => showMessage(err.res.data));
-	}
-	
-	function showForm3(){
-		let frm = document.createElement('form');
-		frm.setAttribute('method', 'post');
-		frm.setAttribute('id', 'regform3');
-		frm.onsubmit = regStepThree;
-
-		let label = document.createElement('div');
-		label.setAttribute('class', 'text-purple auth-label');
-		label.innerText = 'Баталгаажилт амжилттай. Нэр болон нууц үгээ оруулна уу!';
-		frm.appendChild(label);
-		// Name
-		let labelName = document.createElement('div');
-		labelName.setAttribute('class', 'text-purple auth-label');
-		labelName.innerText = 'Нэр';
-		frm.appendChild(labelName);
-
-		let dv = document.createElement('div');
-		dv.setAttribute('class', 'black_text');
-		let input = document.createElement('input');
-		input.setAttribute('type', 'text')
-		input.setAttribute('name', 'name')
-		input.setAttribute('autocomplete', 'off');
-		dv.appendChild(input);
-		frm.appendChild(dv);
-		// Password
-		let labelPass = document.createElement('div');
-		labelPass.setAttribute('class', 'text-purple auth-label');
-		labelPass.innerText = 'Нууц үг';
-		frm.appendChild(labelPass);
-
-		let dv2 = document.createElement('div');
-		dv2.setAttribute('class', 'black_text');
-		let input2 = document.createElement('input');
-		input2.setAttribute('type', 'password')
-		input2.setAttribute('name', 'password')
-		input2.setAttribute('autocomplete', 'off');
-		dv2.appendChild(input2);
-		frm.appendChild(dv2);
-		// Password confirm
-		let labelPass2 = document.createElement('div');
-		labelPass2.setAttribute('class', 'text-purple auth-label');
-		labelPass2.innerText = 'Нууц үг давтаж оруулах';
-		frm.appendChild(labelPass2);
-
-		let dv3 = document.createElement('div');
-		dv3.setAttribute('class', 'black_text');
-		let input3 = document.createElement('input');
-		input3.setAttribute('type', 'password')
-		input3.setAttribute('name', 'confirm')
-		input3.setAttribute('autocomplete', 'off');
-		dv3.appendChild(input3);
-		frm.appendChild(dv3);
-		// Button
-		let btn = document.createElement('button');
-		btn.setAttribute('type', 'submit')
-		btn.setAttribute('class', 'btn btn-purple')
-		btn.innerText = 'Илгээх';
-		frm.appendChild(btn);
-		$('#authmodal .modal-body').html(frm);
-		setTimeout(function(){
-			$('#authmodal input').val('');
-		}, 500);
-	}
-
-	function regStepThree(e){
-		e.preventDefault();
-		let name = e.target.name.value
-		let password = e.target.password.value
-		let confirm = e.target.confirm.value
-
-		if(name.length == 0){
-			alert('Нэрээ оруулна уу!')
-			return false;
-		}
-		if(password.length < 6){
-			alert('Нууц үг 6 болон түүнээс дээш тэмдэгт оруулна уу!')
-			return false;
-		}
-		if(password != confirm){
-			alert('Нууц үг давтаж оруулснаас өөр байна!')
-			return false;
-		}
-		showLoader();
-		axios.post('/index.php?home/register', JSON.stringify({"phone": phoneNumber, "name": name, "password": password}))
-			.then(res => {
-				if(res.data == 'success'){
-					showMessage('Бүртгэл амжилттай. Та одоо утасны дугаар болон нууц үгээрээ нэвтэрч болно.');
-				}else{
-					showMessage(res.data);
-				}
-				
-			}).catch(err => showMessage(err.res.data));
 	}
 
 	function showMessage(msg){
@@ -441,189 +166,10 @@
 		$('#authmodal .modal-body').html(img);
 	}
 
-	function showLoginForm(){
-		let frm = document.createElement('form');
-		frm.setAttribute('method', 'post');
-		frm.setAttribute('id', 'loginForm');
-		frm.onsubmit = login;
-
-		let label = document.createElement('div');
-		label.setAttribute('class', 'text-purple auth-label');
-		label.innerText = 'Нэвтрэх';
-		frm.appendChild(label);
-		// Name
-		let labelName = document.createElement('div');
-		labelName.setAttribute('class', 'text-purple auth-label');
-		labelName.innerText = 'Утасны дугаар, эсвэл имэйл хаяг';
-		frm.appendChild(labelName);
-
-		let dv = document.createElement('div');
-		//dv.setAttribute('class', 'black_text');
-		let input = document.createElement('input');
-		// input.setAttribute('type', 'number');
-		input.setAttribute('name', 'phone');
-		input.setAttribute('required', 'true');
-		input.setAttribute('autocomplete', 'off');
-		dv.appendChild(input);
-		frm.appendChild(dv);
-
-		// Password
-		let labelPass = document.createElement('div');
-		labelPass.setAttribute('class', 'text-purple auth-label');
-		labelPass.innerText = 'Нууц үг';
-		frm.appendChild(labelPass);
-
-		let dv2 = document.createElement('div');
-		// dv2.setAttribute('class', 'black_text');
-		let input2 = document.createElement('input');
-		input2.setAttribute('type', 'password');
-		input2.setAttribute('name', 'password');
-		input.setAttribute('required', 'true');
-		input2.setAttribute('autocomplete', 'off');
-		dv2.appendChild(input2);
-		frm.appendChild(dv2);
-
-		// Button
-		let btn = document.createElement('button');
-		btn.setAttribute('type', 'submit')
-		btn.setAttribute('class', 'btn btn-purple')
-		btn.innerText = 'Нэвтрэх';
-		frm.appendChild(btn);
-		let p = document.createElement('p');
-		p.setAttribute('class', 'text-center');
-		let a = document.createElement('a');
-		a.setAttribute('href', '#');
-		a.setAttribute('onclick', 'showResetForm()');
-		a.innerText = 'Нууц үг сэргээх';
-		p.appendChild(a);
-		
-		let a2 = document.createElement('a');
-		a2.setAttribute('href', '#');
-		a2.setAttribute('onclick', 'openRegModal()');
-		a2.innerText = 'Бүртгүүлэх';
-		p.appendChild(a2);
-		
-		frm.appendChild(p);
-		
-		$('#authmodal .modal-body').html(frm);
-		setTimeout(function(){
-			$('#authmodal input').val('');
-		}, 500);
-	}
-
-	function showResetForm(){
-		let frm = document.createElement('form');
-		frm.setAttribute('method', 'post');
-		frm.setAttribute('id', 'regform1');
-		frm.onsubmit = reset;
-		let label = document.createElement('div');
-		label.setAttribute('class', 'text-purple auth-label');
-		label.innerText = 'Утасны дугаар';
-		frm.appendChild(label);
-
-		let signupOptions = document.createElement('div');
-		// label.setAttribute('class', 'text-purple auth-label');
-		// label.innerText = 'Утасны дугаар, эсвэл Имэйл';
-		let phoneBtn = document.createElement('button');
-		phoneBtn.setAttribute('class', 'btn btn-success btn-sm option-btn');
-		phoneBtn.setAttribute('type', 'button');
-		phoneBtn.setAttribute('id', 'byphone');
-		phoneBtn.innerText = 'Утасны дугаараар';
-		phoneBtn.onclick = () => phoneOrEmail('#byphone');
-
-		let emailBtn = document.createElement('button');
-		emailBtn.setAttribute('class', 'btn btn-sm option-btn');
-		emailBtn.setAttribute('type', 'button');
-		emailBtn.setAttribute('id', 'bymail');
-		emailBtn.innerText = 'Имэйлээр';
-		emailBtn.onclick = () => phoneOrEmail('#bymail');
-
-		signupOptions.appendChild(phoneBtn);
-		signupOptions.appendChild(emailBtn);
-
-		frm.appendChild(signupOptions);
-
-		let dv = document.createElement('div');
-		// dv.setAttribute('class', 'black_text');
-		let input = document.createElement('input');
-		// input.setAttribute('type', 'number')
-		input.setAttribute('name', 'phone')
-		input.setAttribute('autocomplete', 'off');
-		dv.appendChild(input);
-		frm.appendChild(dv);
-		let btn = document.createElement('button');
-		btn.setAttribute('type', 'submit')
-		btn.setAttribute('class', 'btn btn-purple')
-		btn.innerText = 'Илгээх';
-		let p = document.createElement('p');
-		p.setAttribute('class', 'text-center');
-		let a = document.createElement('a');
-		a.setAttribute('href', '#');
-		a.setAttribute('onclick', 'showLoginForm()');
-		a.innerText = 'Нэвтрэх';
-		p.appendChild(a);
-
-		frm.appendChild(btn);
-		frm.appendChild(p);
-		$('#authmodal .modal-body').html(frm);
-	}
-
-	function resetRequest(e){
-		e.preventDefault();
-		let phone = e.target.phone.value
-		if(phone.length == 0){
-			alert('Утасны дугаараа оруулна уу!')
-			return false;
-		}
-		if(phone.length !== 8){
-			alert('Утасны дугаар буруу байна!')
-			return false;
-		}
-		phoneNumber = phone;
-		showLoader();
-		axios.post('/index.php?home/reset', JSON.stringify({"phone":phone}))
-			.then(res => {
-				console.log('res', res);
-				if(res.data == 'success'){
-					showForm2();
-				}else{
-					showMessage(res.data);
-				}
-			}).catch(err => showMessage(err.res.data));
-	}
-
 	function openLoginModal(){
 		showLoginForm();
 		$('#customModal').addClass('show');
 	}
-
-	function login(e){
-		e.preventDefault();
-		showLoader();
-		let phone = e.target.phone.value;
-		let password = e.target.password.value;
-		axios.post('/index.php?home/signinx', JSON.stringify({"phone": phone, "password": password}))
-			.then(res => {
-				console.log(res.data);
-				if(res.data == 'error'){
-					showMessage('Нэвтрэх мэдээлэл таарахгүй байна.');
-				}else{
-					if(res.data == 'success'){
-						window.location.reload();	
-					}else{
-						window.location.href = res.data;
-					}
-				}
-			}).catch(err => showMessage(err.res.data));
-	}
-
-	const validateEmail = (email) => {
-		return String(email)
-			.toLowerCase()
-			.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-			);
-	};
 
 </script>
 <?php } ?>
@@ -672,11 +218,27 @@
 			FB.login(function (response) {
 				if (response.authResponse) {
 					// Get and display the user profile data
-					getFbUserData();
+					onLogin();
 				} else {
 					document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
 				}
 			}, {scope: 'email'});
+		}
+
+		function onLogin(){
+			FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+			function (response) {
+				console.log('Login user data', response)
+				const { email, first_name, id, last_name } = response
+				const picture = response.picture.data.url
+				const query = { email, name: `${first_name} ${last_name}`, id, picture }
+				console.log('query', query)
+				axios.post('/index.php?home/authfb', query)
+					.then(res => {
+						console.log('res', res);
+						showMessage(res.data);
+					}).catch(err => showMessage(err.res.data));
+			});
 		}
 
 		// Fetch the user profile data from facebook

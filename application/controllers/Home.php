@@ -93,6 +93,19 @@ class Home extends CI_Controller {
 		}
 	}
 
+	function authfb()
+	{
+
+		$this->login_check();
+
+		if (isset($_POST) && !empty($_POST))
+		{
+			// $_POST = json_decode(array_keys($_POST)[0], true);
+			var_dump($_POST);
+			$this->crud_model->phone_register($_POST);
+		}
+	}
+
 	function register()
 	{
 		$this->login_check();
