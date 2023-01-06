@@ -43,7 +43,6 @@
 						{
 							$active_user	=	$this->session->userdata('active_user');
 							$bar_text 	=	$this->crud_model->get_username_of_user('user1');
-							$bar_thumb	=	'thumb1.png';
 						}
 					}
 				}
@@ -54,7 +53,7 @@
 				<li class="dropdown" style="padding-top:7px">
 					<p style="text-align:center;">
 						<a href="<?php echo base_url();?>index.php?browse/youraccount" class="pro-btn">
-							<img src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" style="height:30px;margin-right:10px;" />
+							<img id='userThumb' src="<?php echo base_url();?>assets/global/<?php echo $bar_thumb;?>" style="height:30px;margin-right:10px;" />
 							<span><?php echo $userdata->name;?></span>
 						</a>
 						<?php if($this->session->userdata('login_type') == 1): ?>
@@ -175,6 +174,12 @@
 <?php } ?>
 
 <script>
+	$(function() {
+		var thumb = localStorage.getItem('fbthumb');
+		if(thumb){
+			$('#userThumb').attr('src', thumb);
+		}
+	})
 	$('#menu').on('click', function() {
 		if($('.sidebar').hasClass('show')){
 			$('.sidebar').removeClass('show');
@@ -217,11 +222,10 @@
 		function fbLogin() {
 			FB.login(function (response) {
 				if (response.authResponse) {
+					localStorage.setItem('token', response.authResponse.accessToken)
 					// Get and display the user profile data
 					onLogin();
-				} else {
-					document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
-				}
+				} 
 			}, {scope: 'email'});
 		}
 
@@ -231,12 +235,17 @@
 				console.log('Login user data', response)
 				const { email, first_name, id, last_name } = response
 				const picture = response.picture.data.url
-				const query = { email, name: `${first_name} ${last_name}`, id, picture }
+				const query = { email, name: `${first_name} ${last_name}`, id }
+				localStorage.setItem('fbthumb', picture)
 				console.log('query', query)
-				axios.post('/index.php?home/authfb', query)
+				axios.post('/index.php?home/authfb', JSON.stringify(query))
 					.then(res => {
 						console.log('res', res);
-						showMessage(res.data);
+						if(res.data == 'success'){
+							window.location.reload();
+						}else{
+							showMessage(res.data);
+						}
 					}).catch(err => showMessage(err.res.data));
 			});
 		}
@@ -255,12 +264,22 @@
 
 		// Logout from facebook
 		function fbLogout() {
-			FB.logout(function() {
-				document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-				document.getElementById('fbLink').innerHTML = '<img src="images/fb-login-btn.png"/>';
-				document.getElementById('userData').innerHTML = '';
-				document.getElementById('status').innerHTML = '<p>You have successfully logout from Facebook.</p>';
-			});
+			FB.getLoginStatus(function(response) {
+				console.log('getLoginStatus res', res)
+				FB.logout(function(res) {
+					console.log('logout res', res)
+					// document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
+					axios.get('/index.php?home/signout')
+						.then(res => {
+							console.log('res', res);
+							if(res.data == 'success'){
+								// window.location.href = '/';
+							}else{
+								showMessage(res.data);
+							}
+						}).catch(err => showMessage(err.res.data));
+				});
+			})
 		}
 </script>
 <?php 

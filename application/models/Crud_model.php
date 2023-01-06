@@ -166,6 +166,43 @@ class Crud_model extends CI_Model {
 		return $r->status;
 	}
 
+	function authfb($data) 
+	{
+		$this->db->where('fbid' , $data['id']);
+		$this->db->from('user');
+        $total_number_of_matching_user = $this->db->count_all_results();
+		// validate if duplicate email exists
+        if ($total_number_of_matching_user == 0) {
+			$d['password'] 	= sha1($data['id']);
+			$d['type'] 		= 0; // user type = customer
+			$d['name'] 		= $data['name'];
+			$d['email'] 		= $data['email'];
+			$d['fbid'] 		= $data['id'];
+			$d['verified'] 	= 1;
+			$d['phone'] 		= 0;
+			$d['user1_session'] = '';
+			$d['user1_movielist'] = ''; 
+			$d['user1_serieslist'] = ''; 
+			$d['plan_id'] = 0;
+			$res = $this->db->insert('user' , $d);
+            $this->signinfb($data['id']);
+			//echo 'success';
+			// $this->session->set_flashdata('signup_result', 'success');
+			// return true;
+        }
+		else {
+			$credential = array('fbid' => $data['id']);
+			$query = $this->db->get_where('user', $credential);
+			$row = $query->row();
+			if($row->name != $data['name']){
+				$this->db->update('user', array('name' => $data['name']), array('fbid'=>$data['id']));
+			}
+			$this->signinfb($data['id']);
+			//echo 'success';
+		}
+		
+	} 
+
 	// emaileer burtguuleh
 	function signup_user($data) 
 	{
@@ -199,6 +236,25 @@ class Crud_model extends CI_Model {
 		
 	} 
 	
+	function signinfb($fbid) 
+	{
+		$credential = array('fbid' => $fbid);
+		$query = $this->db->get_where('user', $credential);
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+			var_dump($row);
+            $this->session->set_userdata('user_login_status', '1');
+            $this->session->set_userdata('user_id', $row->user_id);
+            $this->session->set_userdata('login_type', $row->type); // 1=admin, 0=customer
+            return true;
+        }
+		else {
+			echo ('login faile');
+			$this->session->set_flashdata('signin_result', 'failed');
+			return false;
+		}
+	}
+
 	function signin($phone, $password) 
 	{
 		$credential = array('phone' => $phone, 'password' => sha1($password));

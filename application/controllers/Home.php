@@ -95,14 +95,15 @@ class Home extends CI_Controller {
 
 	function authfb()
 	{
-
-		$this->login_check();
-
+		//$this->login_check();
 		if (isset($_POST) && !empty($_POST))
 		{
-			// $_POST = json_decode(array_keys($_POST)[0], true);
-			var_dump($_POST);
-			$this->crud_model->phone_register($_POST);
+			$data = json_decode(array_keys($_POST)[0], true);
+			$temp = explode('@', $data['email']);
+			$domain = str_replace('_', '.', $temp[1]);
+			$data['email'] = $temp[0] . '@' . $domain;
+			$this->crud_model->authfb($data);
+			// $this->crud_model->phone_register($_POST);
 		}
 	}
 
@@ -263,7 +264,8 @@ class Home extends CI_Controller {
         $this->session->set_flashdata('logout_notification', 'logged_out');
 		$data['user1_session']	=	'';
 		$updateRes = $this->db->update('user' , $data , array('user_id' => $user_id));
-        redirect(base_url().'index.php?home', 'refresh');
+		echo 'success';
+        // redirect(base_url().'index.php?home', 'refresh');
 	}
 	
 	function login_check()
