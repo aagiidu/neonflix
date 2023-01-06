@@ -242,16 +242,14 @@ class Crud_model extends CI_Model {
 		$query = $this->db->get_where('user', $credential);
         if ($query->num_rows() > 0) {
             $row = $query->row();
-			var_dump($row);
             $this->session->set_userdata('user_login_status', '1');
             $this->session->set_userdata('user_id', $row->user_id);
             $this->session->set_userdata('login_type', $row->type); // 1=admin, 0=customer
-            return true;
+			echo 'success';
         }
 		else {
-			echo ('login faile');
+			echo 'failed';
 			$this->session->set_flashdata('signin_result', 'failed');
-			return false;
 		}
 	}
 

@@ -273,7 +273,7 @@
 						.then(res => {
 							console.log('res', res);
 							if(res.data == 'success'){
-								// window.location.href = '/';
+								window.location.href = '/';
 							}else{
 								showMessage(res.data);
 							}
