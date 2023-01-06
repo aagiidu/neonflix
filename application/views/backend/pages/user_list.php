@@ -41,6 +41,7 @@
 								#
 							</th>
 							<th>Нэр</th>
+							<th>И-мэйл</th>
 							<th>Утас</th>
 							<th>Багц</th>
 							<th></th>
@@ -55,6 +56,7 @@
 						<tr>
 							<td><?php echo $counter++;?></td>
 							<td><?php echo $row['name'];?></td>
+							<td><?php echo $row['email'];?></td>
 							<td><?php echo $row['phone'];?></td>
 							<td>
 								<?php
