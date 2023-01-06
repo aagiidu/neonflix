@@ -265,7 +265,7 @@
 		// Logout from facebook
 		function fbLogout() {
 			FB.getLoginStatus(function(response) {
-				console.log('getLoginStatus res', res)
+				console.log('getLoginStatus res', response)
 				FB.logout(function(res) {
 					console.log('logout res', res)
 					// document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
