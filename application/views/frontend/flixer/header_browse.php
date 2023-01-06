@@ -253,21 +253,19 @@
 		// Logout from facebook
 		function fbLogout() {
 			FB.getLoginStatus(function(response) {
-				console.log('getLoginStatus res', response)
 				FB.logout(function(res) {
 					console.log('logout res', res)
 					// document.getElementById('fbLink').setAttribute("onclick","fbLogin()");
-					axios.get('/index.php?home/signout')
-						.then(res => {
-							console.log('res', res);
-							if(res.data == 'success'){
-								window.location.href = '/';
-							}else{
-								showMessage(res.data);
-							}
-						}).catch(err => showMessage(err.res.data));
 				});
 			})
+			axios.get('/index.php?home/signout')
+				.then(res => {
+					if(res.data == 'success'){
+						window.location.href = '/';
+					}else{
+						showMessage(res.data);
+					}
+				}).catch(err => showMessage(err.res.data));
 		}
 </script>
 <?php 
