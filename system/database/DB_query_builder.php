@@ -1654,8 +1654,8 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			array_keys($this->qb_set),
 			array_values($this->qb_set)
 		);
-		/* echo 'SQL: ';
-		var_dump($sql); */
+		echo 'SQL: ';
+		var_dump($sql);
 		$this->_reset_write();
 		return $this->query($sql);
 	}
