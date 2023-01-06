@@ -179,7 +179,7 @@ class Crud_model extends CI_Model {
 			$d['email'] 		= $data['email'];
 			$d['fbid'] 		= $data['id'];
 			$d['verified'] 	= 1;
-			$d['phone'] 		= 0;
+			// $d['phone'] 		= 0;
 			$d['user1_session'] = '';
 			$d['user1_movielist'] = ''; 
 			$d['user1_serieslist'] = ''; 
