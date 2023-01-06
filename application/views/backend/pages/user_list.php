@@ -10,6 +10,7 @@
 								#
 							</th>
 							<th>Нэр</th>
+							<th>И-мэйл</th>
 							<th>Утас</th>
 						</tr>
 					</thead>
@@ -22,6 +23,7 @@
 						<tr>
 							<td><?php echo $counter++;?></td>
 							<td style="text-transform: uppercase;"><?php echo $row['name'];?></td>
+							<td><?php echo $row['email'];?></td>
 							<td style="text-transform: uppercase;"><?php echo $row['phone'];?></td>
 							<td style="width:150px">
 							<a href="<?php echo base_url();?>index.php?admin/noadmin/<?php echo $row['user_id'] ?>" class="btn btn-primary">
