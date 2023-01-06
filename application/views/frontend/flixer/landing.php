@@ -15,7 +15,7 @@
 		</a>
 		<?php if($userdata == null){ ?>
 		<p class="text-center">
-			<button type="buton" onclick="openRegModal()" class="btn btn-danger btn-lg reg-btn" >БҮРТГҮҮЛЭХ</button>
+			<button type="buton" onclick="fbLogin()" class="btn btn-danger btn-lg reg-btn" >БҮРТГҮҮЛЭХ</button>
 		</p>
 		<?php } ?>
 		<?php } else { ?>

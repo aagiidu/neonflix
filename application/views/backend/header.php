@@ -10,7 +10,7 @@
 				</li>
 			</ul>
 			<!-- BEGIN LOGO -->
-			<a href="index.html">
+			<a href="/index.php?admin">
 			<img src="<?php echo base_url();?>assets/global/logo.png" class="logo" alt="" data-src="<?php echo base_url();?>assets/global/logo.png" data-src-retina="<?php echo base_url();?>assets/global/logo.png" height="21" />
 			</a>
 			<!-- END LOGO -->
