@@ -31,7 +31,7 @@
 		border-color: #558000;
 		outline: none; 
 	}
-	#payModal{text-align:center;color: #242424; background: #9933ff;}
+	#payModal{text-align:center;color: #242424; background: #9933ff;display:block}
 	#payModal p{color:#fff} 
 	#payModal .close{color:#fff;opacity: 1;position: absolute;top: 15px;right: 15px;}
 	#payModal ul li span{display:inline-block;font-size:17px;width: 150px;max-width:50%}
@@ -65,6 +65,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
+					<?php if(1 == 2){ ?>
 					<div class="col-sm-6">
 						<h4 class="black_text">Миний мэдээлэл</h4>
 						<div class="card bg-white black_text">
@@ -83,6 +84,8 @@
 							</div>
 						</div>
 					</div>
+					<?php } ?>
+					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
 						<h4 class="black_text">
 							Гишүүнчлэл

@@ -59,7 +59,7 @@
 						<?php if($this->session->userdata('login_type') == 1): ?>
 							<a href="<?php echo base_url();?>index.php?admin/dashboard" class="pro-btn" style="float:none;display:inline-block;margin-top:3px">Admin</a>
 						<?php endif;?>
-						<span style="padding:3px;float:right"><a href="<?php echo base_url();?>index.php?home/signout" class="btn btn-danger" style="border-radius:10px;">Гарах</a></span>
+						<span style="padding:3px;float:right"><button class="btn btn-danger" style="border-radius:10px;" onclick='fbLogout()'>Гарах</button></span>
 					</p>
 				</li>
 			</ul>
@@ -70,7 +70,7 @@
 				</div>
 			<?php } ?>
 			<!-- SEARCH FORM -->
-			<form class="navbar-form navbar-right <?php if($userdata != null){ echo 'w-100'; }?>" method="post" action="<?php echo base_url();?>index.php?browse/search">
+			<form class="navbar-form navbar-right <?php // if($userdata != null){ echo 'w-100'; }?>" method="post" action="<?php echo base_url();?>index.php?browse/search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Гарчиг, жүжигчин, жанр" 
 						style="background-color: #000; border: 1px solid #808080;" name="search_key">
@@ -87,31 +87,19 @@
 		$padding_amount = '50px';
 	?>
 <div style="padding: 0"></div>
+
 <?php if($userdata == null){ ?>
-<div id="customModal"  class="modal-bg">
-	<div id="authmodal" class="modal modal-sm auth-modal">
-		<button class="close" onclick="closeModal()">&times;</button>
-		<div class="modal-body">
-
-		</div>
-	</div>
-</div>
-
 <!-- Modal -->
 <div id="auth" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
+  <div class="modal-dialog modal-md">
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content bg-light">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Нэвтрэх / Бүртгүүлэх</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type='button' class='btn btn-primary w-100 facebook-btn' onclick="fbLogin()"><i class='fa fa-facebook'></i> Фейсбүүкээр нэвтрэх</button>
       </div>
     </div>
 
