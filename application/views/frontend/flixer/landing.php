@@ -3,7 +3,7 @@
 	<!-- logo -->
 	
 	<div class="land-center">
-		<?php if (1 == 2) { ?>
+		<?php if (1 == 1) { ?>
 		<a href="#" class="btn btn-info land-btn" >
 			Мэдээ мэдээлэл
 			<span>Тун удахгүй</span>
