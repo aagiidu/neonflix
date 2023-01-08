@@ -124,6 +124,18 @@
 </div>
 
 <script>
+
+	window.onload = function () {
+		google.accounts.id.initialize({
+		client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com',
+		callback: handleCredentialResponse
+		});
+		google.accounts.id.prompt();
+	};
+
+	function handleCredentialResponse(data){
+		console.log('handleCredentialResponse', handleCredentialResponse)
+	}
 	
 	$(function() {
 		console.log(window.location.hash);
