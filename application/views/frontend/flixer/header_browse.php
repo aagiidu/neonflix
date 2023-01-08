@@ -128,24 +128,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/9.0.0/index.js"></script>
 <script>
 
-	/* window.onload = function () {
-		google.accounts.id.initialize({
+	window.onload = function () {
+		GAuth = google.accounts.id.initialize({
 		client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com',
 		callback: handleCredentialResponse
 		});
 		google.accounts.id.prompt();
-	}; */
-	let Gauth;
+	}; 
+
 	// gapi.auth2.init(params);
-	function init() {
+	/* function init() {
 		console.log('INIT')
 		gapi.load('auth2', function() {
 			Gauth = gapi.auth2.getAuthInstance()
 		});
-	}
+	} */
 
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
+		GAuth2 = data;
 		let userInfo = decodeJWT(data.credential);
 		console.log('userInfo', userInfo)
 	}
