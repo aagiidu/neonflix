@@ -124,7 +124,7 @@
 
   </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/9.0.0/index.js"></script>
 <script>
 
 	/* window.onload = function () {
@@ -137,8 +137,15 @@
 
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
+		let userInfo = decodeJWT(data.credential);
+		console.log('userInfo', userInfo)
 	}
 	
+	function decodeJWT(data){
+		var tokens = data.split('.');
+		return JSON.parse(atob(tokens[1]));
+	}
+
 	$(function() {
 		console.log(window.location.hash);
 		if(window.location.hash == '#login'){
