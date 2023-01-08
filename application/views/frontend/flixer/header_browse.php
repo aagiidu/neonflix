@@ -102,7 +102,7 @@
         <button type='button' class='btn btn-primary w-100 facebook-btn' onclick="fbLogin()"><i class='fa fa-facebook'></i> Фейсбүүкээр нэвтрэх</button>
 		<div id="g_id_onload"
 			data-client_id="401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com"
-			data-context="signin"
+			data-context="signup"
 			data-ux_mode="popup"
 			data-login_uri="https://neontoon.mn"
 			data-auto_prompt="false">
@@ -112,7 +112,7 @@
 			data-type="standard"
 			data-shape="rectangular"
 			data-theme="outline"
-			data-text="continue_with"
+			data-text="signup_with"
 			data-size="large"
 			data-locale="mn"
 			data-logo_alignment="left">
