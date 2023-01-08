@@ -100,6 +100,23 @@
       </div>
       <div class="modal-body">
         <button type='button' class='btn btn-primary w-100 facebook-btn' onclick="fbLogin()"><i class='fa fa-facebook'></i> Фейсбүүкээр нэвтрэх</button>
+		<div id="g_id_onload"
+			data-client_id="401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com"
+			data-context="signin"
+			data-ux_mode="popup"
+			data-login_uri="https://neontoon.mn"
+			data-auto_prompt="false">
+		</div>
+
+		<div class="g_id_signin"
+			data-type="standard"
+			data-shape="rectangular"
+			data-theme="outline"
+			data-text="continue_with"
+			data-size="large"
+			data-locale="mn"
+			data-logo_alignment="left">
+		</div>
       </div>
     </div>
 
@@ -107,7 +124,7 @@
 </div>
 
 <script>
-
+	
 	$(function() {
 		console.log(window.location.hash);
 		if(window.location.hash == '#login'){
