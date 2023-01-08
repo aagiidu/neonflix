@@ -124,6 +124,7 @@
 
   </div>
 </div>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/9.0.0/index.js"></script>
 <script>
 
@@ -134,6 +135,12 @@
 		});
 		google.accounts.id.prompt();
 	}; */
+	let Gauth;
+	function init() {
+		gapi.load('auth2', function() {
+			Gauth = gapi.auth2.getAuthInstance()
+		});
+	}
 
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
