@@ -105,6 +105,7 @@
 			data-context="signup"
 			data-ux_mode="popup"
 			data-login_uri="https://neontoon.mn"
+			data-callback="handleCredentialResponse"
 			data-auto_prompt="false">
 		</div>
 
@@ -114,6 +115,7 @@
 			data-theme="outline"
 			data-text="signup_with"
 			data-size="large"
+			data-callback="handleCredentialResponse"
 			data-locale="mn"
 			data-logo_alignment="left">
 		</div>
@@ -125,13 +127,13 @@
 
 <script>
 
-	window.onload = function () {
+	/* window.onload = function () {
 		google.accounts.id.initialize({
 		client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com',
 		callback: handleCredentialResponse
 		});
 		google.accounts.id.prompt();
-	};
+	}; */
 
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
