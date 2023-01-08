@@ -134,7 +134,7 @@
 	};
 
 	function handleCredentialResponse(data){
-		console.log('handleCredentialResponse', handleCredentialResponse)
+		console.log('handleCredentialResponse', data)
 	}
 	
 	$(function() {
