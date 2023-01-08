@@ -141,14 +141,12 @@
 		console.log('INIT')
 		gapi.load('auth2', function() {
 			//Gauth = gapi.auth2.getAuthInstance()
-			gapi.auth2.init({client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com'})
-			GAuth = gapi.auth2.getAuthInstance()
+			GAuth = gapi.auth2.init({client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com'})
 		});
 	} 
 
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
-		GAuth2 = data;
 		let userInfo = decodeJWT(data.credential);
 		console.log('userInfo', userInfo)
 	}
