@@ -136,7 +136,9 @@
 		google.accounts.id.prompt();
 	}; */
 	let Gauth;
+	// gapi.auth2.init(params);
 	function init() {
+		console.log('INIT')
 		gapi.load('auth2', function() {
 			Gauth = gapi.auth2.getAuthInstance()
 		});
