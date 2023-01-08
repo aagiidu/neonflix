@@ -100,7 +100,7 @@
       </div>
       <div class="modal-body">
         <button type='button' class='btn btn-primary w-100 facebook-btn' onclick="fbLogin()"><i class='fa fa-facebook'></i> Фейсбүүкээр нэвтрэх</button>
-		<div id="g_id_onload"
+		<!-- <div id="g_id_onload"
 			data-client_id="401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com"
 			data-context="signup"
 			data-ux_mode="popup"
@@ -118,13 +118,14 @@
 			data-callback="handleCredentialResponse"
 			data-locale="mn"
 			data-logo_alignment="left">
-		</div>
+		</div> -->
       </div>
     </div>
 
   </div>
 </div>
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+<!-- <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/9.0.0/index.js"></script>
 <script>
 
@@ -137,14 +138,14 @@
 	};  */
 
 	// gapi.auth2.init(params);
-	function init() {
+	/* function init() {
 		console.log('INIT')
 		gapi.load('auth2', function() {
 			//Gauth = gapi.auth2.getAuthInstance()
 			GAuth = gapi.auth2.init({client_id: '401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com'})
 		});
 	} 
-
+ */
 	function handleCredentialResponse(data){
 		console.log('handleCredentialResponse', data)
 		let userInfo = decodeJWT(data.credential);
