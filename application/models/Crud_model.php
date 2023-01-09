@@ -168,7 +168,11 @@ class Crud_model extends CI_Model {
 
 	function authfb($data) 
 	{
-		$this->db->where('fbid' , $data['id']);
+		if($data['id'] != 'google'){
+			$this->db->where('fbid' , $data['id']);
+		} else {
+			$this->db->where('email' , $data['email']);
+		}
 		$this->db->from('user');
         $total_number_of_matching_user = $this->db->count_all_results();
 		// validate if duplicate email exists

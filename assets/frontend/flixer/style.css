@@ -415,4 +415,4 @@ progress[value]::-moz-progress-bar {
 .bg-light .modal-header{border-bottom: none;}
 .bg-light .modal-footer{border-top: 1px solid #ccc}
 .bg-light .close{color: #282828;font-size: 32px;}
-#auth .facebook-btn{background-color: #4267b2;height: 42px;}
+#auth .facebook-btn{background-color: #4267b2;height: 42px;margin-bottom: 15px;border-radius: 4px;}

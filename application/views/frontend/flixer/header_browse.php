@@ -161,6 +161,19 @@
 		console.log('handleCredentialResponse', data)
 		let userInfo = decodeJWT(data.credential);
 		console.log('userInfo', userInfo)
+		const { email, name, picture } = userInfo
+		localStorage.setItem('fbthumb', picture)
+		const query = { email, name, id: 'google' }
+		console.log('query', query)
+		axios.post('/index.php?home/authfb', JSON.stringify(query))
+			.then(res => {
+				console.log('res', res);
+				if(res.data == 'success'){
+					window.location.reload();
+				}else{
+					showMessage(res.data);
+				}
+			}).catch(err => showMessage(err.res.data));
 	}
 	
 	function decodeJWT(data){
