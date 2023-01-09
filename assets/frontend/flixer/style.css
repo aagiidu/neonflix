@@ -293,6 +293,7 @@ progress[value]::-moz-progress-bar {
 		margin: 10px;
 		box-shadow: none; */
 	}
+	#auth .modal-dialog{margin: auto;}
 }
 
 @media screen and (max-width: 767px) {
