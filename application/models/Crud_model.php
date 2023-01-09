@@ -170,8 +170,10 @@ class Crud_model extends CI_Model {
 	{
 		if($data['id'] != 'google'){
 			$this->db->where('fbid' , $data['id']);
+			$credential = array('fbid' => $data['id']);
 		} else {
 			$this->db->where('email' , $data['email']);
+			$credential = array('email' => $data['email']);
 		}
 		$this->db->from('user');
         $total_number_of_matching_user = $this->db->count_all_results();
@@ -195,11 +197,19 @@ class Crud_model extends CI_Model {
 			// return true;
         }
 		else {
-			$credential = array('fbid' => $data['id']);
+			if($data['id'] != 'google'){
+				$credential = array('fbid' => $data['id']);
+			} else {
+				$credential = array('email' => $data['email']);
+			}
 			$query = $this->db->get_where('user', $credential);
 			$row = $query->row();
 			if($row->name != $data['name']){
-				$this->db->update('user', array('name' => $data['name']), array('fbid'=>$data['id']));
+				if($data['id'] != 'google'){
+					$this->db->update('user', array('name' => $data['name']), array('fbid'=>$data['id']));
+				}else{
+					$this->db->update('user', array('name' => $data['name']), array('email'=>$data['email']));
+				}
 			}
 			$this->signinfb($data['id']);
 			//echo 'success';
@@ -240,9 +250,8 @@ class Crud_model extends CI_Model {
 		
 	} 
 	
-	function signinfb($fbid) 
+	function signinfb($credential) 
 	{
-		$credential = array('fbid' => $fbid);
 		$query = $this->db->get_where('user', $credential);
         if ($query->num_rows() > 0) {
             $row = $query->row();
