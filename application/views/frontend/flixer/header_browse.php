@@ -104,6 +104,7 @@
 		<div id="g_id_onload"
 			data-client_id="401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com"
 			data-context="signup"
+			data-width="258"
 			data-login_uri="/"
 			data-callback="handleCredentialResponse"
 			data-auto_select="false"
@@ -116,6 +117,7 @@
 			data-theme="outline"
 			data-text="signin_with"
 			data-size="large"
+			data-width="258"
 			data-callback="handleCredentialResponse"
 			data-logo_alignment="left">
 		</div>
