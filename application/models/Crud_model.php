@@ -175,6 +175,8 @@ class Crud_model extends CI_Model {
 			$this->db->where('email' , $data['email']);
 			$credential = array('email' => $data['email']);
 		}
+		echo 'credential1';
+		var_dump($credential);
 		$this->db->from('user');
         $total_number_of_matching_user = $this->db->count_all_results();
 		// validate if duplicate email exists
@@ -191,17 +193,12 @@ class Crud_model extends CI_Model {
 			$d['user1_serieslist'] = ''; 
 			$d['plan_id'] = 0;
 			$res = $this->db->insert('user' , $d);
-            $this->signinfb($data['id']);
+            $this->signinfb($credential);
 			//echo 'success';
 			// $this->session->set_flashdata('signup_result', 'success');
 			// return true;
         }
 		else {
-			if($data['id'] != 'google'){
-				$credential = array('fbid' => $data['id']);
-			} else {
-				$credential = array('email' => $data['email']);
-			}
 			$query = $this->db->get_where('user', $credential);
 			$row = $query->row();
 			if($row->name != $data['name']){
@@ -211,7 +208,7 @@ class Crud_model extends CI_Model {
 					$this->db->update('user', array('name' => $data['name']), array('email'=>$data['email']));
 				}
 			}
-			$this->signinfb($data['id']);
+			$this->signinfb($credential);
 			//echo 'success';
 		}
 		
@@ -252,6 +249,8 @@ class Crud_model extends CI_Model {
 	
 	function signinfb($credential) 
 	{
+		echo 'credential2';
+		var_dump($credential);
 		$query = $this->db->get_where('user', $credential);
         if ($query->num_rows() > 0) {
             $row = $query->row();
