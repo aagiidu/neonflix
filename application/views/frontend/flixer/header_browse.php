@@ -104,7 +104,6 @@
 		<div id="g_id_onload"
 			data-client_id="401890577875-5q7t2qo61m9bhan3mg24h7ku7ma8ncm3.apps.googleusercontent.com"
 			data-context="signup"
-			data-ux_mode="redirect"
 			data-login_uri="/"
 			data-callback="handleCredentialResponse"
 			data-auto_select="true"
@@ -120,6 +119,16 @@
 			data-callback="handleCredentialResponse"
 			data-logo_alignment="left">
 		</div>
+
+		<!-- <div class="g_id_signup"
+			data-type="standard"
+			data-shape="rectangular"
+			data-theme="outline"
+			data-text="signup_with"
+			data-size="large"
+			data-callback="handleCredentialResponse"
+			data-logo_alignment="left">
+		</div> -->
 		
       </div>
     </div>
