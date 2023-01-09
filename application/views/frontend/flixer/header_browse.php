@@ -106,7 +106,7 @@
 			data-context="signup"
 			data-login_uri="/"
 			data-callback="handleCredentialResponse"
-			data-auto_select="true"
+			data-auto_select="false"
 			data-itp_support="true">
 		</div>
 
